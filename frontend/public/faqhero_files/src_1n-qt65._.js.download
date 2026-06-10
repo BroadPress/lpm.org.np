@@ -1,0 +1,641 @@
+(globalThis["TURBOPACK"] || (globalThis["TURBOPACK"] = [])).push([typeof document === "object" ? document.currentScript : undefined,
+"[project]/src/hooks/useMediaQuery.ts [app-client] (ecmascript)", ((__turbopack_context__) => {
+"use strict";
+
+__turbopack_context__.s([
+    "useDesktop",
+    ()=>useDesktop,
+    "useMediaQuery",
+    ()=>useMediaQuery,
+    "useMobile",
+    ()=>useMobile,
+    "useTablet",
+    ()=>useTablet
+]);
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/compiled/react/index.js [app-client] (ecmascript)");
+var _s = __turbopack_context__.k.signature(), _s1 = __turbopack_context__.k.signature(), _s2 = __turbopack_context__.k.signature(), _s3 = __turbopack_context__.k.signature();
+'use client';
+;
+const useMediaQuery = (query)=>{
+    _s();
+    const [matches, setMatches] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(false);
+    (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useEffect"])({
+        "useMediaQuery.useEffect": ()=>{
+            const media = window.matchMedia(query);
+            setMatches(media.matches);
+            const listener = {
+                "useMediaQuery.useEffect.listener": (event)=>setMatches(event.matches)
+            }["useMediaQuery.useEffect.listener"];
+            if (media.addEventListener) {
+                media.addEventListener('change', listener);
+                return ({
+                    "useMediaQuery.useEffect": ()=>media.removeEventListener('change', listener)
+                })["useMediaQuery.useEffect"];
+            } else {
+                media.addListener(listener);
+                return ({
+                    "useMediaQuery.useEffect": ()=>media.removeListener(listener)
+                })["useMediaQuery.useEffect"];
+            }
+        }
+    }["useMediaQuery.useEffect"], [
+        query
+    ]);
+    return matches;
+};
+_s(useMediaQuery, "/aV7jSECvYA0Ea4uAEPK2AzROhs=");
+const useMobile = ()=>{
+    _s1();
+    return useMediaQuery('(max-width: 767px)');
+};
+_s1(useMobile, "AGUsWXV/IGWEYGrGyhqugaEb9zc=", false, function() {
+    return [
+        useMediaQuery
+    ];
+});
+const useTablet = ()=>{
+    _s2();
+    return useMediaQuery('(min-width: 768px) and (max-width: 1023px)');
+};
+_s2(useTablet, "AGUsWXV/IGWEYGrGyhqugaEb9zc=", false, function() {
+    return [
+        useMediaQuery
+    ];
+});
+const useDesktop = ()=>{
+    _s3();
+    return useMediaQuery('(min-width: 1024px)');
+};
+_s3(useDesktop, "AGUsWXV/IGWEYGrGyhqugaEb9zc=", false, function() {
+    return [
+        useMediaQuery
+    ];
+});
+if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelpers !== null) {
+    __turbopack_context__.k.registerExports(__turbopack_context__.m, globalThis.$RefreshHelpers$);
+}
+}),
+"[project]/src/components/ui/OptimizedImage.tsx [app-client] (ecmascript)", ((__turbopack_context__) => {
+"use strict";
+
+__turbopack_context__.s([
+    "default",
+    ()=>OptimizedImage
+]);
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/compiled/react/jsx-dev-runtime.js [app-client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$image$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/image.js [app-client] (ecmascript)");
+'use client';
+;
+;
+const sizeMap = {
+    hero: {
+        sizes: '100vw',
+        quality: 90
+    },
+    card: {
+        sizes: '(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw',
+        quality: 85
+    },
+    avatar: {
+        sizes: '128px',
+        quality: 80
+    },
+    gallery: {
+        sizes: '(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw',
+        quality: 85
+    },
+    thumbnail: {
+        sizes: '150px',
+        quality: 75
+    },
+    footer: {
+        sizes: '100vw',
+        quality: 80
+    }
+};
+function OptimizedImage({ src, alt, type = 'card', className = '', priority = false, fill = true, ...restProps }) {
+    const config = sizeMap[type];
+    return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$image$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
+        src: src,
+        alt: alt,
+        fill: fill,
+        sizes: config.sizes,
+        quality: config.quality,
+        priority: priority,
+        className: `object-cover ${className}`,
+        ...restProps
+    }, void 0, false, {
+        fileName: "[project]/src/components/ui/OptimizedImage.tsx",
+        lineNumber: 53,
+        columnNumber: 5
+    }, this);
+} // 'use client';
+ // import Image from 'next/image';
+ // import { useState } from 'react';
+ // interface OptimizedImageProps {
+ //   src: string;
+ //   alt: string;
+ //   type?: 'hero' | 'card' | 'avatar' | 'gallery' | 'thumbnail';
+ //   className?: string;
+ //   priority?: boolean;
+ //   fill?: boolean;
+ //   width?: number;
+ //   height?: number;
+ //   onLoad?: () => void;
+ // }
+ // const sizeMap = {
+ //   hero: { width: 1920, height: 1080, quality: 90 },
+ //   card: { width: 800, height: 600, quality: 85 },
+ //   avatar: { width: 128, height: 128, quality: 80 },
+ //   gallery: { width: 600, height: 450, quality: 85 },
+ //   thumbnail: { width: 150, height: 150, quality: 75 },
+ // };
+ // export default function OptimizedImage({ 
+ //   src, 
+ //   alt, 
+ //   type = 'card', 
+ //   className = '',
+ //   priority = false,
+ //   fill = false,
+ //   width,
+ //   height,
+ //   onLoad
+ // }: OptimizedImageProps) {
+ //   const [isLoading, setIsLoading] = useState(true);
+ //   const config = sizeMap[type];
+ //   const finalWidth = width || config.width;
+ //   const finalHeight = height || config.height;
+ //   return (
+ //     <div className={`relative overflow-hidden ${className}`}>
+ //       <Image
+ //         src={src}
+ //         alt={alt}
+ //         width={!fill ? finalWidth : undefined}
+ //         height={!fill ? finalHeight : undefined}
+ //         fill={fill}
+ //         sizes={type === 'gallery' ? '(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw' : '100vw'}
+ //         quality={config.quality}
+ //         priority={priority}
+ //         onLoad={() => {
+ //           setIsLoading(false);
+ //           onLoad?.();
+ //         }}
+ //         className={`transition-opacity duration-300 ${isLoading ? 'opacity-0' : 'opacity-100'} ${className}`}
+ //       />
+ //       {isLoading && (
+ //         <div className="absolute inset-0 bg-gray-200 dark:bg-gray-700 animate-pulse" />
+ //       )}
+ //     </div>
+ //   );
+ // }
+_c = OptimizedImage;
+var _c;
+__turbopack_context__.k.register(_c, "OptimizedImage");
+if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelpers !== null) {
+    __turbopack_context__.k.registerExports(__turbopack_context__.m, globalThis.$RefreshHelpers$);
+}
+}),
+"[project]/src/components/layout/Layout.tsx [app-client] (ecmascript)", ((__turbopack_context__) => {
+"use strict";
+
+__turbopack_context__.s([
+    "default",
+    ()=>Layout
+]);
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/compiled/react/jsx-dev-runtime.js [app-client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/compiled/react/index.js [app-client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$navigation$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/navigation.js [app-client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$components$2f$AnimatePresence$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/framer-motion/dist/es/components/AnimatePresence/index.mjs [app-client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$motion$2f$proxy$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/framer-motion/dist/es/render/components/motion/proxy.mjs [app-client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$shared$2f$lib$2f$app$2d$dynamic$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/shared/lib/app-dynamic.js [app-client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$hooks$2f$useMediaQuery$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/src/hooks/useMediaQuery.ts [app-client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$OptimizedImage$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/src/components/ui/OptimizedImage.tsx [app-client] (ecmascript)");
+;
+;
+;
+;
+;
+;
+var _s = __turbopack_context__.k.signature();
+'use client';
+;
+;
+;
+;
+;
+;
+// Dynamic imports for performance
+const DesktopSidebar = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$shared$2f$lib$2f$app$2d$dynamic$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"])(()=>__turbopack_context__.A("[project]/src/components/layout/Sidebar.tsx [app-client] (ecmascript, next/dynamic entry, async loader)").then((mod)=>mod.DesktopSidebar), {
+    loadableGenerated: {
+        modules: [
+            "[project]/src/components/layout/Sidebar.tsx [app-client] (ecmascript, next/dynamic entry)"
+        ]
+    },
+    loading: ()=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+            className: "w-[190px] h-screen bg-gray-100 dark:bg-gray-800 animate-pulse"
+        }, void 0, false, {
+            fileName: "[project]/src/components/layout/Layout.tsx",
+            lineNumber: 12,
+            columnNumber: 18
+        }, ("TURBOPACK compile-time value", void 0))
+});
+_c = DesktopSidebar;
+const MobileSidebar = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$shared$2f$lib$2f$app$2d$dynamic$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"])(()=>__turbopack_context__.A("[project]/src/components/layout/Sidebar.tsx [app-client] (ecmascript, next/dynamic entry, async loader)").then((mod)=>mod.MobileSidebar), {
+    loadableGenerated: {
+        modules: [
+            "[project]/src/components/layout/Sidebar.tsx [app-client] (ecmascript, next/dynamic entry)"
+        ]
+    },
+    loading: ()=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+            className: "w-[280px] h-screen bg-gray-100 dark:bg-gray-800 animate-pulse"
+        }, void 0, false, {
+            fileName: "[project]/src/components/layout/Layout.tsx",
+            lineNumber: 15,
+            columnNumber: 18
+        }, ("TURBOPACK compile-time value", void 0))
+});
+_c1 = MobileSidebar;
+const Navbar = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$shared$2f$lib$2f$app$2d$dynamic$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"])(()=>__turbopack_context__.A("[project]/src/components/layout/Navbar.tsx [app-client] (ecmascript, next/dynamic entry, async loader)"), {
+    loadableGenerated: {
+        modules: [
+            "[project]/src/components/layout/Navbar.tsx [app-client] (ecmascript, next/dynamic entry)"
+        ]
+    },
+    loading: ()=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+            className: "h-14 bg-white dark:bg-gray-900 animate-pulse"
+        }, void 0, false, {
+            fileName: "[project]/src/components/layout/Layout.tsx",
+            lineNumber: 18,
+            columnNumber: 18
+        }, ("TURBOPACK compile-time value", void 0))
+});
+_c2 = Navbar;
+const BottomNav = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$shared$2f$lib$2f$app$2d$dynamic$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"])(()=>__turbopack_context__.A("[project]/src/components/layout/BottomNav.tsx [app-client] (ecmascript, next/dynamic entry, async loader)"), {
+    loadableGenerated: {
+        modules: [
+            "[project]/src/components/layout/BottomNav.tsx [app-client] (ecmascript, next/dynamic entry)"
+        ]
+    },
+    loading: ()=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+            className: "h-16 bg-white dark:bg-gray-900 animate-pulse"
+        }, void 0, false, {
+            fileName: "[project]/src/components/layout/Layout.tsx",
+            lineNumber: 21,
+            columnNumber: 18
+        }, ("TURBOPACK compile-time value", void 0))
+});
+_c3 = BottomNav;
+const Footer = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$shared$2f$lib$2f$app$2d$dynamic$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"])(()=>__turbopack_context__.A("[project]/src/components/layout/Footer.tsx [app-client] (ecmascript, next/dynamic entry, async loader)"), {
+    loadableGenerated: {
+        modules: [
+            "[project]/src/components/layout/Footer.tsx [app-client] (ecmascript, next/dynamic entry)"
+        ]
+    },
+    loading: ()=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+            className: "h-64 bg-gray-900 animate-pulse"
+        }, void 0, false, {
+            fileName: "[project]/src/components/layout/Layout.tsx",
+            lineNumber: 24,
+            columnNumber: 18
+        }, ("TURBOPACK compile-time value", void 0))
+});
+_c4 = Footer;
+// Page metadata for dynamic hero sections
+const pageHeroConfig = {
+    '/': {
+        title: 'Life Positive Mission',
+        subtitle: 'Power of Positive Energy',
+        bgImage: '/slider/1.jpg'
+    },
+    '/about': {
+        title: 'About Us',
+        subtitle: 'Know Who We Are',
+        bgImage: '/about/hero.jpg'
+    },
+    '/team': {
+        title: 'Our Team',
+        subtitle: 'Meet Our Dedicated Leaders',
+        bgImage: '/team/hero.jpg'
+    },
+    '/events': {
+        title: 'Our Events',
+        subtitle: 'Meet Our Dedicated Leaders',
+        bgImage: '/events/hero.jpg'
+    },
+    '/faq': {
+        title: 'Our Events',
+        subtitle: 'Meet Our Dedicated Leaders',
+        bgImage: '/faq/hero.jpg'
+    },
+    '/gallery': {
+        title: 'Our Gallery',
+        subtitle: 'Meet Our Dedicated Leaders',
+        bgImage: '/gallery/1.jpg'
+    }
+};
+function Layout({ children }) {
+    _s();
+    const [collapsed, setCollapsed] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(false);
+    const [isMobileOpen, setIsMobileOpen] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(false);
+    const [isHeroVisible, setIsHeroVisible] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(true);
+    const [scrollY, setScrollY] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(0);
+    const isMobile = (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$hooks$2f$useMediaQuery$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useMediaQuery"])('(max-width: 767px)');
+    const isTablet = (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$hooks$2f$useMediaQuery$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useMediaQuery"])('(min-width: 768px) and (max-width: 1023px)');
+    const isDesktop = (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$hooks$2f$useMediaQuery$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useMediaQuery"])('(min-width: 1024px)');
+    const pathname = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$navigation$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["usePathname"])();
+    // Close mobile sidebar on route change
+    (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useEffect"])({
+        "Layout.useEffect": ()=>{
+            setIsMobileOpen(false);
+        }
+    }["Layout.useEffect"], [
+        pathname
+    ]);
+    // Handle scroll for navbar transparency effect
+    (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useEffect"])({
+        "Layout.useEffect": ()=>{
+            const handleScroll = {
+                "Layout.useEffect.handleScroll": ()=>{
+                    setScrollY(window.scrollY);
+                    setIsHeroVisible(window.scrollY < 100);
+                }
+            }["Layout.useEffect.handleScroll"];
+            window.addEventListener('scroll', handleScroll, {
+                passive: true
+            });
+            return ({
+                "Layout.useEffect": ()=>window.removeEventListener('scroll', handleScroll)
+            })["Layout.useEffect"];
+        }
+    }["Layout.useEffect"], []);
+    const showSidebar = isDesktop || isTablet;
+    const sidebarWidth = collapsed ? 60 : 190;
+    // Get current page hero config
+    const heroConfig = pageHeroConfig[pathname] || pageHeroConfig['/'];
+    // Check if current page should show hero (not home because home has its own hero)
+    const showPageHero = pathname !== '/';
+    return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+        className: "min-h-screen bg-gray-50 dark:bg-gray-950",
+        children: [
+            showSidebar && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(DesktopSidebar, {
+                collapsed: collapsed,
+                setCollapsed: setCollapsed,
+                isMobileOpen: false,
+                onMobileClose: ()=>{}
+            }, void 0, false, {
+                fileName: "[project]/src/components/layout/Layout.tsx",
+                lineNumber: 103,
+                columnNumber: 9
+            }, this),
+            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(MobileSidebar, {
+                collapsed: false,
+                setCollapsed: ()=>{},
+                isMobileOpen: isMobileOpen,
+                onMobileClose: ()=>setIsMobileOpen(false)
+            }, void 0, false, {
+                fileName: "[project]/src/components/layout/Layout.tsx",
+                lineNumber: 112,
+                columnNumber: 7
+            }, this),
+            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(Navbar, {
+                onMenuClick: ()=>setIsMobileOpen(true),
+                sidebarCollapsed: collapsed,
+                onSidebarToggle: ()=>setCollapsed(!collapsed),
+                showSidebar: showSidebar,
+                isHeroVisible: isHeroVisible
+            }, void 0, false, {
+                fileName: "[project]/src/components/layout/Layout.tsx",
+                lineNumber: 120,
+                columnNumber: 7
+            }, this),
+            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                className: "transition-all duration-300 ease-in-out",
+                style: {
+                    marginLeft: showSidebar ? sidebarWidth : 0
+                },
+                children: [
+                    showPageHero && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("section", {
+                        className: "relative h-[40vh] min-h-[300px] flex items-center overflow-hidden",
+                        children: [
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                className: "absolute inset-0",
+                                children: [
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$OptimizedImage$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
+                                        src: heroConfig.bgImage,
+                                        alt: heroConfig.title,
+                                        type: "hero",
+                                        priority: true,
+                                        className: "object-cover"
+                                    }, void 0, false, {
+                                        fileName: "[project]/src/components/layout/Layout.tsx",
+                                        lineNumber: 138,
+                                        columnNumber: 15
+                                    }, this),
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                        className: "absolute inset-0 bg-gradient-to-r from-black/80 via-black/60 to-black/40"
+                                    }, void 0, false, {
+                                        fileName: "[project]/src/components/layout/Layout.tsx",
+                                        lineNumber: 145,
+                                        columnNumber: 15
+                                    }, this)
+                                ]
+                            }, void 0, true, {
+                                fileName: "[project]/src/components/layout/Layout.tsx",
+                                lineNumber: 137,
+                                columnNumber: 13
+                            }, this),
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                className: "absolute inset-0 overflow-hidden",
+                                children: [
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$motion$2f$proxy$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["motion"].div, {
+                                        className: "absolute top-20 left-10 w-72 h-72 bg-orange-500/20 rounded-full blur-3xl",
+                                        animate: {
+                                            scale: [
+                                                1,
+                                                1.2,
+                                                1
+                                            ],
+                                            x: [
+                                                0,
+                                                50,
+                                                0
+                                            ]
+                                        },
+                                        transition: {
+                                            duration: 8,
+                                            repeat: Infinity
+                                        }
+                                    }, void 0, false, {
+                                        fileName: "[project]/src/components/layout/Layout.tsx",
+                                        lineNumber: 150,
+                                        columnNumber: 15
+                                    }, this),
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$motion$2f$proxy$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["motion"].div, {
+                                        className: "absolute bottom-20 right-10 w-96 h-96 bg-pink-500/20 rounded-full blur-3xl",
+                                        animate: {
+                                            scale: [
+                                                1,
+                                                1.3,
+                                                1
+                                            ],
+                                            x: [
+                                                0,
+                                                -50,
+                                                0
+                                            ]
+                                        },
+                                        transition: {
+                                            duration: 10,
+                                            repeat: Infinity,
+                                            delay: 1
+                                        }
+                                    }, void 0, false, {
+                                        fileName: "[project]/src/components/layout/Layout.tsx",
+                                        lineNumber: 155,
+                                        columnNumber: 15
+                                    }, this)
+                                ]
+                            }, void 0, true, {
+                                fileName: "[project]/src/components/layout/Layout.tsx",
+                                lineNumber: 149,
+                                columnNumber: 13
+                            }, this),
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                className: "relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center",
+                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$motion$2f$proxy$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["motion"].div, {
+                                    initial: {
+                                        opacity: 0,
+                                        y: 30
+                                    },
+                                    animate: {
+                                        opacity: 1,
+                                        y: 0
+                                    },
+                                    transition: {
+                                        duration: 0.6
+                                    },
+                                    children: [
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h1", {
+                                            className: "text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4",
+                                            children: heroConfig.title
+                                        }, void 0, false, {
+                                            fileName: "[project]/src/components/layout/Layout.tsx",
+                                            lineNumber: 169,
+                                            columnNumber: 17
+                                        }, this),
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                            className: "w-20 h-1 bg-gradient-to-r from-orange-500 to-pink-500 mx-auto mb-4"
+                                        }, void 0, false, {
+                                            fileName: "[project]/src/components/layout/Layout.tsx",
+                                            lineNumber: 172,
+                                            columnNumber: 17
+                                        }, this),
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                            className: "text-lg md:text-xl text-gray-200",
+                                            children: heroConfig.subtitle
+                                        }, void 0, false, {
+                                            fileName: "[project]/src/components/layout/Layout.tsx",
+                                            lineNumber: 173,
+                                            columnNumber: 17
+                                        }, this)
+                                    ]
+                                }, void 0, true, {
+                                    fileName: "[project]/src/components/layout/Layout.tsx",
+                                    lineNumber: 164,
+                                    columnNumber: 15
+                                }, this)
+                            }, void 0, false, {
+                                fileName: "[project]/src/components/layout/Layout.tsx",
+                                lineNumber: 163,
+                                columnNumber: 13
+                            }, this)
+                        ]
+                    }, void 0, true, {
+                        fileName: "[project]/src/components/layout/Layout.tsx",
+                        lineNumber: 135,
+                        columnNumber: 11
+                    }, this),
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("main", {
+                        className: showPageHero ? '' : 'pt-14',
+                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$components$2f$AnimatePresence$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["AnimatePresence"], {
+                            mode: "wait",
+                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$motion$2f$proxy$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["motion"].div, {
+                                initial: {
+                                    opacity: 0,
+                                    y: 20
+                                },
+                                animate: {
+                                    opacity: 1,
+                                    y: 0
+                                },
+                                exit: {
+                                    opacity: 0,
+                                    y: -20
+                                },
+                                transition: {
+                                    duration: 0.3
+                                },
+                                children: children
+                            }, pathname, false, {
+                                fileName: "[project]/src/components/layout/Layout.tsx",
+                                lineNumber: 186,
+                                columnNumber: 13
+                            }, this)
+                        }, void 0, false, {
+                            fileName: "[project]/src/components/layout/Layout.tsx",
+                            lineNumber: 185,
+                            columnNumber: 11
+                        }, this)
+                    }, void 0, false, {
+                        fileName: "[project]/src/components/layout/Layout.tsx",
+                        lineNumber: 184,
+                        columnNumber: 9
+                    }, this),
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(Footer, {}, void 0, false, {
+                        fileName: "[project]/src/components/layout/Layout.tsx",
+                        lineNumber: 198,
+                        columnNumber: 9
+                    }, this)
+                ]
+            }, void 0, true, {
+                fileName: "[project]/src/components/layout/Layout.tsx",
+                lineNumber: 129,
+                columnNumber: 7
+            }, this),
+            isMobile && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(BottomNav, {
+                onMoreClick: ()=>setIsMobileOpen(true)
+            }, void 0, false, {
+                fileName: "[project]/src/components/layout/Layout.tsx",
+                lineNumber: 203,
+                columnNumber: 9
+            }, this)
+        ]
+    }, void 0, true, {
+        fileName: "[project]/src/components/layout/Layout.tsx",
+        lineNumber: 100,
+        columnNumber: 5
+    }, this);
+}
+_s(Layout, "9/6kBH8iENLdkZj9WxEQzZgpneQ=", false, function() {
+    return [
+        __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$hooks$2f$useMediaQuery$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useMediaQuery"],
+        __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$hooks$2f$useMediaQuery$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useMediaQuery"],
+        __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$hooks$2f$useMediaQuery$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useMediaQuery"],
+        __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$navigation$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["usePathname"]
+    ];
+});
+_c5 = Layout;
+var _c, _c1, _c2, _c3, _c4, _c5;
+__turbopack_context__.k.register(_c, "DesktopSidebar");
+__turbopack_context__.k.register(_c1, "MobileSidebar");
+__turbopack_context__.k.register(_c2, "Navbar");
+__turbopack_context__.k.register(_c3, "BottomNav");
+__turbopack_context__.k.register(_c4, "Footer");
+__turbopack_context__.k.register(_c5, "Layout");
+if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelpers !== null) {
+    __turbopack_context__.k.registerExports(__turbopack_context__.m, globalThis.$RefreshHelpers$);
+}
+}),
+]);
+
+//# sourceMappingURL=src_1n-qt65._.js.map
