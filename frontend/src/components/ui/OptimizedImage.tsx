@@ -5,7 +5,7 @@ import Image from 'next/image';
 interface OptimizedImageProps {
   src: string;
   alt: string;
-  type?: 'hero' | 'card' | 'avatar' | 'gallery' | 'thumbnail' | 'footer';
+  type?: 'hero' | 'LPM' | 'card' | 'avatar' | 'gallery' | 'thumbnail' | 'footer';
   className?: string;
   priority?: boolean;
   fill?: boolean; 

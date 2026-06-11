@@ -80,7 +80,6 @@ export default function GalleryPage() {
                   src={img.src}
                   alt={img.alt}
                   type="gallery"
-                  fill={true}
                   className="group-hover:scale-110 transition-transform duration-500"
                 />
                 {/* Zoom Icon Overlay */}

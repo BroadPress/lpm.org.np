@@ -25,37 +25,44 @@ const Footer = dynamic(() => import('./Footer'), {
 });
 
 // Page metadata for dynamic hero sections
-const pageHeroConfig: Record<string, { title: string; subtitle: string; bgImage: string }> = {
+const pageHeroConfig: Record<string, { title: string;  bgImage: string }> = {
   '/': {
     title: 'Life Positive Mission',
-    subtitle: 'Power of Positive Energy',
     bgImage: '/slider/1.jpg'
   },
   '/about': {
     title: 'About Us',
-    subtitle: 'Know Who We Are',
     bgImage: '/about/hero.jpg'
   },
   '/team': {
     title: 'Our Team',
-    subtitle: 'Meet Our Dedicated Leaders',
     bgImage: '/team/hero.jpg'
   },
   '/events': {
     title: 'Our Events',
-    subtitle: 'Meet Our Dedicated Leaders',
     bgImage: '/events/hero.jpg'
   },
    '/faq': {
-    title: 'Our Events',
-    subtitle: 'Meet Our Dedicated Leaders',
+    title: 'FAQs',
     bgImage: '/gallery/9.jpg'
   },
    '/gallery': {
     title: 'Our Gallery',
-    subtitle: 'Meet Our Dedicated Leaders',
     bgImage: '/gallery/1.jpg'
   },
+     '/contact': {
+    title: 'Our Contact',
+    bgImage: '/1.jpg'
+  },
+    '/join-now': {
+    title: 'join now',
+    bgImage: '/1.jpg'
+  }, 
+   '/donate': {
+    title: 'Donate Now',
+    bgImage: '/1.jpg'
+  },
+
  
 
 
@@ -170,9 +177,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                   {heroConfig.title}
                 </h1>
                 <div className="w-20 h-1 bg-gradient-to-r from-orange-500 to-pink-500 mx-auto mb-4" />
-                <p className="text-lg md:text-xl text-gray-200">
-                  {heroConfig.subtitle}
-                </p>
+              
               </motion.div>
             </div>
 

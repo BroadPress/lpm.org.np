@@ -13,9 +13,9 @@ import {
   Heart,
   HelpCircle,
 } from 'lucide-react';
-import { FaFacebook, FaInstagram, FaYoutube, FaLinkedin } from 'react-icons/fa6';
+import { FaFacebook, FaInstagram, FaYoutube, FaLinkedin, FaTwitter } from 'react-icons/fa6';
 import { cn } from '@/lib/utils';
-import Image from 'next/image';
+import OptimizedImage from '../ui/OptimizedImage';
 
 interface SidebarProps {
   collapsed: boolean;
@@ -32,7 +32,7 @@ const navItems = [
   { icon: HelpCircle, label: 'FAQs', href: '/faq' },
   { icon: ImageIcon, label: 'Gallery', href: '/gallery' },
   { icon: Mail, label: 'Contact', href: '/contact' },
-  { icon: Heart, label: 'Join Now', href: '/join-now' },
+  { icon: Heart, label: 'Join Now', href: 'https://docs.google.com/forms/d/e/1FAIpQLSd5oi9ujlXHfxByvYI7iuAjbCWFtgRrCsN62PrwjFL2ABSPCg/viewform' },
 ];
 
 const socials = [
@@ -40,6 +40,7 @@ const socials = [
   { icon: FaInstagram, href: 'https://instagram.com', label: 'Instagram' },
   { icon: FaYoutube, href: 'https://youtube.com', label: 'YouTube' },
   { icon: FaLinkedin, href: 'https://linkedin.com', label: 'LinkedIn' },
+    { icon: FaTwitter, href: 'https://twitter.com', label: 'Twitter' },
 ];
 
 // Desktop & Tablet Sidebar
@@ -158,7 +159,7 @@ export function MobileSidebar({ isMobileOpen, onMobileClose }: SidebarProps) {
             <div className="h-16 border-b border-gray-200 dark:border-gray-800 flex items-center justify-between px-5">
               <div className="flex items-center gap-2">
                 <div className="relative w-8 h-8">
-                  <Image src="/logo.jpg" alt="LPM" fill className="w-full h-full object-contain" />
+                  <OptimizedImage src="/logo.jpg" alt="LPM" className="w-full h-full object-contain" />
                 </div>
                 <div>
                   <p className="font-bold text-gray-800 dark:text-white text-sm">Life Positive</p>
