@@ -22,7 +22,7 @@ const socialIcons = [
 const Footer = () => {
   return (
     <footer className="bg-[#333333] text-white">
-      <div className="mx-auto max-w-7xl px-8 py-12">
+      <div className="mx-auto max-w-7xl px-4 py-10 sm:px-8 sm:py-12">
         <div className="grid grid-cols-1 gap-10 md:grid-cols-3 md:gap-8">
           <div>
             <Link to="/" className="mb-5 inline-block">
@@ -103,7 +103,7 @@ const Footer = () => {
                 </span>
               ))}
             </div>
-            <p className="text-sm text-gray-200">
+            <p className="flex flex-wrap gap-x-2 gap-y-1 text-sm text-gray-200">
               <span>Privacy Policy</span>
               <span className="mx-2 text-gray-400">|</span>
               <span>Term &amp; Condition</span>

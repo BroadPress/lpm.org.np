@@ -1,5 +1,7 @@
 import { FaClock, FaMapMarkerAlt } from 'react-icons/fa'
 
+import eventBg from '../assets/event-1.jpg'
+
 const featuredEvent = {
   day: '15th',
   month: 'AUG',
@@ -45,14 +47,25 @@ const sideEvents = [
 
 const Upcomingevents = () => {
   return (
-    <section className="bg-gray-100 px-8 py-16">
+    <section className="bg-gray-100 px-4 py-12 sm:px-8 sm:py-16">
       <div className="mx-auto max-w-7xl">
-        <h2 className="mb-12 text-center font-serif text-3xl font-semibold text-[#2c3e50] md:text-4xl">
+        <p className="mb-2 text-center text-xs font-semibold tracking-widest text-[#f05a42] uppercase">
+          Involve Now
+        </p>
+        <h2 className="mb-10 text-center font-serif text-2xl font-semibold text-[#2c3e50] sm:mb-12 sm:text-3xl md:text-4xl">
           Upcoming Events
         </h2>
 
         <div className="grid grid-cols-1 gap-8 lg:grid-cols-2">
-          <div className="relative flex min-h-[520px] flex-col justify-end overflow-hidden rounded-2xl bg-linear-to-t from-black/80 via-black/50 to-gray-600 p-8">
+          <div className="relative flex min-h-[420px] flex-col justify-end overflow-hidden rounded-2xl p-6 sm:min-h-[480px] sm:p-8 md:min-h-[520px]">
+            <img
+              src={eventBg}
+              alt=""
+              aria-hidden="true"
+              className="absolute inset-0 h-full w-full object-cover"
+            />
+            <div className="absolute inset-0 bg-linear-to-t from-black/85 via-black/45 to-black/20" />
+
             <div className="absolute top-6 right-6 rounded-lg bg-[#f05a42] px-3 py-2 text-center text-white">
               <span className="block text-lg leading-none font-bold">
                 {featuredEvent.day}
@@ -101,9 +114,9 @@ const Upcomingevents = () => {
               ({ day, month, title, time, location, description, accent }) => (
                 <div
                   key={title}
-                  className="flex gap-5 rounded-2xl bg-white p-6 shadow-md"
+                  className="flex flex-col gap-4 rounded-2xl bg-white p-5 shadow-md sm:flex-row sm:gap-5 sm:p-6"
                 >
-                  <div className="min-w-0 flex-1">
+                  <div className="min-w-0 flex-1 order-2 sm:order-1">
                     <h3 className="mb-3 font-serif text-lg font-bold text-[#2c3e50]">
                       {title}
                     </h3>
@@ -123,7 +136,7 @@ const Upcomingevents = () => {
                   </div>
 
                   <div
-                    className="flex shrink-0 flex-col items-center justify-center rounded-xl border-2 px-3 py-2 text-center"
+                    className="order-1 flex shrink-0 flex-row items-center justify-center gap-3 self-start rounded-xl border-2 px-4 py-2 text-center sm:order-2 sm:flex-col sm:gap-0 sm:px-3 sm:py-2"
                     style={{ borderColor: accent, color: accent }}
                   >
                     <span className="text-base leading-none font-bold">

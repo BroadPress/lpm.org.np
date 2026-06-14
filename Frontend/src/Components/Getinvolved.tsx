@@ -32,18 +32,21 @@ const cards = [
 
 const Getinvolved = () => {
   return (
-    <section className="bg-gray-100 px-8 py-16">
+    <section className="bg-gray-100 px-4 py-12 sm:px-8 sm:py-16">
       <div className="mx-auto max-w-7xl">
-        <h2 className="mb-12 text-center font-serif text-3xl font-semibold text-[#1e2a4a] md:text-4xl">
+        <p className="mb-2 text-center text-xs font-semibold tracking-widest text-[#f05a42] uppercase">
+          Get Involve Now
+        </p>
+        <h2 className="mb-10 text-center font-serif text-2xl font-semibold text-[#1e2a4a] sm:mb-12 sm:text-3xl md:text-4xl">
           Make a difference today
         </h2>
 
-        <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-2 md:gap-8 lg:grid-cols-3">
           {cards.map(
             ({ icon: Icon, title, description, bg, button, buttonStyle }) => (
               <div
                 key={title}
-                className={`${bg} flex flex-col rounded-3xl p-10 text-white`}
+                className={`${bg} flex flex-col rounded-3xl p-6 text-white sm:p-8 md:p-10`}
               >
                 <Icon className="mb-6 text-3xl" />
                 <h3 className="mb-4 font-serif text-xl font-bold">{title}</h3>

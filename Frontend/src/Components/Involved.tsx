@@ -1,18 +1,28 @@
 import { FaPlay } from 'react-icons/fa'
 
+import fundraisingBg from '../assets/fundraising.jpg'
+
 const Involved = () => {
   return (
-    <section className="bg-[#1a1a1a] px-8 py-16 text-white">
-      <div className="mx-auto grid max-w-7xl grid-cols-1 items-center gap-12 lg:grid-cols-2 lg:gap-16">
+    <section className="relative overflow-hidden px-4 py-12 text-white sm:px-8 sm:py-16 md:py-24">
+      <img
+        src={fundraisingBg}
+        alt=""
+        aria-hidden="true"
+        className="absolute inset-0 h-full w-full object-cover"
+      />
+      <div className="absolute inset-0 bg-black/70" />
+
+      <div className="relative z-10 mx-auto grid max-w-7xl grid-cols-1 items-center gap-12 lg:grid-cols-2 lg:gap-16">
         <div>
           <p className="mb-4 text-xs font-semibold tracking-widest text-[#ef5b3e] uppercase">
             Call to Action
           </p>
-          <h2 className="mb-6 font-serif text-3xl leading-tight font-semibold md:text-4xl lg:text-5xl">
+          <h2 className="mb-6 font-serif text-2xl leading-tight font-semibold sm:text-3xl md:text-4xl lg:text-5xl">
             Fundraising for the people and causes you care about
           </h2>
           <p className="mb-10 max-w-xl text-sm leading-relaxed text-white/90 md:text-base">
-            I PM promotes the philosophy that life is not based on luck or
+            LPM promotes the philosophy that life is not based on luck or
             coincidence, but on conscious construction through positive thinking,
             discipline, and spiritual awakening.
           </p>
@@ -27,7 +37,7 @@ const Involved = () => {
           </button>
         </div>
 
-        <div className="rounded-3xl bg-[rgba(30,40,60,0.75)] p-8 md:p-10">
+        <div className="rounded-3xl bg-[rgba(30,40,60,0.75)] p-6 sm:p-8 md:p-10">
           <form className="space-y-4">
             <input
               type="text"

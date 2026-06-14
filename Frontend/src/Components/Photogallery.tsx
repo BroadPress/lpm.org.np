@@ -21,18 +21,18 @@ const galleryItems = [
 
 const Photogallery = () => {
   return (
-    <section className="bg-gray-100 px-10 py-16 md:px-16 lg:px-24">
+    <section className="bg-gray-100 px-4 py-12 sm:px-8 sm:py-16">
       <div className="mx-auto max-w-7xl">
         <div className="mb-10 text-center">
           <p className="mb-2 text-xs font-semibold tracking-widest text-[#f05a42] uppercase">
             Portfolio / Gallery
           </p>
-          <h2 className="font-serif text-3xl font-bold text-[#2c3e50] md:text-4xl">
+          <h2 className="font-serif text-2xl font-bold text-[#2c3e50] sm:text-3xl md:text-4xl">
             Photo gallery
           </h2>
         </div>
 
-        <div className="mx-auto grid max-w-5xl grid-cols-2 gap-6 px-4 sm:px-8 lg:grid-cols-4 lg:gap-8">
+        <div className="mx-auto grid max-w-5xl grid-cols-2 gap-4 sm:gap-6 lg:grid-cols-4 lg:gap-8">
           {galleryItems.map(({ title, image, alt }) => (
             <article
               key={title}

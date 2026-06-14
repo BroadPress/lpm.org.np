@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import activities1 from '../assets/activities1.jpg'
 import activities2 from '../assets/activities2.jpg'
 
@@ -24,9 +25,12 @@ const events = [
 
 const RecentEvents = () => {
   return (
-    <section className="bg-white px-8 py-16">
+    <section className="bg-white px-4 py-12 sm:px-8 sm:py-16">
       <div className="mx-auto max-w-7xl">
-        <h2 className="mb-12 text-center font-serif text-3xl font-semibold text-[#2c3e50] md:text-4xl">
+        <p className="mb-2 text-center text-xs font-semibold tracking-widest text-[#f05a42] uppercase">
+          Social Activities
+        </p>
+        <h2 className="mb-10 text-center font-serif text-2xl font-semibold text-[#2c3e50] sm:mb-12 sm:text-3xl md:text-4xl">
           Recent Events
         </h2>
 
@@ -68,6 +72,15 @@ const RecentEvents = () => {
               </div>
             </article>
           ))}
+        </div>
+
+        <div className="mt-10 text-center sm:mt-12">
+          <Link
+            to="/events"
+            className="inline-block rounded-full bg-[#f05a42] px-8 py-3 text-sm font-bold text-white hover:bg-[#e04a2d]"
+          >
+            View All Events
+          </Link>
         </div>
       </div>
     </section>

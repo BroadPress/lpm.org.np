@@ -1,3 +1,5 @@
+import PageBanner from '../Components/PageBanner'
+import bannerAbout from '../assets/banner-about.jpg'
 import {
   FaBriefcase,
   FaGraduationCap,
@@ -31,13 +33,9 @@ const audienceCards = [
 const About = () => {
   return (
     <div>
-        <div className="flex min-h-[40vh] items-center justify-center bg-linear-to-b from-[#1a1a1a] via-[#2a2a2a] to-[#1a1a1a] px-8 py-20 text-center">
-        <h1 className="font-serif text-4xl font-bold text-white md:text-5xl lg:text-6xl">
-              About Us
-            </h1>
-      </div>
+      <PageBanner title="About Us" image={bannerAbout} />
 
-      <section className="bg-white px-8 py-16">
+      <section className="bg-white px-4 py-12 sm:px-8 sm:py-16">
         <div className="mx-auto max-w-7xl">
           <div className="mb-16 grid grid-cols-1 gap-10 lg:grid-cols-2 lg:gap-16">
             <div>
@@ -125,7 +123,7 @@ const About = () => {
         </div>
       </section>
 
-      <section className="relative overflow-hidden px-8 py-20 md:py-24">
+      <section className="relative overflow-hidden px-4 py-16 text-white sm:px-8 sm:py-20 md:py-24">
         <img
           src={ctaImage}
           alt=""
@@ -138,7 +136,7 @@ const About = () => {
           <p className="mb-4 text-xs font-semibold tracking-widest text-[#f05a42] uppercase">
             Get Involve Now
           </p>
-          <h2 className="mb-8 font-serif text-3xl leading-tight font-bold text-white md:text-4xl lg:text-5xl">
+          <h2 className="mb-8 font-serif text-2xl leading-tight font-bold sm:text-3xl md:text-4xl lg:text-5xl">
             Building a positive, conscious, and spiritually awakened world.
           </h2>
           <button

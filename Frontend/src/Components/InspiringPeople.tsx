@@ -3,6 +3,7 @@ import { FaQuoteLeft } from 'react-icons/fa'
 import profileImage1 from '../assets/45.jpg'
 import profileImage2 from '../assets/44.jpg'
 import profileImage3 from '../assets/28.jpg'
+import inspiringBg from '../assets/inspiring-people-bg.jpg'
 
 const reviews = [
   {
@@ -10,7 +11,7 @@ const reviews = [
     image: profileImage1,
     imagePosition: 'object-[center_20%]',
     quote:
-      "With the core message 'Transform Yourself, Transform the World,' Life Positive Mission integrates spirituality, life coaching, business coaching, leadership development, and social empowerment to create meaningful transformation in individuals and communities.",
+      "With the core message 'Transform Yourself, Transform the World,'\nLife Positive Mission integrates spirituality, life coaching, business coaching, leadership development, and social empowerment\nto create meaningful transformation in individuals and communities.",
   },
   {
     name: 'Ishwar Bhandari',
@@ -33,18 +34,28 @@ const InspiringPeople = () => {
   const review = reviews[activeReview]
 
   return (
-    <section className="bg-[#1a1a1a] px-8 py-16">
-      <div className="mx-auto grid max-w-7xl grid-cols-1 items-center gap-12 lg:grid-cols-2 lg:gap-16">
-        <div className="mx-auto w-full max-w-lg lg:max-w-none">
-          <div className="rounded-3xl bg-[#d65444] px-8 pt-12 pb-10 text-center sm:px-10">
-            <FaQuoteLeft className="mx-auto mb-8 text-6xl text-white sm:text-7xl" />
-            <p className="text-base leading-relaxed text-white sm:text-lg">
-              {review.quote}
-            </p>
+    <section className="relative overflow-hidden px-4 py-12 sm:px-8 sm:py-16 md:py-20">
+      <img
+        src={inspiringBg}
+        alt=""
+        aria-hidden="true"
+        className="absolute inset-0 h-full w-full object-cover"
+      />
+      <div className="absolute inset-0 bg-black/70" />
+
+      <div className="relative z-10 mx-auto grid max-w-7xl grid-cols-1 items-center gap-10 lg:grid-cols-2 lg:gap-16">
+        <div className="order-2 lg:order-1 mx-auto w-full max-w-lg lg:max-w-none">
+          <div className="flex min-h-[280px] flex-col rounded-3xl bg-[#d65444] px-8 pt-12 pb-10 text-center sm:min-h-[300px] sm:px-10">
+            <FaQuoteLeft className="mx-auto mb-6 shrink-0 text-5xl text-white sm:mb-8 sm:text-6xl" />
+            <div className="flex flex-1 items-center justify-center">
+              <p className="whitespace-pre-line text-sm leading-relaxed text-white sm:text-base">
+                {review.quote}
+              </p>
+            </div>
           </div>
 
           <div className="-mt-8 text-center">
-            <div className="mx-auto mb-3 h-20 w-20 overflow-hidden rounded-full border-4 border-[#1a1a1a] bg-white sm:h-24 sm:w-24">
+            <div className="mx-auto mb-3 h-20 w-20 overflow-hidden rounded-full border-4 border-black/80 bg-white sm:h-24 sm:w-24">
               <img
                 src={review.image}
                 alt={review.name}
@@ -70,7 +81,7 @@ const InspiringPeople = () => {
           </div>
         </div>
 
-        <div>
+        <div className="order-1 lg:order-2">
           <p className="mb-2 text-xs font-semibold tracking-widest text-[#f05a42] uppercase">
             Positive Thinking
           </p>

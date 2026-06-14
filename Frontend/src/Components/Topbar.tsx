@@ -10,10 +10,14 @@ import {
   FaYoutube,
 } from 'react-icons/fa'
 
+import { useSearch } from './SearchOverlay'
+
 const Topbar = () => {
+  const { openSearch } = useSearch()
+
   return (
-    <header className="bg-[#ffffff] text-black text-sm">
-      <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-3 px-4 py-2">
+    <header className="hidden bg-white text-sm text-black lg:block">
+      <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-3 px-4 py-2 lg:px-8">
         <div className="flex flex-wrap items-center gap-x-6 gap-y-2">
           <a
             href="tel:+9779841441374"
@@ -54,7 +58,8 @@ const Topbar = () => {
           <button
             type="button"
             aria-label="Search"
-            className="hover:opacity-80"
+            onClick={openSearch}
+            className="cursor-pointer hover:opacity-80"
           >
             <FaSearch />
           </button>

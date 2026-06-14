@@ -21,7 +21,7 @@ const volunteers = [
 
 const VolunteeroftheYear = () => {
   return (
-    <section className="bg-[#f8f9fa] px-8 py-16">
+    <section className="bg-[#f8f9fa] px-4 py-12 sm:px-8 sm:py-16">
       <div className="mx-auto max-w-7xl">
         <div className="mb-12 text-center">
           <p className="mb-2 text-xs font-semibold tracking-widest text-[#f05a42] uppercase">

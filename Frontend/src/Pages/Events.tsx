@@ -1,5 +1,7 @@
 import { FaClock, FaMapMarkerAlt } from 'react-icons/fa'
 
+import PageBanner from '../Components/PageBanner'
+import bannerEvents from '../assets/banner-events.jpg'
 import event1 from '../assets/event-1.jpg'
 import event2 from '../assets/event-2.jpg'
 import ctaImage from '../assets/activities1.jpg'
@@ -209,13 +211,9 @@ const EventListCard = ({
 const Events = () => {
   return (
     <div>
-      <div className="flex min-h-[40vh] items-center justify-center bg-linear-to-b from-[#1a1a1a] via-[#2a2a2a] to-[#1a1a1a] px-8 py-20 text-center">
-        <h1 className="font-serif text-4xl font-bold text-white md:text-5xl lg:text-6xl">
-          Event List
-        </h1>
-      </div>
+      <PageBanner title="Event List" image={bannerEvents} />
 
-      <section className="bg-gray-100 px-8 py-16 md:py-20">
+      <section className="bg-gray-100 px-4 py-12 sm:px-8 sm:py-16 md:py-20">
         <div className="mx-auto max-w-7xl space-y-8">
           <div className="grid grid-cols-1 gap-8 lg:grid-cols-12 lg:items-stretch">
             <div className="lg:col-span-5">
@@ -241,7 +239,7 @@ const Events = () => {
         </div>
       </section>
 
-      <section className="relative overflow-hidden px-8 py-20 md:py-24">
+      <section className="relative overflow-hidden px-4 py-16 text-white sm:px-8 sm:py-20 md:py-24">
         <img
           src={ctaImage}
           alt=""
@@ -254,7 +252,7 @@ const Events = () => {
           <p className="mb-4 text-xs font-semibold tracking-widest text-[#f05a42] uppercase">
             Get Involve Now
           </p>
-          <h2 className="mb-8 font-serif text-3xl leading-tight font-bold text-white md:text-4xl lg:text-5xl">
+          <h2 className="mb-8 font-serif text-2xl leading-tight font-bold sm:text-3xl md:text-4xl lg:text-5xl">
             We&apos;ve funded 12,503 charity projects for 25M people around the
             world
           </h2>

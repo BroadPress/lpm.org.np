@@ -31,7 +31,7 @@ const newsItems = [
 
 const News = () => {
   return (
-    <section className="bg-white px-8 py-16">
+    <section className="bg-white px-4 py-12 sm:px-8 sm:py-16">
       <div className="mx-auto max-w-7xl">
         <div className="mb-10">
           <p className="mb-2 text-xs font-semibold tracking-widest text-[#f05a42] uppercase">

@@ -1,6 +1,9 @@
 import { useState } from 'react'
 import { FaChevronDown } from 'react-icons/fa'
 
+import PageBanner from '../Components/PageBanner'
+import bannerFaq from '../assets/banner-faq.jpg'
+
 const faqItems = [
   {
     question: 'How we became best among others ?',
@@ -88,13 +91,9 @@ const FAQS = () => {
 
   return (
     <div>
-      <div className="flex min-h-[40vh] items-center justify-center bg-linear-to-b from-[#1a1a1a] via-[#2a2a2a] to-[#1a1a1a] px-8 py-20 text-center">
-        <h1 className="font-serif text-4xl font-bold text-white md:text-5xl lg:text-6xl">
-          Faq
-        </h1>
-      </div>
+      <PageBanner title="Faq" image={bannerFaq} />
 
-      <section className="bg-white px-8 py-16 md:py-20">
+      <section className="bg-white px-4 py-12 sm:px-8 sm:py-16 md:py-20">
         <div className="mx-auto max-w-7xl">
           <div className="grid grid-cols-1 gap-12 lg:grid-cols-2">
             <div>

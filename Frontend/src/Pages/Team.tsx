@@ -6,6 +6,9 @@ import {
   FaTwitter,
 } from 'react-icons/fa'
 
+import PageBanner from '../Components/PageBanner'
+import bannerTeam from '../assets/banner-team.jpg'
+
 import team1 from '../assets/team-1.png'
 import team2 from '../assets/team-2.png'
 import team3 from '../assets/team-3.png'
@@ -107,13 +110,9 @@ const Team = () => {
 
   return (
     <div>
-      <div className="flex min-h-[40vh] items-center justify-center bg-linear-to-b from-[#1a1a1a] via-[#2a2a2a] to-[#1a1a1a] px-8 py-20 text-center">
-        <h1 className="font-serif text-4xl font-bold text-white md:text-5xl lg:text-6xl">
-          Team
-        </h1>
-      </div>
+      <PageBanner title="Team" image={bannerTeam} />
 
-      <section className="bg-white px-8 py-16 md:py-20">
+      <section className="bg-white px-4 py-12 sm:px-8 sm:py-16 md:py-20">
         <div className="mx-auto max-w-7xl">
           <div className="grid grid-cols-1 gap-14 sm:grid-cols-2 lg:grid-cols-3 lg:gap-x-10 lg:gap-y-16">
             {teamMembers.map((member) => (

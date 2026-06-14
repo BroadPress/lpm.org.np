@@ -10,6 +10,8 @@ import {
   FaWhatsapp,
 } from 'react-icons/fa'
 
+import PageBanner from '../Components/PageBanner'
+import bannerContact from '../assets/banner-contact.jpg'
 import formBg from '../assets/contact-form-bg.jpg'
 
 const contactDetails = [
@@ -42,13 +44,9 @@ const socialLinks = [
 const Contact = () => {
   return (
     <div>
-      <div className="flex min-h-[40vh] items-center justify-center bg-linear-to-b from-[#1a1a1a] via-[#2a2a2a] to-[#1a1a1a] px-8 py-20 text-center">
-        <h1 className="font-serif text-4xl font-bold text-white md:text-5xl lg:text-6xl">
-          Contact us
-        </h1>
-      </div>
+      <PageBanner title="Contact us" image={bannerContact} />
 
-      <section className="bg-white px-8 py-16 md:py-20">
+      <section className="bg-white px-4 py-12 sm:px-8 sm:py-16 md:py-20">
         <div className="mx-auto max-w-7xl">
           <div className="grid grid-cols-1 gap-12 lg:grid-cols-2 lg:gap-16">
             <div>
@@ -205,7 +203,7 @@ const Contact = () => {
           allowFullScreen
           loading="lazy"
           referrerPolicy="no-referrer-when-downgrade"
-          className="block w-full"
+          className="block h-[280px] w-full sm:h-[350px] md:h-[450px]"
         />
       </section>
     </div>
