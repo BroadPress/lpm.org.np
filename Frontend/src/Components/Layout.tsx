@@ -8,9 +8,9 @@ import { SearchProvider } from './SearchOverlay'
 const Layout = () => {
   return (
     <SearchProvider>
+      <Topbar />
+      <Header />
       <div className="overflow-x-hidden">
-        <Topbar />
-        <Header />
         <Outlet />
         <Footer />
         <Copyright />

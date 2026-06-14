@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { Link, NavLink, useLocation } from 'react-router-dom'
 import {
   FaFacebookF,
@@ -41,6 +41,10 @@ const navLinkClass = ({ isActive }: { isActive: boolean }) =>
 
 const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false)
+  const [isFixed, setIsFixed] = useState(false)
+  const [mainRowHeight, setMainRowHeight] = useState(0)
+  const headerRef = useRef<HTMLElement>(null)
+  const mainRowRef = useRef<HTMLDivElement>(null)
   const location = useLocation()
   const { openSearch } = useSearch()
 
@@ -57,9 +61,40 @@ const Header = () => {
     }
   }, [menuOpen])
 
+  useEffect(() => {
+    const updateHeader = () => {
+      if (mainRowRef.current) {
+        setMainRowHeight(mainRowRef.current.offsetHeight)
+      }
+
+      const topbar = document.querySelector('[data-topbar]') as HTMLElement | null
+      const isDesktop = window.innerWidth >= 1024
+      const threshold = isDesktop
+        ? topbar?.offsetHeight ?? 0
+        : headerRef.current?.offsetHeight ?? 0
+
+      setIsFixed(window.scrollY > threshold)
+    }
+
+    updateHeader()
+    window.addEventListener('scroll', updateHeader, { passive: true })
+    window.addEventListener('resize', updateHeader)
+
+    return () => {
+      window.removeEventListener('scroll', updateHeader)
+      window.removeEventListener('resize', updateHeader)
+    }
+  }, [])
+
+  const mobileMenuTop = isFixed ? mainRowHeight : 48
+
   return (
-    <nav className="sticky top-0 z-50 bg-white text-black shadow-sm">
-      <div className="flex items-center justify-between bg-[#4a4a44] px-4 py-3 lg:hidden">
+    <header ref={headerRef}>
+      <div
+        className={`flex items-center justify-between bg-[#4a4a44] px-4 py-3 lg:hidden ${
+          isFixed ? 'hidden' : ''
+        }`}
+      >
         <div className="flex items-center gap-4 text-white">
           {socialLinks.map(({ icon: Icon, label, href }) => (
             <a
@@ -87,8 +122,22 @@ const Header = () => {
         </div>
       </div>
 
-      <div className="border-b border-gray-100">
-        <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-3 sm:px-6 lg:px-8 lg:py-4">
+      {isFixed && (
+        <div
+          className="lg:hidden"
+          style={{ height: mainRowHeight }}
+          aria-hidden="true"
+        />
+      )}
+
+      <nav
+        className={`border-b border-gray-100 bg-white text-black transition-shadow duration-300 ${
+          isFixed
+            ? 'fixed top-0 right-0 left-0 z-50 shadow-md'
+            : 'relative'
+        }`}
+      >
+      <div ref={mainRowRef} className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-3 sm:px-6 lg:px-8 lg:py-4">
         <Link to="/" className="shrink-0" onClick={() => setMenuOpen(false)}>
           <img
             src={lpmLogo}
@@ -148,23 +197,36 @@ const Header = () => {
             />
           </span>
         </button>
-        </div>
       </div>
+      </nav>
+
+      {isFixed && (
+        <div
+          className="hidden lg:block"
+          style={{ height: mainRowHeight }}
+          aria-hidden="true"
+        />
+      )}
 
       {menuOpen && (
         <button
           type="button"
           aria-label="Close menu overlay"
-          className="fixed inset-0 top-12 z-[60] bg-black/40 lg:hidden"
+          className="fixed right-0 left-0 z-[60] bg-black/40 lg:hidden"
+          style={{ top: mobileMenuTop, bottom: 0 }}
           onClick={() => setMenuOpen(false)}
         />
       )}
 
       <div
-        className={`fixed right-0 z-[70] flex h-[calc(100%-48px)] min-w-[280px] flex-col bg-white shadow-[-10px_0_30px_rgba(0,0,0,0.12)] transition-transform duration-300 ease-in-out lg:hidden ${
-          menuOpen ? 'top-12 translate-x-0' : 'top-12 translate-x-full'
+        className={`fixed right-0 z-[70] flex min-w-[280px] flex-col bg-white shadow-[-10px_0_30px_rgba(0,0,0,0.12)] transition-transform duration-300 ease-in-out lg:hidden ${
+          menuOpen ? 'translate-x-0' : 'translate-x-full'
         }`}
-        style={{ width: 'min(50vw, 320px)' }}
+        style={{
+          width: 'min(50vw, 320px)',
+          top: mobileMenuTop,
+          height: `calc(100% - ${mobileMenuTop}px)`,
+        }}
       >
         <div className="flex items-center justify-between border-b border-gray-200 px-5 py-4">
           <h4 className="text-lg font-bold text-[#212121]">Menu</h4>
@@ -210,7 +272,7 @@ const Header = () => {
           </a>
         </div>
       </div>
-    </nav>
+    </header>
   )
 }
 
