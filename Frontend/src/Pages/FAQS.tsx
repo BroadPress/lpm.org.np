@@ -93,7 +93,7 @@ const FAQS = () => {
     <div>
       <PageBanner title="Faq" image={bannerFaq} />
 
-      <section className="bg-white px-4 py-12 sm:px-8 sm:py-16 md:py-20">
+      <section data-fade-in className="bg-white px-4 py-12 sm:px-8 sm:py-16 md:py-20">
         <div className="mx-auto max-w-7xl">
           <div className="grid grid-cols-1 gap-12 lg:grid-cols-2">
             <div>

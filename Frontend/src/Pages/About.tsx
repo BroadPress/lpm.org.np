@@ -1,4 +1,5 @@
 import PageBanner from '../Components/PageBanner'
+import { useJoinForm } from '../Components/JoinFormModal'
 import bannerAbout from '../assets/banner-about.jpg'
 import {
   FaBriefcase,
@@ -31,11 +32,13 @@ const audienceCards = [
 ] as const
 
 const About = () => {
+  const { openJoinForm } = useJoinForm()
+
   return (
     <div>
       <PageBanner title="About Us" image={bannerAbout} />
 
-      <section className="bg-white px-4 py-12 sm:px-8 sm:py-16">
+      <section data-fade-in className="bg-white px-4 py-12 sm:px-8 sm:py-16">
         <div className="mx-auto max-w-7xl">
           <div className="mb-16 grid grid-cols-1 gap-10 lg:grid-cols-2 lg:gap-16">
             <div>
@@ -81,7 +84,7 @@ const About = () => {
         </div>
       </section>
 
-      <section className="bg-white px-10 py-16 md:px-16 lg:px-24">
+      <section data-fade-in className="bg-white px-10 py-16 md:px-16 lg:px-24">
         <div className="mx-auto max-w-5xl">
           <div className="grid grid-cols-1 items-center gap-8 lg:grid-cols-12 lg:gap-0">
             <div className="relative z-10 lg:col-span-5 lg:-mr-8">
@@ -123,7 +126,7 @@ const About = () => {
         </div>
       </section>
 
-      <section className="relative overflow-hidden px-4 py-16 text-white sm:px-8 sm:py-20 md:py-24">
+      <section data-fade-in className="relative overflow-hidden px-4 py-16 text-white sm:px-8 sm:py-20 md:py-24">
         <img
           src={ctaImage}
           alt=""
@@ -141,6 +144,7 @@ const About = () => {
           </h2>
           <button
             type="button"
+            onClick={openJoinForm}
             className="cursor-pointer rounded-full bg-[#f05a42] px-8 py-3 text-sm font-bold text-white hover:bg-[#e04a2d]"
           >
             Get Involve Now

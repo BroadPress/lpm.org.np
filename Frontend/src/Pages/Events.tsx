@@ -1,6 +1,7 @@
 import { FaClock, FaMapMarkerAlt } from 'react-icons/fa'
 
 import PageBanner from '../Components/PageBanner'
+import { useJoinForm } from '../Components/JoinFormModal'
 import bannerEvents from '../assets/banner-events.jpg'
 import event1 from '../assets/event-1.jpg'
 import event2 from '../assets/event-2.jpg'
@@ -209,11 +210,13 @@ const EventListCard = ({
 )
 
 const Events = () => {
+  const { openJoinForm } = useJoinForm()
+
   return (
     <div>
       <PageBanner title="Event List" image={bannerEvents} />
 
-      <section className="bg-gray-100 px-4 py-12 sm:px-8 sm:py-16 md:py-20">
+      <section data-fade-in className="bg-gray-100 px-4 py-12 sm:px-8 sm:py-16 md:py-20">
         <div className="mx-auto max-w-7xl space-y-8">
           <div className="grid grid-cols-1 gap-8 lg:grid-cols-12 lg:items-stretch">
             <div className="lg:col-span-5">
@@ -239,7 +242,7 @@ const Events = () => {
         </div>
       </section>
 
-      <section className="relative overflow-hidden px-4 py-16 text-white sm:px-8 sm:py-20 md:py-24">
+      <section data-fade-in className="relative overflow-hidden px-4 py-16 text-white sm:px-8 sm:py-20 md:py-24">
         <img
           src={ctaImage}
           alt=""
@@ -256,14 +259,13 @@ const Events = () => {
             We&apos;ve funded 12,503 charity projects for 25M people around the
             world
           </h2>
-          <a
-            href="https://docs.google.com/forms/d/e/1FAIpQLSd5oi9ujlXHfxByvYI7iuAjbCWFtgRrCsN62PrwjFL2ABSPCg/viewform"
-            target="_blank"
-            rel="noopener noreferrer"
+          <button
+            type="button"
+            onClick={openJoinForm}
             className="inline-block cursor-pointer rounded-full bg-[#f05a42] px-8 py-3 text-sm font-bold text-white hover:bg-[#e04a2d]"
           >
             Get Involve Now
-          </a>
+          </button>
         </div>
       </section>
     </div>

@@ -52,7 +52,7 @@ const Gallery = () => {
     <div>
       <PageBanner title="Gallery" image={bannerGallery} />
 
-      <section className="bg-white px-4 py-12 sm:px-8 sm:py-16 md:py-20">
+      <section data-fade-in className="bg-white px-4 py-12 sm:px-8 sm:py-16 md:py-20">
         <div className="mx-auto max-w-7xl">
           <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-4 lg:grid-cols-3">
             {galleryImages.map(({ src, alt }, index) => (

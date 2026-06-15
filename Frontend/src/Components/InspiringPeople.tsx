@@ -34,7 +34,7 @@ const InspiringPeople = () => {
   const review = reviews[activeReview]
 
   return (
-    <section className="relative overflow-hidden px-4 py-12 sm:px-8 sm:py-16 md:py-20">
+    <section data-fade-in className="relative overflow-hidden px-4 py-12 sm:px-8 sm:py-16 md:py-20">
       <img
         src={inspiringBg}
         alt=""

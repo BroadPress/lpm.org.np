@@ -16,7 +16,7 @@ const Singlepage = () => {
     <div>
       <PageBanner title="Single page" image={bannerSingle} />
 
-      <section className="bg-white px-4 pt-10 pb-12 sm:px-8 sm:pt-12 md:pt-16 md:pb-20">
+      <section data-fade-in className="bg-white px-4 pt-10 pb-12 sm:px-8 sm:pt-12 md:pt-16 md:pb-20">
         <div className="mx-auto max-w-4xl">
           <figure className="mb-8">
             <img

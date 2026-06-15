@@ -46,7 +46,7 @@ const Contact = () => {
     <div>
       <PageBanner title="Contact us" image={bannerContact} />
 
-      <section className="bg-white px-4 py-12 sm:px-8 sm:py-16 md:py-20">
+      <section data-fade-in className="bg-white px-4 py-12 sm:px-8 sm:py-16 md:py-20">
         <div className="mx-auto max-w-7xl">
           <div className="grid grid-cols-1 gap-12 lg:grid-cols-2 lg:gap-16">
             <div>
@@ -193,7 +193,7 @@ const Contact = () => {
         </div>
       </section>
 
-      <section className="w-full">
+      <section data-fade-in className="w-full">
         <iframe
           title="Life Positive Mission office location - Birgunj, Nepal"
           src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d113710.36495423553!2d84.7906101189676!3d27.04757484692372!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39935446b21c98cb%3A0x42938e30ff4f6cb5!2sBirgunj!5e0!3m2!1sen!2snp!4v1779797183705!5m2!1sen!2snp"

@@ -4,7 +4,7 @@ import fundraisingBg from '../assets/fundraising.jpg'
 
 const Involved = () => {
   return (
-    <section className="relative overflow-hidden px-4 py-12 text-white sm:px-8 sm:py-16 md:py-24">
+    <section data-fade-in className="relative overflow-hidden px-4 py-12 text-white sm:px-8 sm:py-16 md:py-24">
       <img
         src={fundraisingBg}
         alt=""

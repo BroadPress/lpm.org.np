@@ -112,7 +112,7 @@ const Team = () => {
     <div>
       <PageBanner title="Team" image={bannerTeam} />
 
-      <section className="bg-white px-4 py-12 sm:px-8 sm:py-16 md:py-20">
+      <section data-fade-in className="bg-white px-4 py-12 sm:px-8 sm:py-16 md:py-20">
         <div className="mx-auto max-w-7xl">
           <div className="grid grid-cols-1 gap-14 sm:grid-cols-2 lg:grid-cols-3 lg:gap-x-10 lg:gap-y-16">
             {teamMembers.map((member) => (
