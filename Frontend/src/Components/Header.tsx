@@ -11,6 +11,7 @@ import {
 } from 'react-icons/fa'
 
 import lpmLogo from '../assets/lpm-logo.png'
+import { useJoinForm } from './JoinFormModal'
 import { useSearch } from './SearchOverlay'
 
 const navLinks = [
@@ -31,9 +32,6 @@ const socialLinks = [
   { icon: FaLinkedinIn, label: 'LinkedIn', href: '#' },
 ] as const
 
-const joinFormUrl =
-  'https://docs.google.com/forms/d/e/1FAIpQLSd5oi9ujlXHfxByvYI7iuAjbCWFtgRrCsN62PrwjFL2ABSPCg/viewform'
-
 const navLinkClass = ({ isActive }: { isActive: boolean }) =>
   isActive
     ? 'text-[#f97316]'
@@ -47,6 +45,12 @@ const Header = () => {
   const mainRowRef = useRef<HTMLDivElement>(null)
   const location = useLocation()
   const { openSearch } = useSearch()
+  const { openJoinForm } = useJoinForm()
+
+  const handleJoinNow = () => {
+    setMenuOpen(false)
+    openJoinForm()
+  }
 
   useEffect(() => {
     setMenuOpen(false)
@@ -157,14 +161,13 @@ const Header = () => {
             ))}
           </ul>
 
-          <a
-            href={joinFormUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="rounded-full bg-[#f97316] px-6 py-2 text-sm font-bold text-white hover:bg-[#e04a2d]"
+          <button
+            type="button"
+            onClick={handleJoinNow}
+            className="cursor-pointer rounded-full bg-[#f97316] px-6 py-2 text-sm font-bold text-white hover:bg-[#e04a2d]"
           >
             Join Now
-          </a>
+          </button>
         </div>
 
         <button
@@ -262,14 +265,13 @@ const Header = () => {
         </ul>
 
         <div className="border-t border-[#e6e6e6] p-4">
-          <a
-            href={joinFormUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="block rounded-full bg-[#CB4B36] px-4 py-3 text-center text-sm font-bold text-white hover:bg-[#a33a2b]"
+          <button
+            type="button"
+            onClick={handleJoinNow}
+            className="block w-full cursor-pointer rounded-full bg-[#CB4B36] px-4 py-3 text-center text-sm font-bold text-white hover:bg-[#a33a2b]"
           >
             Join Now
-          </a>
+          </button>
         </div>
       </div>
     </header>

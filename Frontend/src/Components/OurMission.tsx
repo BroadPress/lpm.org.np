@@ -20,7 +20,7 @@ const missionPoints = [
 
 const OurMission = () => {
   return (
-    <section className="bg-white px-4 py-12 sm:px-8 sm:py-16 md:pb-24">
+    <section data-fade-in className="bg-white px-4 py-12 sm:px-8 sm:py-16 md:pb-24">
       <div className="mx-auto grid max-w-7xl grid-cols-1 items-center gap-12 lg:grid-cols-2 lg:gap-16">
         <div className="relative">
           <div className="overflow-hidden rounded-3xl">

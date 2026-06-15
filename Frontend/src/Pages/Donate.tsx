@@ -30,7 +30,7 @@ const Donate = () => {
     <div>
       <PageBanner title="Donate Now" image={bannerDonate} />
 
-      <section className="bg-gray-100 px-4 py-12 sm:px-8 sm:py-16 md:py-20">
+      <section data-fade-in className="bg-gray-100 px-4 py-12 sm:px-8 sm:py-16 md:py-20">
         <div className="mx-auto max-w-4xl">
           <form
             className="space-y-8"

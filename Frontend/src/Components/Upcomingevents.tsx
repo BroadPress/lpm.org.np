@@ -47,7 +47,7 @@ const sideEvents = [
 
 const Upcomingevents = () => {
   return (
-    <section className="bg-gray-100 px-4 py-12 sm:px-8 sm:py-16">
+    <section data-fade-in className="bg-gray-100 px-4 py-12 sm:px-8 sm:py-16">
       <div className="mx-auto max-w-7xl">
         <p className="mb-2 text-center text-xs font-semibold tracking-widest text-[#f05a42] uppercase">
           Involve Now

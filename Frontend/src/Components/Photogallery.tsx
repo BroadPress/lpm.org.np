@@ -21,7 +21,7 @@ const galleryItems = [
 
 const Photogallery = () => {
   return (
-    <section className="bg-gray-100 px-4 py-12 sm:px-8 sm:py-16">
+    <section data-fade-in className="bg-gray-100 px-4 py-12 sm:px-8 sm:py-16">
       <div className="mx-auto max-w-7xl">
         <div className="mb-10 text-center">
           <p className="mb-2 text-xs font-semibold tracking-widest text-[#f05a42] uppercase">

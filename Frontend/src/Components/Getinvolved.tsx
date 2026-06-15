@@ -1,4 +1,7 @@
 import { FaDonate, FaHandshake, FaUserPlus } from 'react-icons/fa'
+import { Link } from 'react-router-dom'
+
+import { useJoinForm } from './JoinFormModal'
 
 const cards = [
   {
@@ -30,9 +33,16 @@ const cards = [
   },
 ] as const
 
+const buttonClassName = (buttonStyle: 'solid' | 'outline') =>
+  buttonStyle === 'outline'
+    ? 'w-fit rounded-full border-2 border-white px-6 py-2.5 text-sm font-semibold text-white'
+    : 'w-fit rounded-full bg-[#ef5b3e] px-6 py-2.5 text-sm font-semibold text-white'
+
 const Getinvolved = () => {
+  const { openJoinForm } = useJoinForm()
+
   return (
-    <section className="bg-gray-100 px-4 py-12 sm:px-8 sm:py-16">
+    <section data-fade-in className="bg-gray-100 px-4 py-12 sm:px-8 sm:py-16">
       <div className="mx-auto max-w-7xl">
         <p className="mb-2 text-center text-xs font-semibold tracking-widest text-[#f05a42] uppercase">
           Get Involve Now
@@ -53,16 +63,23 @@ const Getinvolved = () => {
                 <p className="mb-8 flex-1 text-sm leading-relaxed text-white/95">
                   {description}
                 </p>
-                <button
-                  type="button"
-                  className={
-                    buttonStyle === 'outline'
-                      ? 'w-fit rounded-full border-2 border-white px-6 py-2.5 text-sm font-semibold text-white'
-                      : 'w-fit rounded-full bg-[#ef5b3e] px-6 py-2.5 text-sm font-semibold text-white'
-                  }
-                >
-                  {button}
-                </button>
+                {button === 'Join Us Now' ? (
+                  <button
+                    type="button"
+                    onClick={openJoinForm}
+                    className={buttonClassName(buttonStyle)}
+                  >
+                    {button}
+                  </button>
+                ) : button === 'Donate Now' ? (
+                  <Link to="/donate" className={buttonClassName(buttonStyle)}>
+                    {button}
+                  </Link>
+                ) : (
+                  <Link to="/single-page" className={buttonClassName(buttonStyle)}>
+                    {button}
+                  </Link>
+                )}
               </div>
             ),
           )}
