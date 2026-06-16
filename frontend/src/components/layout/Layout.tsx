@@ -6,6 +6,7 @@ import { AnimatePresence, motion } from 'framer-motion';
 import dynamic from 'next/dynamic';
 import { useMediaQuery } from '@/hooks/useMediaQuery';
 import OptimizedImage from '@/components/ui/OptimizedImage';
+// import Breadcrumbs from '@/components/seo/Breadcrumbs'; 
 
 // Dynamic imports for performance
 const DesktopSidebar = dynamic(() => import('./Sidebar').then((mod) => mod.DesktopSidebar), {
@@ -62,8 +63,10 @@ const pageHeroConfig: Record<string, { title: string;  bgImage: string }> = {
     title: 'Donate Now',
     bgImage: '/1.jpg'
   },
-
- 
+   '/privacy-policy': {
+    title: 'Privacy Policy',
+    bgImage: '/privacyhero.jpg'
+  },
 
 
 };
@@ -73,11 +76,12 @@ export default function Layout({ children }: { children: React.ReactNode }) {
   const [isMobileOpen, setIsMobileOpen] = useState(false);
   const [isHeroVisible, setIsHeroVisible] = useState(true);
   const [scrollY, setScrollY] = useState(0);
-  
+
   const isMobile = useMediaQuery('(max-width: 767px)');
   const isTablet = useMediaQuery('(min-width: 768px) and (max-width: 1023px)');
   const isDesktop = useMediaQuery('(min-width: 1024px)');
   const pathname = usePathname();
+  
 
   // Close mobile sidebar on route change
   useEffect(() => {
@@ -102,10 +106,10 @@ export default function Layout({ children }: { children: React.ReactNode }) {
   
   // Check if current page should show hero (not home because home has its own hero)
   const showPageHero = pathname !== '/';
-
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-gray-950">
-      {/* Desktop Sidebar */}
+
+     {/* Desktop Sidebar */}
       {showSidebar && (
         <DesktopSidebar 
           collapsed={collapsed} 
@@ -124,17 +128,18 @@ export default function Layout({ children }: { children: React.ReactNode }) {
       />
 
       {/* Navbar */}
-      <Navbar 
+          
+       <Navbar 
         onMenuClick={() => setIsMobileOpen(true)} 
         sidebarCollapsed={collapsed}
         onSidebarToggle={() => setCollapsed(!collapsed)}
         showSidebar={showSidebar}
         isHeroVisible={isHeroVisible}
-      />
+      /> 
       
       {/* Main Content with dynamic margin */}
-      <div 
-        className="transition-all duration-300 ease-in-out"
+      <main 
+        className={isMobile ? 'pb-16' : ''}
         style={{ marginLeft: showSidebar ? sidebarWidth : 0 }}
       >
         {/* Page Hero Section - Only for non-home pages */}
@@ -201,7 +206,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
         </main>
 
         <Footer />
-      </div>
+      </main>
 
       {/* Mobile Bottom Navigation */}
       {isMobile && (
@@ -210,3 +215,14 @@ export default function Layout({ children }: { children: React.ReactNode }) {
     </div>
   );
 }
+
+
+
+
+
+
+
+
+
+
+

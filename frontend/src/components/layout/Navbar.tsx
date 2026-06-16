@@ -22,7 +22,7 @@ export default function Navbar({
   sidebarCollapsed, 
   onSidebarToggle, 
   showSidebar,
-  isHeroVisible = true 
+  isHeroVisible = false 
 }: NavbarProps) {
   const [mounted, setMounted] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
@@ -94,6 +94,7 @@ export default function Navbar({
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
 
+
   return (
     <>
       <motion.header
@@ -103,7 +104,7 @@ export default function Navbar({
         className={`
           fixed top-0 left-0 right-0 z-40 transition-all duration-300
           ${isOverHero 
-            ? 'bg-transparent backdrop-blur-none shadow-none border-transparent'
+            ? 'bg-gradient-to-b from-black/30 to-transparent backdrop-blur-none shadow-none border-transparent'
             : isScrolled
               ? 'bg-white/95 dark:bg-gray-900/95 backdrop-blur-xl shadow-lg'
               : 'bg-white dark:bg-gray-900'
@@ -147,7 +148,7 @@ export default function Navbar({
                     transition={{ duration: 0.2 }}
                     className="hidden sm:block leading-none overflow-hidden whitespace-nowrap"
                   >
-                    <p className={`font-bold text-md ${getMainTextColor()}`}>
+                    <p className={`font-bold  text-md ${getMainTextColor()}`}>
                       Life Positive Mission
                     </p>
                     <p className={`text-[11px] mt-0.5 ${getSubTextColor()}`}>
@@ -330,3 +331,4 @@ export default function Navbar({
     </>
   );
 }
+

@@ -153,11 +153,11 @@ export default function Footer() {
 
           {/* Footer Menu */}
           <div className="flex flex-wrap justify-center gap-4 mt-6 text-xs">
-            <Link href="/privacy" className="text-gray-500 dark:text-gray-400 hover:text-orange-500 transition-colors">
+            <Link href="/privacy-policy" className="text-gray-500 dark:text-gray-400 hover:text-orange-500 transition-colors">
               Privacy Policy
             </Link>
             <span className="text-gray-300 dark:text-gray-700">|</span>
-            <Link href="/terms" className="text-gray-500 dark:text-gray-400 hover:text-orange-500 transition-colors">
+            <Link href="/privacy-policy" className="text-gray-500 dark:text-gray-400 hover:text-orange-500 transition-colors">
               Term & Condition
             </Link>
             <span className="text-gray-300 dark:text-gray-700">|</span>

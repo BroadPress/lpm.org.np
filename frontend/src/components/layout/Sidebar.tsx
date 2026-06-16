@@ -10,13 +10,12 @@ import {
   Calendar,
   ImageIcon,
   Mail,
-  Heart,
+  UserPlus,
   HelpCircle,
 } from 'lucide-react';
 import { FaFacebook, FaInstagram, FaYoutube, FaLinkedin, FaTwitter } from 'react-icons/fa6';
 import { cn } from '@/lib/utils';
 import OptimizedImage from '../ui/OptimizedImage';
-
 interface SidebarProps {
   collapsed: boolean;
   setCollapsed: (collapsed: boolean) => void;
@@ -32,7 +31,7 @@ const navItems = [
   { icon: HelpCircle, label: 'FAQs', href: '/faq' },
   { icon: ImageIcon, label: 'Gallery', href: '/gallery' },
   { icon: Mail, label: 'Contact', href: '/contact' },
-  { icon: Heart, label: 'Join Now', href: 'https://docs.google.com/forms/d/e/1FAIpQLSd5oi9ujlXHfxByvYI7iuAjbCWFtgRrCsN62PrwjFL2ABSPCg/viewform' },
+  { icon: UserPlus, label: 'Join Now', href: '/join-now' },
 ];
 
 const socials = [
@@ -153,7 +152,7 @@ export function MobileSidebar({ isMobileOpen, onMobileClose }: SidebarProps) {
             animate={{ x: 0 }}
             exit={{ x: '100%' }}
             transition={{ type: 'spring', damping: 25, stiffness: 200 }}
-            className="fixed right-0 top-0 h-full w-[280px] bg-white dark:bg-gray-900 shadow-2xl z-50 flex flex-col"
+            className="fixed right-0 top-0 h-full w-[280px]     bg-white dark:bg-gray-900 border-r border-gray-200 dark:border-gray-800 shadow-2xl z-50 flex flex-col"
           >
             {/* Header */}
             <div className="h-16 border-b border-gray-200 dark:border-gray-800 flex items-center justify-between px-5">
@@ -162,13 +161,13 @@ export function MobileSidebar({ isMobileOpen, onMobileClose }: SidebarProps) {
                   <OptimizedImage src="/logo.jpg" alt="LPM" className="w-full h-full object-contain" />
                 </div>
                 <div>
-                  <p className="font-bold text-gray-800 dark:text-white text-sm">Life Positive</p>
+                  <p className="font-bold text-gray-900 dark:text-white text-sm">Life Positive</p>
                   <p className="text-[10px] text-gray-500">Mission</p>
                 </div>
               </div>
               <button
                 onClick={onMobileClose}
-                className="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+                className=" p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
               >
                 ✕
               </button>
