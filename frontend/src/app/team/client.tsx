@@ -7,13 +7,18 @@ import { FaFacebook, FaTwitter, FaInstagram } from 'react-icons/fa6';
 import OptimizedImage from '@/components/ui/OptimizedImage';
 
 const teamMembers = [
-  { id: 1, name: 'VANDANA KARN', position: 'Chairman – Nepal Chapter', image: '/team/team-1.png', bio: 'Vandana Karn is a visionary leader whose compassionate leadership motivates positive change. With experience in positive education, spirituality, music therapy, and "Waste to Best" initiatives, she empowers women and communities to live with confidence and purpose.' },
-  { id: 2, name: 'SANDHYA KARN', position: 'Executive Chairman', image: '/team/team-2.png', bio: 'Sandhya Karn is a dedicated social entrepreneur and social psychologist working for positive transformation through awareness, compassion, and leadership. Known as the "Iron Lady for Positive Change."' },
-  { id: 3, name: 'TARA NUPANE', position: 'CEO – Life Positive Mission', image: '/team/team-3.png', bio: 'Tara Nupane is a dynamic leader serving as CEO of Life Positive Mission. Known for her positive energy and compassion, she inspires transformation through wellness and purposeful action.' },
-  { id: 4, name: 'BIKASH PARAJULI', position: 'Director – Resource Management', image: '/team/team-4.png', bio: 'Bikash Parajuli is a young entrepreneur serving as Director of Resource Management at Life Positive Mission. He brings execution power and commitment to social development.' },
-  { id: 5, name: 'SRIJANA RANA', position: 'Program Director', image: '/team/team-5.png', bio: 'Srijana Rana is a passionate and dedicated leader committed to organizing impactful positive programs that inspire growth, awareness, and human transformation.' },
-  { id: 6, name: 'RAJU BASYAL', position: 'Secretary', image: '/team/team-7.png', bio: 'Raju Basyal is a spiritually strong and highly motivated personality dedicated to positive transformation through spiritual wisdom and human connection.' },
-  { id: 7, name: 'MEENA AGGRAWAL', position: 'Vice President', image: '/team/team-6.png', bio: 'Meena Aggrawal is a dedicated social entrepreneur and spiritual leader, serving as the Vice President of Life Positive Mission. She is deeply committed to women empowerment.' }
+  { id: 1, name: 'VANDANA KARN', position: 'Chairman – Nepal Chapter', image: '/team/team-1.png',
+     bio: `Vandana Karn is a visionary leader whose compassionate leadership motivates positive change. With experience in positive education, spirituality, music therapy, and 'Waste to Best' initiatives, she empowers women and communities to live with confidence and purpose. Her love for nature and human values reflects her mission to spread positivity and peace. Through strengthening Bharat–Nepal relations, she inspires people to unite and build a better future with hope and harmony.` },
+  { id: 2, name: 'SANDHYA KARN', position: 'Executive Chairman', image: '/team/team-2.png', 
+    bio: `Sandhya Karn is a dedicated social entrepreneur and social psychologist working for positive transformation through awareness, compassion, and leadership. Known as the "Iron Lady for Positive Change," she supports initiatives focused on human values, mental wellness, women empowerment, social harmony, and Indo-Nepal friendship. Her vision is a society where positivity, wisdom, service, and humanity form the foundation of collective progress.
+"Positive thinking, compassionate action, and fearless leadership can transform society."` },
+  { id: 3, name: 'TARA NUPANE', position: 'CEO – Life Positive Mission', image: '/team/team-3.png',
+     bio: `Tara Nupane is a dynamic leader serving as CEO of Life Positive Mission. Known for her positive energy and compassion, she inspires transformation through wellness and purposeful action. She believes true success begins with inner wellness, self-confidence, and a positive vision. Her mission is to build a future where positivity, service, humanity, and wellness guide personal and social transformation.
+"Positive energy has the power to heal minds, inspire hearts, and transform lives."` },
+  { id: 4, name: 'BIKASH PARAJULI', position: 'Director – Resource Management', image: '/team/team-4.png', bio: `Bikash Parajuli is a young entrepreneur serving as Director of Resource Management at Life Positive Mission. With practical leadership and grounded nature, he brings execution power and commitment to social development. He is dedicated to creating meaningful impact through organized resources and strategic planning. He contributes to strengthening Nepal–India relations and represents a new generation of leadership rooted in positivity and transformation.` },
+  { id: 5, name: 'SRIJANA RANA', position: 'Program Director', image: '/team/team-5.png', bio: `Srijana Rana is a passionate and dedicated leader committed to organizing impactful positive programs that inspire growth, awareness, and human transformation. With strong motivation, positive energy, and excellent coordination skills, she continuously contributes to the mission of spreading hope, wellness, and meaningful social change through the activities of Life Positive Mission.` },
+  { id: 6, name: 'RAJU BASYAL', position: 'Secretary', image: '/team/team-7.png', bio: `Raju Basyal is a spiritually strong and highly motivated personality dedicated to positive transformation through spiritual wisdom and human connection. He deeply understands the spiritual and cultural relationship between Nepal and Bharat, inspiring people through motivation, positivity, and values-based leadership. His dedication to spiritual growth and social harmony continues to strengthen the mission of creating a more conscious and positive society.` },
+  { id: 7, name: 'MEENA AGGRAWAL', position: 'Vice President', image: '/team/team-6.png', bio: `Meena Aggrawal is a dedicated social entrepreneur and spiritual leader, serving as the Vice President of Life Positive Mission. She is highly energetic and deeply committed to women empowerment, working consistently to inspire confidence, self-reliance, and positive transformation among women. Through her leadership and spiritual outlook, she contributes actively to building a stronger, more conscious, and empowered society.` }
 ];
 
 const socialIcons = [FaFacebook, FaTwitter, FaInstagram];
@@ -55,7 +60,7 @@ export default function TeamClient() {
                 </div>
                 <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-all flex items-center justify-center gap-3 rounded-2xl">
                   {socialIcons.map((Icon, i) => (
-                    <a key={i} href="#" className="w-10 h-10 bg-white rounded-full flex items-center justify-center hover:bg-orange-500 hover:text-white transition">
+                    <a key={i} href="#" className="w-10 h-10  rounded-full  flex items-center justify-center hover:bg-orange-500 hover:text-white transition">
                       <Icon size={18} />
                     </a>
                   ))}

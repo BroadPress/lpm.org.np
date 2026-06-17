@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { motion } from 'framer-motion';
-import { Home, Users, Calendar, Heart, Menu } from 'lucide-react';
+import { Home, Users, Calendar, Menu, UserPlus } from 'lucide-react';
 
 interface BottomNavProps {
   onMoreClick: () => void;
@@ -16,7 +16,7 @@ export default function BottomNav({ onMoreClick }: BottomNavProps) {
     { icon: Home, label: 'Home', href: '/' },
     { icon: Users, label: 'Team', href: '/team' },
     { icon: Calendar, label: 'Events', href: '/events', isCenter: true },
-    { icon: Heart, label: 'Join', href: '/join-now' },
+    { icon: UserPlus, label: 'Join', href: '/join-now' },
     { icon: Menu, label: 'More', href: '#', isMore: true },
   ];
 

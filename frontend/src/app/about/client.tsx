@@ -163,14 +163,15 @@ export default function AboutClient() {
               type="hero"
               className="object-cover"
             />
-            <div className="absolute inset-0 bg-gradient-to-r from-orange-900/90 to-pink-900/90" />
+            <div className="absolute inset-0 bg-gradient-to-r from-black/70 to-black/60" />
           </div>
           
-          <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-6 text-center mt-20">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
+              className='mt-10'
             >
               <span className="text-orange-300 font-semibold tracking-wide uppercase text-sm">
                 GET INVOLVE NOW

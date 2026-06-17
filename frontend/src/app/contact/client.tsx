@@ -73,21 +73,21 @@ export default function ContactClient() {
           <div>
             <div className="relative rounded-2xl overflow-hidden shadow-xl">
               <div className="absolute inset-0">
-                <OptimizedImage src="/contact/formbg.jpg" alt="Background" type="hero" className="object-cover" />
-                <div className="absolute inset-0 bg-gradient-to-br from-orange-900/90 to-pink-900/90" />
+                <OptimizedImage src="/contact/19.jpg" alt="Background" type="hero" className="object-cover" />
+                <div className="absolute inset-0  " />
               </div>
               <div className="relative z-10 p-8">
                 <h3 className="text-2xl font-bold text-white mb-6">Send Us a Message</h3>
                 <form onSubmit={handleSubmit} className="space-y-4">
                   <div className="grid sm:grid-cols-2 gap-4">
-                    <input type="text" name="name" placeholder="Enter Name*" value={formData.name} onChange={(e) => setFormData({...formData, name: e.target.value})} className="w-full px-4 py-3 rounded-xl bg-white/20 text-white placeholder-white/70 border border-white/30 focus:outline-none focus:ring-2 focus:ring-orange-500" />
-                    <input type="email" name="email" placeholder="Enter Email*" value={formData.email} onChange={(e) => setFormData({...formData, email: e.target.value})} className="w-full px-4 py-3 rounded-xl bg-white/20 text-white placeholder-white/70 border border-white/30 focus:outline-none focus:ring-2 focus:ring-orange-500" />
+                    <input type="text" name="name" placeholder="Enter Name*" value={formData.name} onChange={(e) => setFormData({...formData, name: e.target.value})} className="w-full px-4 py-3 rounded-xl bg-white/80 text-gray-900  placeholder-gray-700  border border-white/30 focus:outline-none focus:ring-2 focus:ring-orange-500" />
+                    <input type="email" name="email" placeholder="Enter Email*" value={formData.email} onChange={(e) => setFormData({...formData, email: e.target.value})} className="w-full px-4 py-3 rounded-xl bg-white/80 text-gray-900 placeholder-gray-700 border border-white/30 focus:outline-none focus:ring-2 focus:ring-orange-500" />
                   </div>
                   <div className="grid sm:grid-cols-2 gap-4">
-                    <input type="text" name="subject" placeholder="Enter Subject*" value={formData.subject} onChange={(e) => setFormData({...formData, subject: e.target.value})} className="w-full px-4 py-3 rounded-xl bg-white/20 text-white placeholder-white/70 border border-white/30 focus:outline-none focus:ring-2 focus:ring-orange-500" />
-                    <input type="tel" name="phone" placeholder="Enter Number" value={formData.phone} onChange={(e) => setFormData({...formData, phone: e.target.value})} className="w-full px-4 py-3 rounded-xl bg-white/20 text-white placeholder-white/70 border border-white/30 focus:outline-none focus:ring-2 focus:ring-orange-500" />
+                    <input type="text" name="subject" placeholder="Enter Subject*" value={formData.subject} onChange={(e) => setFormData({...formData, subject: e.target.value})} className="w-full px-4 py-3 rounded-xl bg-white/80 text-gray-900 placeholder-gray-700 border border-white/30 focus:outline-none focus:ring-2 focus:ring-orange-500" />
+                    <input type="tel" name="phone" placeholder="Enter Number" value={formData.phone} onChange={(e) => setFormData({...formData, phone: e.target.value})} className="w-full px-4 py-3 rounded-xl bg-white/80 text-gray-900 placeholder-gray-700 border border-white/30 focus:outline-none focus:ring-2 focus:ring-orange-500" />
                   </div>
-                  <textarea name="message" rows={5} placeholder="Enter Message*" value={formData.message} onChange={(e) => setFormData({...formData, message: e.target.value})} className="w-full px-4 py-3 rounded-xl bg-white/20 text-white placeholder-white/70 border border-white/30 focus:outline-none focus:ring-2 focus:ring-orange-500 resize-none" />
+                  <textarea name="message" rows={5} placeholder="Enter Message*" value={formData.message} onChange={(e) => setFormData({...formData, message: e.target.value})} className="w-full px-4 py-3 rounded-xl bg-white/80 text-gray-900 placeholder-gray-700 border border-white/30 focus:outline-none focus:ring-2 focus:ring-orange-500 resize-none" />
                   {status.type && <div className={`flex items-center gap-2 p-3 rounded-xl ${status.type === 'success' ? 'bg-green-500/20 text-green-300' : 'bg-red-500/20 text-red-300'}`}><span>{status.message}</span></div>}
                   <button type="submit" disabled={submitting} className="w-full py-3 bg-white text-orange-500 rounded-xl font-semibold flex items-center justify-center gap-2">{submitting ? 'Sending...' : <>Submit Now <Send size={18} /></>}</button>
                 </form>

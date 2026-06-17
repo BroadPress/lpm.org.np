@@ -144,7 +144,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
       >
         {/* Page Hero Section - Only for non-home pages */}
         {showPageHero && (
-          <section className="relative h-[40vh] min-h-[300px] flex items-center overflow-hidden">
+          <section className="relative h-[30vh] md:h-[40vh] min-h-[200px] md:min-h-[300px] flex items-center overflow-hidden">
             {/* Background Image */}
             <div className="absolute inset-0">
               <OptimizedImage
@@ -172,13 +172,13 @@ export default function Layout({ children }: { children: React.ReactNode }) {
             </div>
 
             {/* Hero Content */}
-            <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center pt-14 sm:pt-16">
               <motion.div
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6 }}
               >
-                <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4">
+                <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-2 mt-16 md:mt-36">
                   {heroConfig.title}
                 </h1>
                 <div className="w-20 h-1 bg-gradient-to-r from-orange-500 to-pink-500 mx-auto mb-4" />

@@ -25,9 +25,9 @@ export default function HeroSection({ setVideoModalOpen }: { setVideoModalOpen: 
   const heroOpacity = useTransform(scrollYProgress, [0, 1], [1, 0]);
 
   return (
-    <section ref={heroRef} className="relative min-h-[90vh] flex items-center overflow-hidden">
+    <section ref={heroRef} className="relative min-h-[80vh] flex items-center overflow-hidden">
       <motion.div className="absolute inset-0" style={{ opacity: heroOpacity }}>
-        <OptimizedImage src="/1.jpg" alt="Hero"  className="object-cover" priority />
+        <OptimizedImage src="/1.jpg" alt="Hero"  className="object-cover " priority />
         <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/60 to-black/40" />
       </motion.div>
 
@@ -44,14 +44,9 @@ export default function HeroSection({ setVideoModalOpen }: { setVideoModalOpen: 
         />
       </div>
 
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <motion.div variants={staggerContainer} initial="hidden" animate="visible" className="space-y-6">
-          <motion.div variants={fadeUp} className="inline-block">
-            <div className="px-4 py-2 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 inline-flex items-center gap-2">
-              <Sparkles size={16} className="text-orange-400" />
-              <span className="text-orange-400 text-sm font-medium">Power of Positive Energy</span>
-            </div>
-          </motion.div>
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center ">
+        <motion.div variants={staggerContainer} initial="hidden" animate="visible" className=" mt-44 space-y-6">
+         
           
           <motion.h1 variants={fadeUp} className="text-5xl sm:text-6xl md:text-7xl font-bold text-white">
             Life Positive
@@ -75,11 +70,7 @@ export default function HeroSection({ setVideoModalOpen }: { setVideoModalOpen: 
             </motion.div>
           </motion.div>
           
-          <motion.div animate={{ y: [0, 10, 0] }} transition={{ duration: 2, repeat: Infinity }} className="absolute bottom-8 left-1/2 -translate-x-1/2">
-            <div className="w-6 h-10 border-2 border-white/50 rounded-full flex justify-center">
-              <motion.div animate={{ y: [0, 12, 0] }} transition={{ duration: 1.5, repeat: Infinity }} className="w-1 h-2 bg-white rounded-full mt-2" />
-            </div>
-          </motion.div>
+      
         </motion.div>
       </div>
     </section>

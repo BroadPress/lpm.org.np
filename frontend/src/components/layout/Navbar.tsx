@@ -4,7 +4,7 @@ import { useState, useEffect, useCallback, useRef } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Sun, Moon, Search, X, Menu, ChevronLeft, ChevronRight } from 'lucide-react';
+import { Sun, Moon, Search, X, Menu, PanelRightClose, PanelRightOpen } from 'lucide-react';
 import { useTheme } from 'next-themes';
 import { useScrollPosition } from '@/hooks/useScrollPosition';
 import { useMediaQuery } from '@/hooks/useMediaQuery';
@@ -45,16 +45,27 @@ export default function Navbar({
   };
   
   const getSubTextColor = () => {
-    if (isOverHero) return 'text-white/70';
+    if (isOverHero) return 'text-white/80';
     if (theme === 'dark') return 'text-green-400';
     return 'text-green-600';
   };
   
   const getIconColor = () => {
-    if (isOverHero) return 'text-white';
-    if (theme === 'dark') return 'text-gray-300';
-    return 'text-gray-700';
+    if (isOverHero) return 'text-white hover:text-white/80';
+    if (theme === 'dark') return 'text-gray-400 hover:text-white';
+    return 'text-gray-700 hover:text-gray-900';
   };
+
+  // const getBgColor = () => {
+  //   if(isOverHero) return 'bg-transparent backdrop-blur-none shadow-none';
+  //   if (isScrolled){
+
+  //   if(theme === 'dark') return 'bg-gray-900/95 backdrop-blur-xl '
+  //   return 'bg-white/95 backdrop-blur-xl'
+  // }
+  // if (theme === 'dark') return 'bg-gray-900'
+  // return 'bg-white';
+  //     }
 
   // Debounced search
   const debouncedSearch = useCallback((query: string) => {
@@ -107,7 +118,7 @@ export default function Navbar({
             ? 'bg-gradient-to-b from-black/30 to-transparent backdrop-blur-none shadow-none border-transparent'
             : isScrolled
               ? 'bg-white/95 dark:bg-gray-900/95 backdrop-blur-xl shadow-lg'
-              : 'bg-white dark:bg-gray-900'
+              : 'bg-gray-600 dark:bg-gray-900'
           }
           ${!isOverHero && 'border-b border-gray-200 dark:border-gray-800'}
         `}
@@ -116,7 +127,7 @@ export default function Navbar({
           {/* LEFT SECTION: Logo + Sidebar Toggle */}
           <div className="flex items-center gap-2">
             {/* Logo */}
-            <Link href="/" className="flex items-center gap-2 flex-shrink-0">
+            <Link href="/" className="flex items-center gap-1 ml-2 flex-shrink-0">
               <div className="relative w-8 h-8 flex-shrink-0">
                 <Image
                   src="/logo.jpg"
@@ -172,7 +183,7 @@ export default function Navbar({
                 } ${getIconColor()}`}
                 aria-label={sidebarCollapsed ? 'Expand sidebar' : 'Collapse sidebar'}
               >
-                {sidebarCollapsed ? <ChevronRight size={18} /> : <ChevronLeft size={18} />}
+                {sidebarCollapsed ? <PanelRightClose className='text-gray-700 dark:text-white' size={28} /> : <PanelRightOpen className='text-gray-700 dark:text-white' size={28} />}
               </motion.button>
             )}
           </div>
@@ -183,7 +194,7 @@ export default function Navbar({
             {!isMobile && (
               <div className="w-64 lg:w-80">
                 <div className="relative" ref={searchRef}>
-                  <Search size={16} className={`absolute left-3 top-1/2 -translate-y-1/2 ${isOverHero ? 'text-white/60' : 'text-gray-400'}`} />
+                  <Search size={16} className={`absolute left-3 top-1/2 -translate-y-1/2 ${isOverHero ? 'text-white/60' : 'text-gray-500'}`} />
                   <input
                     type="text"
                     placeholder="Search..."

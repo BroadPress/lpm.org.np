@@ -50,7 +50,7 @@ export function DesktopSidebar({ collapsed, setCollapsed }: SidebarProps) {
     <motion.aside
       animate={{ width: collapsed ? 60 : 190 }}
       transition={{ duration: 0.3, ease: 'easeInOut' }}
-      className="fixed left-0 top-14 bottom-0 bg-white dark:bg-gray-900 border-r border-gray-200 dark:border-gray-800 shadow-lg z-30 flex flex-col overflow-hidden"
+      className="fixed left-0 top-14 w bottom-0 bg-white dark:bg-gray-900 border-r border-gray-200 dark:border-gray-800 shadow-lg z-30 flex flex-col overflow-hidden"
     >
       {/* Navigation Menu */}
       <div className="flex-1 overflow-y-auto py-4 px-2 space-y-1">
@@ -160,9 +160,9 @@ export function MobileSidebar({ isMobileOpen, onMobileClose }: SidebarProps) {
                 <div className="relative w-8 h-8">
                   <OptimizedImage src="/logo.jpg" alt="LPM" className="w-full h-full object-contain" />
                 </div>
-                <div>
-                  <p className="font-bold text-gray-900 dark:text-white text-sm">Life Positive</p>
-                  <p className="text-[10px] text-gray-500">Mission</p>
+                <div className='leading-tight'>
+                  <p className="font-bold text-gray-900 dark:text-white text-sm">Life Positive Mission</p>
+                  <p className="text-[12px] text-green-500">www.lpm.org.np</p>
                 </div>
               </div>
               <button
