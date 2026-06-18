@@ -3,13 +3,9 @@
 import Link from 'next/link';
 import { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { Sparkles, ArrowRight, Heart } from 'lucide-react';
+import {  ArrowRight, Heart } from 'lucide-react';
 import OptimizedImage from '../ui/OptimizedImage';
-
-const fadeUp = {
-  hidden: { opacity: 0, y: 50 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: 'easeOut' } }
-};
+import { fadeUp } from '../animations/variants';
 
 const staggerContainer = {
   hidden: { opacity: 0 },
@@ -18,8 +14,12 @@ const staggerContainer = {
     transition: { staggerChildren: 0.1, delayChildren: 0.2 }
   }
 };
+interface HeroSectionProps {
+  setVideoModalOpen: (open: boolean) => void;  
+}
 
-export default function HeroSection({ setVideoModalOpen }: { setVideoModalOpen: (open: boolean) => void }) {
+
+export default function HeroSection({ setVideoModalOpen }: HeroSectionProps) {
   const heroRef = useRef(null);
   const { scrollYProgress } = useScroll({ target: heroRef, offset: ["start start", "end start"] });
   const heroOpacity = useTransform(scrollYProgress, [0, 1], [1, 0]);

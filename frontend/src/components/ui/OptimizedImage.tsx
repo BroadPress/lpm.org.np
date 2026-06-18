@@ -2,19 +2,27 @@
 
 import Image from 'next/image';
 
+type OptimizedImageType = 'hero' | 'LPM' | 'card' | 'avatar' | 'gallery' | 'thumbnail' | 'footer';
+
 interface OptimizedImageProps {
   src: string;
   alt: string;
-  type?: 'hero' | 'LPM' | 'card' | 'avatar' | 'gallery' | 'thumbnail' | 'footer';
+  type?: OptimizedImageType;
   className?: string;
   priority?: boolean;
   fill?: boolean; 
+  width?: number;
+  height?: number;
 }
 
-const sizeMap = {
+const sizeMap: Record<OptimizedImageType, { sizes: string; quality: number }> = {
   hero: {
     sizes: '100vw',
     quality: 90,
+  },
+  LPM: {
+    sizes: '(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw',
+    quality: 85,
   },
   card: {
     sizes: '(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw',
@@ -33,7 +41,7 @@ const sizeMap = {
     quality: 75,
   },
   footer: {
-    sizes: '100vw',
+    sizes: '(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw',
     quality: 80,
   },
 };

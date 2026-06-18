@@ -10,21 +10,9 @@ import { Metadata } from "next";
 import { FaUserTie, FaUserGraduate } from 'react-icons/fa6';
 import OptimizedImage from '@/components/ui/OptimizedImage';
 import PartnersSection from '@/components/sections/PartnersSection';
-
-// Animation variants
-const fadeUp = {
-  hidden: { opacity: 0, y: 30 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: 'easeOut' } }
-};
+import { fadeUp, staggerContainer } from '@/components/animations/variants';
 
 
-const staggerContainer = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: { staggerChildren: 0.1, delayChildren: 0.2 }
-  }
-};
 
 // Target Audience Icons
 const targetAudiences = [

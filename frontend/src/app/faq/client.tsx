@@ -186,7 +186,7 @@ export default function FAQClient() {
                 </div>
                 <h3 className="text-xl font-bold mb-2">Still Have Questions?</h3>
                 <p className="text-white/90 text-sm mb-6">
-                  Can't find the answer you're looking for? Please contact us.
+                  Can&apos;t find the answer you&apos;re looking for? Please contact us.
                 </p>
                 <div className="space-y-3">
                   <Link

@@ -14,6 +14,7 @@
 
 "use client";
 
+import { staggerContainer } from "@/components/animations/variants";
 import { motion } from "framer-motion";
 import {
   Lock,
@@ -26,22 +27,12 @@ import {
 } from "lucide-react";
 
 export default function PrivacyPolicyPage() {
-  const staggerContainer = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-      },
-    },
-  };
 
   const sectionVariants = {
     hidden: { opacity: 0, y: 50 },
     visible: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.6, ease: "easeOut" },
     },
   };
 
@@ -58,7 +49,7 @@ export default function PrivacyPolicyPage() {
             className="bg-white dark:bg-gray-800 rounded-2xl shadow-xl dark:shadow-2xl p-6 md:p-10 lg:p-12"
           >
             {/* Header Section */}
-            <motion.div variants={sectionVariants} className="mb-8">
+            <motion.div variants={sectionVariants}   transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1] }} className="mb-8">
               <h2 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mb-4 flex items-center gap-3">
                 <Lock className="w-7 h-7 text-blue-600 dark:text-blue-400" />
                 Privacy Policy for LPM
@@ -83,7 +74,7 @@ export default function PrivacyPolicyPage() {
             </motion.div>
 
             {/* Consent */}
-            <motion.div variants={sectionVariants} className="mb-8">
+            <motion.div variants={sectionVariants}   transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1] }} className="mb-8">
               <h3 className="text-xl md:text-2xl font-semibold text-gray-900 dark:text-white mb-3 flex items-center gap-3">
                 <CheckCircle className="w-6 h-6 text-green-600 dark:text-green-400" />
                 Consent
@@ -95,7 +86,7 @@ export default function PrivacyPolicyPage() {
             </motion.div>
 
             {/* Information Collection */}
-            <motion.div variants={sectionVariants} className="mb-8">
+            <motion.div variants={sectionVariants}   transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1] }} className="mb-8">
               <h3 className="text-xl md:text-2xl font-semibold text-gray-900 dark:text-white mb-3 flex items-center gap-3">
                 <Users className="w-6 h-6 text-purple-600 dark:text-purple-400" />
                 Information We Collect
@@ -125,7 +116,7 @@ export default function PrivacyPolicyPage() {
             </motion.div>
 
             {/* How We Use Information */}
-            <motion.div variants={sectionVariants} className="mb-8">
+            <motion.div variants={sectionVariants}   transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1] }} className="mb-8">
               <h3 className="text-xl md:text-2xl font-semibold text-gray-900 dark:text-white mb-3 flex items-center gap-3">
                 <Eye className="w-6 h-6 text-indigo-600 dark:text-indigo-400" />
                 How We Use Your Information
@@ -158,7 +149,7 @@ export default function PrivacyPolicyPage() {
             </motion.div>
 
             {/* Log Files */}
-            <motion.div variants={sectionVariants} className="mb-8">
+            <motion.div variants={sectionVariants}   transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1] }} className="mb-8">
               <h3 className="text-xl md:text-2xl font-semibold text-gray-900 dark:text-white mb-3 flex items-center gap-3">
                 <FileText className="w-6 h-6 text-orange-600 dark:text-orange-400" />
                 Log Files
@@ -179,7 +170,7 @@ export default function PrivacyPolicyPage() {
             </motion.div>
 
             {/* Advertising Partners */}
-            <motion.div variants={sectionVariants} className="mb-8">
+            <motion.div variants={sectionVariants}   transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1] }} className="mb-8">
               <h3 className="text-xl md:text-2xl font-semibold text-gray-900 dark:text-white mb-3">
                 Advertising Partners Privacy Policies
               </h3>
@@ -207,7 +198,7 @@ export default function PrivacyPolicyPage() {
             </motion.div>
 
             {/* Third Party Policies */}
-            <motion.div variants={sectionVariants} className="mb-8">
+            <motion.div variants={sectionVariants}   transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1] }} className="mb-8">
               <h3 className="text-xl md:text-2xl font-semibold text-gray-900 dark:text-white mb-3">
                 Third Party Privacy Policies
               </h3>
@@ -227,7 +218,7 @@ export default function PrivacyPolicyPage() {
             </motion.div>
 
             {/* CCPA Rights */}
-            <motion.div variants={sectionVariants} className="mb-8">
+            <motion.div variants={sectionVariants}   transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1] }} className="mb-8">
               <h3 className="text-xl md:text-2xl font-semibold text-gray-900 dark:text-white mb-3">
                 CCPA Privacy Rights (Do Not Sell My Personal Information)
               </h3>
@@ -267,7 +258,7 @@ export default function PrivacyPolicyPage() {
             </motion.div>
 
             {/* GDPR Rights */}
-            <motion.div variants={sectionVariants} className="mb-8">
+            <motion.div variants={sectionVariants}   transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1] }} className="mb-8">
               <h3 className="text-xl md:text-2xl font-semibold text-gray-900 dark:text-white mb-3">
                 GDPR Data Protection Rights
               </h3>
@@ -326,7 +317,7 @@ export default function PrivacyPolicyPage() {
             </motion.div>
 
             {/* Children's Information */}
-            <motion.div variants={sectionVariants} className="mb-8">
+            <motion.div variants={sectionVariants}   transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1] }} className="mb-8">
               <h3 className="text-xl md:text-2xl font-semibold text-gray-900 dark:text-white mb-3 flex items-center gap-3">
                 <Users className="w-6 h-6 text-green-600 dark:text-green-400" />
                 Children&apos;s Information

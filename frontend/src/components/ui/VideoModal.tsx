@@ -39,3 +39,6 @@ export default function VideoModal({ isOpen, onClose, videoUrl }: VideoModalProp
     </motion.div>
   );
 }
+
+
+

@@ -5,6 +5,7 @@ import { Send, CheckCircle, AlertCircle } from 'lucide-react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import OptimizedImage from '@/components/ui/OptimizedImage';
+import { fadeUp } from '@/components/animations/variants';
 
 export default function JoinNowClient() {
   const [form, setForm] = useState({
@@ -51,14 +52,6 @@ export default function JoinNowClient() {
     );
   }
 
-  const fadeUp = {
-    hidden: { opacity: 0, y: 20 },
-    show: (i: number) => ({
-      opacity: 1,
-      y: 0,
-      transition: { delay: i * 0.08, duration: 0.4 },
-    }),
-  };
 
   return (
     <div className="min-h-screen bg-[#ebebf5] py-10 px-4">
@@ -85,7 +78,7 @@ export default function JoinNowClient() {
             </p>
             <p className="text-gray-700 text-sm leading-relaxed mb-3">
               Life Positive Mission is volunteer run Public Charitable International Non-Profit
-              Organization dedicated to cultivate human potential. The mission's primary aim has
+              Organization dedicated to cultivate human potential. The mission&apos;s primary aim has
               always been to impart a practical &amp; ethical education to add values to this
               beautiful world by developing a power of positive energy in the life of people.
             </p>
