@@ -10,13 +10,13 @@ const teamMembers = [
     name: 'Santosh Prasain',
     role: 'Social Activist',
     bio: 'A dedicated youth volunteer passionate about leadership, community service, and positive social transformation through awareness and educational programs.',
-    image: '/45.jpg',
+    image: '/images/home/45.jpg',
   },
   {
     name: 'Ishwar Bhandari',
     role: 'Event Manager',
     bio: 'An active volunteer focused on empowering youth, promoting positive thinking, and supporting community development initiatives with compassion and teamwork.',
-    image: '/44.jpg',
+    image: '/images/home/44.jpg',
   },
 ];
 

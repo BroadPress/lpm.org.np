@@ -56,7 +56,7 @@ const featuredEvents = [
     time: "8:00 am - 12:30 pm",
     location: "Ananda Pashupati Dharmashala",
     desc: "It is widely used in youth development, entrepreneurship, and organizational growth because it creates responsible individuals who can lead by example.",
-    image: "/events/1.jpg",
+    image: "/images/events/1.jpg",
   },
   {
     side: "right",
@@ -66,7 +66,7 @@ const featuredEvents = [
     location: "Ananda Pashupati, Kathmandu",
     description:
       "Join our mission! Learn about our upcoming projects and how you can contribute to social transformation.",
-    image: "/events/2.jpg",
+    image: "/images/events/2.jpg",
   },
 ];
 
@@ -243,7 +243,7 @@ export default function EventsClient() {
         {/* CTA */}
         <div className="relative mt-16 py-20 rounded-2xl overflow-hidden">
           <OptimizedImage
-            src="/events/2.jpg"
+            src="/images/events/2.jpg"
             alt="CTA"
             type="hero"
             className="object-cover"

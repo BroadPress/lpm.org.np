@@ -22,11 +22,11 @@ const PartnerLogo = memo(({ logo, name }: PartnerLogoProps) => (
 PartnerLogo.displayName = "PartnerLogo";
 export default function PartnersSection() {
   const partners: Partner[] = [
-    { logo: "/partner/logo1.png", name: "Partner 1" },
-    { logo: "/partner/logo2.png", name: "Partner 2" },
-    { logo: "/partner/logo3.png", name: "Partner 3" },
-    { logo: "/partner/logo4.png", name: "Partner 4" },
-    { logo: "/partner/logo5.png", name: "Partner 5" },
+    { logo: "/images/partner/logo1.png", name: "Partner 1" },
+    { logo: "/images/partner/logo2.png", name: "Partner 2" },
+    { logo: "/images/partner/logo3.png", name: "Partner 3" },
+    { logo: "/images/partner/logo4.png", name: "Partner 4" },
+    { logo: "/images/partner/logo5.png", name: "Partner 5" },
   ];
   const repeated = [...partners, ...partners, ...partners];
   return (

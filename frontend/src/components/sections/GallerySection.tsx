@@ -4,14 +4,14 @@ import OptimizedImage from '@/components/ui/OptimizedImage';
 import { motion } from 'framer-motion';
 
 const galleryImages = [
-  { img: '/gallery/1.jpg', title: 'Village people' },
-  { img: '/gallery/2.jpg', title: 'Donation campaign' },
-  { img: '/gallery/3.jpg', title: 'Charity donation' },
-  { img: '/gallery/4.jpg', title: 'Clean campaign' },
-  { img: '/gallery/5.jpg', title: 'Happy child' },
-  { img: '/gallery/6.jpg', title: 'Poor children' },
-  { img: '/gallery/7.jpg', title: 'Helpless People' },
-  { img: '/gallery/8.jpg', title: 'Volunteer team' },
+  { img: '/images/gallery/1.jpg', title: 'Village people' },
+  { img: '/images/gallery/2.jpg', title: 'Donation campaign' },
+  { img: '/images/gallery/3.jpg', title: 'Charity donation' },
+  { img: '/images/gallery/4.jpg', title: 'Clean campaign' },
+  { img: '/images/gallery/5.jpg', title: 'Happy child' },
+  { img: '/images/gallery/6.jpg', title: 'Poor children' },
+  { img: '/images/gallery/7.jpg', title: 'Helpless People' },
+  { img: '/images/gallery/8.jpg', title: 'Volunteer team' },
 ];
 
 const GalleryItem = ({ img, title, index }: { img: string; title: string; index: number }) => (

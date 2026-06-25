@@ -29,43 +29,43 @@ const Footer = dynamic(() => import('./Footer'), {
 const pageHeroConfig: Record<string, { title: string;  bgImage: string }> = {
   '/': {
     title: 'Life Positive Mission',
-    bgImage: '/slider/1.jpg'
+    bgImage: '/images/hero/1.jpg'
   },
   '/about': {
     title: 'About Us',
-    bgImage: '/about/hero.jpg'
+    bgImage: '/images/about/hero.jpg'
   },
   '/team': {
     title: 'Our Team',
-    bgImage: '/team/hero.jpg'
+    bgImage: '/images/team/hero.jpg'
   },
   '/events': {
     title: 'Our Events',
-    bgImage: '/events/hero.jpg'
+    bgImage: '/images/events/hero.jpg'
   },
    '/faq': {
     title: 'FAQs',
-    bgImage: '/gallery/9.jpg'
+    bgImage: '/images/gallery/9.jpg'
   },
    '/gallery': {
     title: 'Our Gallery',
-    bgImage: '/gallery/1.jpg'
+    bgImage: '/images/gallery/1.jpg'
   },
      '/contact': {
     title: 'Our Contact',
-    bgImage: '/1.jpg'
+    bgImage: '/images/contact/hero.jpg'
   },
     '/join-now': {
-    title: 'join now',
-    bgImage: '/1.jpg'
+    title: 'Join Now',
+    bgImage: '/images/hero/1.jpg'
   }, 
    '/donate': {
     title: 'Donate Now',
-    bgImage: '/1.jpg'
+    bgImage: '/images/hero/1.jpg'
   },
    '/privacy-policy': {
     title: 'Privacy Policy',
-    bgImage: '/privacyhero.jpg'
+    bgImage: '/images/privacy/privacyhero.jpg'
   },
 
 

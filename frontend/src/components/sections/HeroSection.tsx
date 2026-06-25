@@ -27,7 +27,7 @@ export default function HeroSection({ setVideoModalOpen }: HeroSectionProps) {
   return (
     <section ref={heroRef} className="relative min-h-[80vh] flex items-center overflow-hidden">
       <motion.div className="absolute inset-0" style={{ opacity: heroOpacity }}>
-        <OptimizedImage src="/1.jpg" alt="Hero"  className="object-cover " priority />
+        <OptimizedImage src="/images/hero/1.jpg" alt="Hero"  className="object-cover " priority />
         <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/60 to-black/40" />
       </motion.div>
 

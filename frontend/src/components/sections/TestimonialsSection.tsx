@@ -9,17 +9,17 @@ const testimonials = [
   {
     text: 'With the core message "Transform Yourself, Transform the World," Life Positive Mission integrates spirituality, life coaching, business coaching, leadership development, and social empowerment to create meaningful transformation in individuals and communities.',
     name: 'Alison Scott',
-    image: '/unbound-img11.jpg',
+    image: '/images/unbound/unbound-img11.jpg',
   },
   {
     text: 'Life Positive Mission has transformed my perspective on life. The workshops and programs have helped me discover my true potential and purpose.',
     name: 'William Wright',
-    image: '/unbound-img12.jpg',
+    image: '/images/unbound/unbound-img12.jpg',
   },
   {
     text: 'Being part of LPM has been a life-changing experience. The community here is amazing and the work we do together creates real impact.',
     name: 'Alison Doe',
-    image: '/unbound-img13.jpg',
+    image: '/images/unbound/unbound-img13.jpg',
   },
 ];
 
@@ -27,7 +27,7 @@ export default function TestimonialsSection() {
   return (
     <section className="relative py-20 overflow-hidden">
       <div className="absolute inset-0">
-        <OptimizedImage src="/gallery/4.jpg" alt="Testimonial BG"  className="object-cover" />
+        <OptimizedImage src="/images/gallery/4.jpg" alt="Testimonial BG"  className="object-cover" />
         <div className="absolute inset-0 bg-gradient-to-r from-black/80 to-black/60" />
       </div>
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

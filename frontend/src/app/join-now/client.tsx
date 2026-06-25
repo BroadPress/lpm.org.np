@@ -134,7 +134,7 @@ export default function JoinNowClient() {
         >
           <div className="relative w-full h-64 sm:h-80">
             <OptimizedImage
-              src="/joinnow.jpg"
+              src="/images/joinnow/joinnow.jpg"
               alt="Life Positive Mission Event"
               type="hero"
               className="object-cover"

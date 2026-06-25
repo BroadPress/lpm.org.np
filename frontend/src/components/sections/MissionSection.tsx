@@ -76,7 +76,7 @@ export default function MissionSection() {
           >
             <div className="relative h-[450px] rounded-2xl overflow-hidden shadow-2xl">
               <OptimizedImage 
-                src="/gallery/28.jpg" 
+                src="/images/gallery/28.jpg" 
                 alt="Our Mission - Life Positive Mission" 
                 type="hero"
                 className="h-full"

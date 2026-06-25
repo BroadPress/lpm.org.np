@@ -1,4 +1,4 @@
-import React from 'react'
+
 import { Metadata } from "next";
 import JoinNowClient from "./client";
 
@@ -11,6 +11,8 @@ export const metadata: Metadata = {
     description: "Become a volunteer and make a difference.",
   },
 };
+
 export default function JoinNowPage() {
   return <JoinNowClient />;
 }
+

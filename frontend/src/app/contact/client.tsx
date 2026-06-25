@@ -73,7 +73,7 @@ export default function ContactClient() {
           <div>
             <div className="relative rounded-2xl overflow-hidden shadow-xl">
               <div className="absolute inset-0">
-                <OptimizedImage src="/contact/19.jpg" alt="Background" type="hero" className="object-cover" />
+                <OptimizedImage src="/images/contact/19.jpg" alt="Background" type="hero" className="object-cover" />
                 <div className="absolute inset-0  " />
               </div>
               <div className="relative z-10 p-8">

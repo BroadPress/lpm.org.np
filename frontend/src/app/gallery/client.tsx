@@ -7,7 +7,7 @@ import OptimizedImage from '@/components/ui/OptimizedImage';
 
 const galleryImages = Array.from({ length: 42 }, (_, i) => ({
   id: i + 1,
-  src: `/gallery/${i + 1}.jpg`,
+  src: `/images/gallery/${i + 1}.jpg`,
   alt: `Gallery Image ${i + 1}`,
 }));
 

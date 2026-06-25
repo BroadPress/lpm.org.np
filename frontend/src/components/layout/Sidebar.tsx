@@ -31,7 +31,8 @@ const navItems = [
   { icon: HelpCircle, label: 'FAQs', href: '/faq' },
   { icon: ImageIcon, label: 'Gallery', href: '/gallery' },
   { icon: Mail, label: 'Contact', href: '/contact' },
-  { icon: UserPlus, label: 'Join Now', href: '/join-now' },
+    // { icon: UserPlus, label: 'Join Now', href: '/join-now' },
+  { icon: UserPlus, label: 'Join Now', href: 'https://docs.google.com/forms/d/e/1FAIpQLSd5oi9ujlXHfxByvYI7iuAjbCWFtgRrCsN62PrwjFL2ABSPCg/viewform' },
 ];
 
 const socials = [
@@ -158,7 +159,7 @@ export function MobileSidebar({ isMobileOpen, onMobileClose }: SidebarProps) {
             <div className="h-16 border-b border-gray-200 dark:border-gray-800 flex items-center justify-between px-5">
               <div className="flex items-center gap-2">
                 <div className="relative w-8 h-8">
-                  <OptimizedImage src="/logo.jpg" alt="LPM" className="w-full h-full object-contain" />
+                  <OptimizedImage src="/images/brand/logo.jpg" alt="LPM" className="w-full h-full object-contain" />
                 </div>
                 <div className='leading-tight'>
                   <p className="font-bold text-gray-900 dark:text-white text-sm">Life Positive Mission</p>

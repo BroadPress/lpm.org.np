@@ -7,7 +7,7 @@ const blogPosts = [
   {
     title: 'Leadership Training',
     description: 'A transformational leadership training program focused on self-management, positive thinking, communication skills, teamwork, and youth empowerment to develop responsible and visionary leaders for society.',
-    image: '/gallery/8.jpg',
+    image: '/images/gallery/8.jpg',
     author: 'Life Positive Mission',
     date: 'August 17, 2025',
     category: 'Training',
@@ -15,7 +15,7 @@ const blogPosts = [
   {
     title: 'Traffic Awareness Program',
     description: 'A public awareness initiative designed to educate citizens, students, and drivers about road safety, traffic discipline & responsible driving.',
-    image: '/gallery/19.jpg',
+    image: '/images/gallery/19.jpg',
     author: 'Life Positive Mission',
     date: 'September 17, 2025',
     category: 'Awareness',
@@ -23,7 +23,7 @@ const blogPosts = [
   {
     title: 'Entrepreneurship Award',
     description: 'A prestigious recognition program honoring innovative entrepreneurs, startup founders, and business leaders who are contributing to economic growth, employment generation, and positive social impact.',
-    image: '/gallery/31.jpg',
+    image: '/images/gallery/31.jpg',
     author: 'Life Positive Mission',
     date: 'March 17, 2026',
     category: 'Award',

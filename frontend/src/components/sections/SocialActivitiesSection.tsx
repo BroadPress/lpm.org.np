@@ -10,7 +10,7 @@ const charityEvents = [
   {
     title: 'Entrepreneurship Award',
     desc: 'Recognizing and honoring outstanding entrepreneurs who have made significant contributions to the community through innovation and social responsibility.',
-    image: '/activities1.jpg',
+    image: '/images/home/activities1.jpg',
     progress: 70,
     raised: '$7,000',
     target: '$10,000',
@@ -18,7 +18,7 @@ const charityEvents = [
   {
     title: 'Financial help for poor, needy families',
     desc: 'Providing essential support and resources to underprivileged families to help them build a better future and overcome financial challenges.',
-    image: '/activities2.jpg',
+    image: '/images/home/activities2.jpg',
     progress: 85,
     raised: '$8,500',
     target: '$10,000',

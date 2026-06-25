@@ -56,17 +56,6 @@ export default function Navbar({
     return 'text-gray-700 hover:text-gray-900';
   };
 
-  // const getBgColor = () => {
-  //   if(isOverHero) return 'bg-transparent backdrop-blur-none shadow-none';
-  //   if (isScrolled){
-
-  //   if(theme === 'dark') return 'bg-gray-900/95 backdrop-blur-xl '
-  //   return 'bg-white/95 backdrop-blur-xl'
-  // }
-  // if (theme === 'dark') return 'bg-gray-900'
-  // return 'bg-white';
-  //     }
-
   // Debounced search
   const debouncedSearch = useCallback((query: string) => {
     if (query.length > 1) {
@@ -130,7 +119,7 @@ export default function Navbar({
             <Link href="/" className="flex items-center gap-1 ml-2 flex-shrink-0">
               <div className="relative w-8 h-8 flex-shrink-0">
                 <Image
-                  src="/logo.jpg"
+                  src="/images/brand/logo.jpg"
                   alt="Life Positive Mission"
                   width={40}
                   height={40}

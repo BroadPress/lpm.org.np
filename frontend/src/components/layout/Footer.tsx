@@ -92,7 +92,7 @@ export default function Footer() {
             <div className="relative w-full h-48 md:h-52 rounded-xl overflow-hidden border border-gray-200 dark:border-gray-800 shadow-md bg-gray-100 dark:bg-gray-900">
               <OptimizedImage
                 alt="Office Location Map"
-                src="/location.png"
+                src="/images/brand/location.png"
                 type="footer"
                 className="grayscale-[0.2] hover:grayscale-0 transition-all duration-500"
               />

@@ -129,7 +129,7 @@ export default function AboutClient() {
               className="relative rounded-2xl overflow-hidden shadow-xl h-80"
             >
               <OptimizedImage
-                src="/about/core.jpg"
+                src="/images/about/core.jpg"
                 alt="Core Philosophy"
                 type="hero"
                 className="object-cover"
@@ -146,7 +146,7 @@ export default function AboutClient() {
         <div className="relative inset-0 py-20 overflow-hidden">
           <div className="absolute inset-0">
             <OptimizedImage
-              src="/1.jpg"
+              src="/images/hero/1.jpg"
               alt="Get Involved"
               type="hero"
               className="object-cover"

@@ -14,7 +14,7 @@ const upcomingEvents = [
     location: 'Ananda Pashupati Dharmashala',
     description: 'Transformational leadership program focused on self-management, positive thinking, and personal discipline. It creates responsible individuals who can lead by example, inspire trust, and maintain stability in challenging situations.',
     isFeatured: true,
-    image: '/events/1.jpg'
+    image: '/images/events/1.jpg'
   },
   {
     id: 2,
@@ -82,7 +82,7 @@ export default function UpcomingEvents() {
             >
               <div className="relative h-[500px] w-full">
                 <OptimizedImage
-                  src={featuredEvent.image ?? '/events/1.jpg'}
+                  src={featuredEvent.image ?? '/images/events/1.jpg'}
                   alt={featuredEvent.title}
                   type="hero"
                   className="object-cover group-hover:scale-110 transition-transform duration-700"

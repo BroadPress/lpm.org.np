@@ -62,10 +62,10 @@ export default function DonateClient() {
   }
 
   const paymentMethods = [
-    { id: 'visa', label: 'VISA', icon: '/donate/icon-img1.png' },
-    { id: 'mastercard', label: 'MasterCard', icon: '/donate/icon-img2.png' },
-    { id: 'skrill', label: 'Skrill', icon: '/donate/icon-img3.png' },
-    { id: 'paypal', label: 'PayPal', icon: '/donate/icon-img4.png' }
+    { id: 'visa', label: 'VISA', icon: '/images/donate/icon-img1.png' },
+    { id: 'mastercard', label: 'MasterCard', icon: '/images/donate/icon-img2.png' },
+    { id: 'skrill', label: 'Skrill', icon: '/images/donate/icon-img3.png' },
+    { id: 'paypal', label: 'PayPal', icon: '/images/donate/icon-img4.png' }
   ];
 
   return (

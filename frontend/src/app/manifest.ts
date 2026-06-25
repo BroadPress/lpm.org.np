@@ -11,12 +11,12 @@ export default function manifest(): MetadataRoute.Manifest {
     theme_color: '#f97316',
     icons: [
       {
-        src: '/lpm-logo.png',
+        src: '/images/brand/lpm-logo.png',
         sizes: '192x192',
         type: 'image/png',
       },
       {
-        src: '/logo.jpg',
+        src: '/images/brand/logo.jpg',
         sizes: '512x512',
         type: 'image/jpg',
       },
