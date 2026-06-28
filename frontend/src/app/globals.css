@@ -123,9 +123,13 @@
   }
   body {
     @apply bg-background text-foreground;
+    /* ✅ यो थप्नुस् — mobile sidebar को horizontal scroll रोक्न */
+    overflow-x: hidden;
   }
   html {
     @apply font-sans;
+    /* ✅ यो पनि थप्नुस् */
+    overflow-x: hidden;
   }
 }
 
@@ -202,7 +206,6 @@
 ::-webkit-scrollbar-thumb:hover {
   @apply bg-gray-400 dark:bg-gray-500;
 }
-
 
 @layer utilities {
   .pb-safe {

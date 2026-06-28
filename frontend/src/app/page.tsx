@@ -1,5 +1,5 @@
 import { Metadata } from "next";
-import Home from "./HomeClient";
+import HomeClient from "./HomeClient";
 
 export const metadata: Metadata = {
   title: "Home",
@@ -12,5 +12,5 @@ export const metadata: Metadata = {
 };
 
 export default function HomePage() {
-  return <Home />;
+  return <HomeClient />;
 }

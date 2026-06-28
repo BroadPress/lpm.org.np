@@ -6,146 +6,104 @@ import { AnimatePresence, motion } from 'framer-motion';
 import dynamic from 'next/dynamic';
 import { useMediaQuery } from '@/hooks/useMediaQuery';
 import OptimizedImage from '@/components/ui/OptimizedImage';
-// import Breadcrumbs from '@/components/seo/Breadcrumbs'; 
+import Navbar from './Navbar';
+import TopBar from './TopBar';
+import BottomNav from './BottomNav';
+import Footer from './Footer';
+// import Breadcrumbs from '@/components/seo/Breadcrumbs';
 
-// Dynamic imports for performance
-const DesktopSidebar = dynamic(() => import('./Sidebar').then((mod) => mod.DesktopSidebar), {
-  loading: () => <div className="w-[190px] h-screen bg-gray-100 dark:bg-gray-800 animate-pulse" />
-});
 const MobileSidebar = dynamic(() => import('./Sidebar').then((mod) => mod.MobileSidebar), {
   loading: () => <div className="w-[280px] h-screen bg-gray-100 dark:bg-gray-800 animate-pulse" />
 });
-const Navbar = dynamic(() => import('./Navbar'), {
-  loading: () => <div className="h-14 bg-white dark:bg-gray-900 animate-pulse" />
-});
-const BottomNav = dynamic(() => import('./BottomNav'), {
-  loading: () => <div className="h-16 bg-white dark:bg-gray-900 animate-pulse" />
-});
-const Footer = dynamic(() => import('./Footer'), {
-  loading: () => <div className="h-64 bg-gray-900 animate-pulse" />
-});
 
-// Page metadata for dynamic hero sections
-const pageHeroConfig: Record<string, { title: string;  bgImage: string }> = {
-  '/': {
-    title: 'Life Positive Mission',
-    bgImage: '/images/hero/1.jpg'
-  },
-  '/about': {
-    title: 'About Us',
-    bgImage: '/images/about/hero.jpg'
-  },
-  '/team': {
-    title: 'Our Team',
-    bgImage: '/images/team/hero.jpg'
-  },
-  '/events': {
-    title: 'Our Events',
-    bgImage: '/images/events/hero.jpg'
-  },
-   '/faq': {
-    title: 'FAQs',
-    bgImage: '/images/gallery/9.jpg'
-  },
-   '/gallery': {
-    title: 'Our Gallery',
-    bgImage: '/images/gallery/1.jpg'
-  },
-     '/contact': {
-    title: 'Our Contact',
-    bgImage: '/images/contact/hero.jpg'
-  },
-    '/join-now': {
-    title: 'Join Now',
-    bgImage: '/images/hero/1.jpg'
-  }, 
-   '/donate': {
-    title: 'Donate Now',
-    bgImage: '/images/hero/1.jpg'
-  },
-   '/privacy-policy': {
-    title: 'Privacy Policy',
-    bgImage: '/images/privacy/privacyhero.jpg'
-  },
-
-
+const pageHeroConfig: Record<string, { title: string; bgImage: string }> = {
+  '/': { title: 'Life Positive Mission', bgImage: '/images/hero/1.jpg' },
+  '/about': { title: 'About Us', bgImage: '/images/about/hero.jpg' },
+  '/team': { title: 'Our Team', bgImage: '/images/team/hero.jpg' },
+  '/events': { title: 'Our Events', bgImage: '/images/events/hero.jpg' },
+  '/faq': { title: 'FAQs', bgImage: '/images/gallery/9.jpg' },
+  '/gallery': { title: 'Our Gallery', bgImage: '/images/gallery/1.jpg' },
+  '/contact': { title: 'Contact Us', bgImage: '/images/contact/hero.jpg' },
+  '/join-now': { title: 'Join Now', bgImage: '/images/joinnow/1.jpg' },
+  '/donate': { title: 'Donate Now', bgImage: '/images/donate/1.jpg' },
+  '/privacy-policy': { title: 'Privacy Policy', bgImage: '/images/privacy/hero.jpg' },
 };
 
+const TOPBAR_H = 40; // px
+const NAVBAR_H = 64; // px
+
 export default function Layout({ children }: { children: React.ReactNode }) {
-  const [collapsed, setCollapsed] = useState(false);
   const [isMobileOpen, setIsMobileOpen] = useState(false);
-  const [isHeroVisible, setIsHeroVisible] = useState(true);
-  const [scrollY, setScrollY] = useState(0);
+  const [scrolled, setScrolled] = useState(false);
 
   const isMobile = useMediaQuery('(max-width: 767px)');
-  const isTablet = useMediaQuery('(min-width: 768px) and (max-width: 1023px)');
-  const isDesktop = useMediaQuery('(min-width: 1024px)');
   const pathname = usePathname();
-  
 
-  // Close mobile sidebar on route change
   useEffect(() => {
     setIsMobileOpen(false);
   }, [pathname]);
 
-  // Handle scroll for navbar transparency effect
   useEffect(() => {
-    const handleScroll = () => {
-      setScrollY(window.scrollY);
-      setIsHeroVisible(window.scrollY < 100);
-    };
+    const handleScroll = () => setScrolled(window.scrollY > 80);
+    handleScroll();
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const showSidebar = isDesktop || isTablet;
-  const sidebarWidth = collapsed ? 60 : 190;
-  
-  // Get current page hero config
   const heroConfig = pageHeroConfig[pathname as keyof typeof pageHeroConfig] || pageHeroConfig['/'];
-  
-  // Check if current page should show hero (not home because home has its own hero)
-  const showPageHero = pathname !== '/';
+  const isHome = pathname === '/';
+  const showPageHero = !isHome;
+
+  // Every route in pageHeroConfig renders a full-bleed hero image behind
+  // the fixed bars (home included), so the bars should ride transparent
+  // over it until the user scrolls — not just on '/'.
+  const barsAreTransparent = !scrolled;
+  const showTopBar = !isMobile && !scrolled;
+  const totalBarHeight = isMobile ? NAVBAR_H : showTopBar ? TOPBAR_H + NAVBAR_H : NAVBAR_H;
+
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-gray-950">
-
-     {/* Desktop Sidebar */}
-      {showSidebar && (
-        <DesktopSidebar 
-          collapsed={collapsed} 
-          setCollapsed={setCollapsed} 
-          isMobileOpen={false} 
-          onMobileClose={() => {}}
-        />
-      )}
-
-      {/* Mobile Sidebar */}
-      <MobileSidebar 
-        collapsed={false} 
-        setCollapsed={() => {}} 
-        isMobileOpen={isMobileOpen} 
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-950 overflow-x-hidden">
+      <MobileSidebar
+        collapsed={false}
+        setCollapsed={() => {}}
+        isMobileOpen={isMobileOpen}
         onMobileClose={() => setIsMobileOpen(false)}
       />
 
-      {/* Navbar */}
-          
-       <Navbar 
-        onMenuClick={() => setIsMobileOpen(true)} 
-        sidebarCollapsed={collapsed}
-        onSidebarToggle={() => setCollapsed(!collapsed)}
-        showSidebar={showSidebar}
-        isHeroVisible={isHeroVisible}
-      /> 
-      
-      {/* Main Content with dynamic margin */}
-      <main 
-        className={isMobile ? 'pb-16' : ''}
-        style={{ marginLeft: showSidebar ? sidebarWidth : 0 }}
-      >
-        {/* Page Hero Section - Only for non-home pages */}
-        {showPageHero && (
-          <section className="relative h-[30vh] md:h-[40vh] min-h-[200px] md:min-h-[300px] flex items-center overflow-hidden">
-            {/* Background Image */}
+      {/* Fixed bar stack: TopBar (desktop, pre-scroll) + Navbar. Both
+          ride transparent over every page's hero image until scrolled,
+          then switch solid and the TopBar disappears entirely. */}
+      <div className="fixed top-0 left-0 right-0 z-50">
+        <AnimatePresence>
+          {showTopBar && (
+            <motion.div
+              initial={{ height: 0, opacity: 0 }}
+              animate={{ height: TOPBAR_H, opacity: 1 }}
+              exit={{ height: 0, opacity: 0 }}
+              transition={{ duration: 0.25 }}
+              className="overflow-hidden"
+            >
+              <TopBar transparent={barsAreTransparent} />
+            </motion.div>
+          )}
+        </AnimatePresence>
+        <Navbar
+          onMenuClick={() => setIsMobileOpen(true)}
+          isTransparent={barsAreTransparent}
+          isMobile={isMobile}
+        />
+      </div>
+
+      <main className={isMobile ? 'pb-16' : ''}>
+        {showPageHero ? (
+          // Inner-page hero: image starts at y=0, fixed bars float
+          // transparently on top of it (same treatment as home), and
+          // the section itself is tall enough to feel like a real hero
+          // rather than a thin banner strip.
+          <section
+            className="relative flex items-center overflow-hidden"
+            style={{ minHeight: '65vh', paddingTop: totalBarHeight }}
+          >
             <div className="absolute inset-0">
               <OptimizedImage
                 src={heroConfig.bgImage}
@@ -156,42 +114,43 @@ export default function Layout({ children }: { children: React.ReactNode }) {
               />
               <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/60 to-black/40" />
             </div>
-            
-            {/* Animated Background Elements */}
+
             <div className="absolute inset-0 overflow-hidden">
-              <motion.div 
+              <motion.div
                 className="absolute top-20 left-10 w-72 h-72 bg-orange-500/20 rounded-full blur-3xl"
                 animate={{ scale: [1, 1.2, 1], x: [0, 50, 0] }}
                 transition={{ duration: 8, repeat: Infinity }}
               />
-              <motion.div 
+              <motion.div
                 className="absolute bottom-20 right-10 w-96 h-96 bg-pink-500/20 rounded-full blur-3xl"
                 animate={{ scale: [1, 1.3, 1], x: [0, -50, 0] }}
                 transition={{ duration: 10, repeat: Infinity, delay: 1 }}
               />
             </div>
 
-            {/* Hero Content */}
-            <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center pt-14 sm:pt-16">
+            <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
               <motion.div
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6 }}
               >
-                <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-2 mt-16 md:mt-36">
+                <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4">
                   {heroConfig.title}
                 </h1>
                 <div className="w-20 h-1 bg-gradient-to-r from-orange-500 to-pink-500 mx-auto mb-4" />
-              
               </motion.div>
             </div>
-
-          
           </section>
+        ) : (
+          // Home: HeroSection itself renders full-bleed from y=0 and
+          // sits behind the fixed transparent bars — no spacer div,
+          // no padding gap. The component is responsible for its own
+          // top padding for the text content (see HeroSection.tsx).
+          <div />
         )}
 
-        {/* Main Content Area */}
-        <main className={showPageHero ? '' : 'pt-14'}>
+        <div className={showPageHero ? '' : ''}>
+
           <AnimatePresence mode="wait">
             <motion.div
               key={pathname}
@@ -203,26 +162,12 @@ export default function Layout({ children }: { children: React.ReactNode }) {
               {children}
             </motion.div>
           </AnimatePresence>
-        </main>
+        </div>
 
         <Footer />
       </main>
 
-      {/* Mobile Bottom Navigation */}
-      {isMobile && (
-        <BottomNav onMoreClick={() => setIsMobileOpen(true)} />
-      )}
+      {isMobile && <BottomNav onMoreClick={() => setIsMobileOpen(true)} />}
     </div>
   );
 }
-
-
-
-
-
-
-
-
-
-
-
