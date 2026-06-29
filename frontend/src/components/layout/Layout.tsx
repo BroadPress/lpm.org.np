@@ -10,7 +10,7 @@ import Navbar from './Navbar';
 import TopBar from './TopBar';
 import BottomNav from './BottomNav';
 import Footer from './Footer';
-// import Breadcrumbs from '@/components/seo/Breadcrumbs';
+import Breadcrumbs from '@/components/seo/Breadcrumbs';
 
 const MobileSidebar = dynamic(() => import('./Sidebar').then((mod) => mod.MobileSidebar), {
   loading: () => <div className="w-[280px] h-screen bg-gray-100 dark:bg-gray-800 animate-pulse" />
@@ -29,8 +29,8 @@ const pageHeroConfig: Record<string, { title: string; bgImage: string }> = {
   '/privacy-policy': { title: 'Privacy Policy', bgImage: '/images/privacy/hero.jpg' },
 };
 
-const TOPBAR_H = 40; // px
-const NAVBAR_H = 64; // px
+const TOPBAR_H = 40; 
+const NAVBAR_H = 64; 
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   const [isMobileOpen, setIsMobileOpen] = useState(false);
@@ -54,9 +54,6 @@ export default function Layout({ children }: { children: React.ReactNode }) {
   const isHome = pathname === '/';
   const showPageHero = !isHome;
 
-  // Every route in pageHeroConfig renders a full-bleed hero image behind
-  // the fixed bars (home included), so the bars should ride transparent
-  // over it until the user scrolls — not just on '/'.
   const barsAreTransparent = !scrolled;
   const showTopBar = !isMobile && !scrolled;
   const totalBarHeight = isMobile ? NAVBAR_H : showTopBar ? TOPBAR_H + NAVBAR_H : NAVBAR_H;
@@ -70,9 +67,6 @@ export default function Layout({ children }: { children: React.ReactNode }) {
         onMobileClose={() => setIsMobileOpen(false)}
       />
 
-      {/* Fixed bar stack: TopBar (desktop, pre-scroll) + Navbar. Both
-          ride transparent over every page's hero image until scrolled,
-          then switch solid and the TopBar disappears entirely. */}
       <div className="fixed top-0 left-0 right-0 z-50">
         <AnimatePresence>
           {showTopBar && (
@@ -96,10 +90,6 @@ export default function Layout({ children }: { children: React.ReactNode }) {
 
       <main className={isMobile ? 'pb-16' : ''}>
         {showPageHero ? (
-          // Inner-page hero: image starts at y=0, fixed bars float
-          // transparently on top of it (same treatment as home), and
-          // the section itself is tall enough to feel like a real hero
-          // rather than a thin banner strip.
           <section
             className="relative flex items-center overflow-hidden"
             style={{ minHeight: '65vh', paddingTop: totalBarHeight }}
@@ -142,10 +132,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
             </div>
           </section>
         ) : (
-          // Home: HeroSection itself renders full-bleed from y=0 and
-          // sits behind the fixed transparent bars — no spacer div,
-          // no padding gap. The component is responsible for its own
-          // top padding for the text content (see HeroSection.tsx).
+          
           <div />
         )}
 
