@@ -6,7 +6,6 @@ import {
    Users, Briefcase, Lightbulb,
   ArrowRight
 } from 'lucide-react';
-import { Metadata } from "next";
 import { FaUserTie, FaUserGraduate } from 'react-icons/fa6';
 import OptimizedImage from '@/components/ui/OptimizedImage';
 import PartnersSection from '@/components/sections/PartnersSection';
@@ -22,17 +21,6 @@ const targetAudiences = [
   { icon: Lightbulb, label: 'Entrepreneurs', color: 'from-orange-500 to-red-500' },
   { icon: FaUserTie, label: 'Leaders', color: 'from-yellow-500 to-amber-500' },
 ];
-
-
-export const metadata: Metadata = {
-  title: "About Us",
-  description: "Learn about Life Positive Mission's mission to build a positive, conscious, and spiritually awakened world.",
-  keywords: ["About LPM", "NGO Nepal", "Mission", "Vision"],
-  openGraph: {
-    title: "About Life Positive Mission",
-    description: "Transform Yourself, Transform the World",
-  },
-};
 
 
 export default function AboutClient() {

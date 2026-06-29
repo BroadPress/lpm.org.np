@@ -20,7 +20,7 @@ export default function Footer() {
       setTimeout(() => setSubscribed(false), 3000);
     }
   };
-
+// Social Media Links without Actuall Social Media Urls.
   const socialLinks = [
     { icon: FaFacebook, href: 'https://www.facebook.com/', label: 'Facebook' },
     { icon: FaTwitter, href: 'https://www.twitter.com/', label: 'Twitter' },

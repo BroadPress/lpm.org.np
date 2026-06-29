@@ -132,7 +132,7 @@ export default function PrivacyPolicyPage() {
                   "Develop new products, services, features, and functionality",
                   "Communicate with you, either directly or through one of your partners, including for customer service, to provide you with updates and other information relating to the website, and for marketing and promotional purposes",
                   "Send you emails",
-                  "Find and prevent fraud",
+                  "Find and prevent fraud",   
                 ].map((item, index) => (
                   <motion.li
                     key={index}

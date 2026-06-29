@@ -135,18 +135,16 @@ export default function GalleryClient() {
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.95 }}
               transition={{ duration: 0.2 }}
-              className="max-w-[90vw] max-h-[85vh] flex items-center justify-center"
+              className="relative w-[90vw] max-w-6xl h-[85vh]"
               onClick={(e) => e.stopPropagation()}
             >
-              <div className="relative w-full h-full max-h-[85vh] min-h-[300px]">
-                <OptimizedImage
-                  src={currentImage.src}
-                  alt={currentImage.alt}
-                  type="hero"
-                  fill={true}
-                  className="object-contain rounded-lg shadow-2xl"
-                />
-              </div>
+              <OptimizedImage
+                src={currentImage.src}
+                alt={currentImage.alt}
+                type="hero"
+                fill={true}
+                className="object-contain rounded-lg shadow-2xl"
+              />
             </motion.div>
           </motion.div>
         )}
