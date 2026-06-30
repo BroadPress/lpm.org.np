@@ -13,7 +13,7 @@
 //   UserPlus,
 //   HelpCircle,
 // } from 'lucide-react';
-// import { FaFacebook, FaInstagram, FaYoutube, FaLinkedin, FaTwitter } from 'react-icons/fa6';
+// import { FaFacebook, FaInstagram, FaYoutube, FaLinkedin, FaSquareXTwitter  } from 'react-icons/fa6';
 // import { cn } from '@/lib/utils';
 // import OptimizedImage from '../ui/OptimizedImage';
 // interface SidebarProps {
@@ -40,7 +40,7 @@
 //   { icon: FaInstagram, href: 'https://instagram.com', label: 'Instagram' },
 //   { icon: FaYoutube, href: 'https://youtube.com', label: 'YouTube' },
 //   { icon: FaLinkedin, href: 'https://linkedin.com', label: 'LinkedIn' },
-//     { icon: FaTwitter, href: 'https://twitter.com', label: 'Twitter' },
+//     { icon: FaSquareXTwitter , href: 'https://twitter.com', label: 'Twitter' },
 // ];
 
 // // Desktop & Tablet Sidebar
@@ -140,7 +140,7 @@ import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 import { usePathname } from 'next/navigation';
 import { X } from 'lucide-react';
-import { FaFacebook, FaTwitter, FaYoutube, FaInstagram, FaLinkedin } from 'react-icons/fa6';
+import { FaFacebook, FaSquareXTwitter , FaYoutube, FaInstagram, FaLinkedin } from 'react-icons/fa6';
 import { cn } from '@/lib/utils';
 
 interface MobileSidebarProps {
@@ -162,7 +162,7 @@ const navItems = [
 
 const socials = [
   { icon: FaFacebook, href: 'https://facebook.com', label: 'Facebook' },
-  { icon: FaTwitter, href: 'https://twitter.com', label: 'Twitter' },
+  { icon: FaSquareXTwitter , href: 'https://twitter.com', label: 'Twitter' },
   { icon: FaYoutube, href: 'https://youtube.com', label: 'YouTube' },
   { icon: FaInstagram, href: 'https://instagram.com', label: 'Instagram' },
   { icon: FaLinkedin, href: 'https://linkedin.com', label: 'LinkedIn' },

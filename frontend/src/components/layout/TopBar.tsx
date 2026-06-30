@@ -2,7 +2,7 @@
 'use client';
 
 import { useState, useEffect, useRef } from 'react';
-import { FaFacebook, FaTwitter, FaYoutube, FaInstagram, FaLinkedin } from 'react-icons/fa6';
+import { FaFacebook, FaSquareXTwitter , FaYoutube, FaInstagram, FaLinkedin } from 'react-icons/fa6';
 import { Phone, Mail, MapPin, Search, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
@@ -81,7 +81,7 @@ export default function TopBar({ transparent = false }: TopBarProps) {
                 </a>
                 <a href="https://www.twitter.com" target="_blank" rel="noopener noreferrer"
                    className="text-gray-300 hover:text-white transition-colors" aria-label="Twitter">
-                  <FaTwitter size={14} />
+                  <FaSquareXTwitter  size={14} />
                 </a>
                 <a href="https://www.youtube.com" target="_blank" rel="noopener noreferrer"
                    className="text-gray-300 hover:text-white transition-colors" aria-label="YouTube">

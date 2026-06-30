@@ -3,7 +3,7 @@
 'use client';
 import { useState } from 'react';
 import { MapPin, Phone, Mail,  Send } from 'lucide-react';
-import { FaFacebook, FaTwitter, FaLinkedin, FaInstagram, FaYoutube, FaPinterest, FaGoogle } from 'react-icons/fa6';
+import { FaFacebook, FaSquareXTwitter , FaLinkedin, FaInstagram, FaYoutube, FaPinterest, FaGoogle } from 'react-icons/fa6';
 import OptimizedImage from '@/components/ui/OptimizedImage';
 
 const contactInfo = [
@@ -14,7 +14,7 @@ const contactInfo = [
 
 const socialLinks = [
   { icon: FaFacebook, name: 'Facebook', color: 'bg-[#1877f2]' },
-  { icon: FaTwitter, name: 'Twitter', color: 'bg-[#1da1f2]' },
+  { icon: FaSquareXTwitter , name: 'Twitter', color: 'bg-[#1da1f2]' },
   { icon: FaLinkedin, name: 'LinkedIn', color: 'bg-[#0a66c2]' },
   { icon: FaInstagram, name: 'Instagram', color: 'bg-gradient-to-tr from-[#f09433] to-[#bc1888]' },
   { icon: FaPinterest, name: 'Pinterest', color: 'bg-[#ff0000]' },

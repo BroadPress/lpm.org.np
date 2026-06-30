@@ -5,14 +5,14 @@ import { motion } from 'framer-motion';
 import { Mail, Phone, MapPin } from 'lucide-react';
 import { useState } from 'react';
 import OptimizedImage from '../ui/OptimizedImage';
-import { FaFacebook, FaTwitter, FaYoutube, FaInstagram, FaLinkedin } from 'react-icons/fa6';
+import { FaFacebook, FaSquareXTwitter , FaYoutube, FaInstagram, FaLinkedin } from 'react-icons/fa6';
 export default function Footer() {
   const currentYear = new Date().getFullYear();
   const [email, setEmail] = useState('');
   const [subscribed, setSubscribed] = useState(false);
 
   const handleSubscribe = (e: React.FormEvent) => {
-    e.preventDefault();
+    e.preventDefault(); 
     if (email) {
       console.log('Subscribed with:', email);
       setSubscribed(true);
@@ -23,7 +23,7 @@ export default function Footer() {
 // Social Media Links without Actuall Social Media Urls.
   const socialLinks = [
     { icon: FaFacebook, href: 'https://www.facebook.com/', label: 'Facebook' },
-    { icon: FaTwitter, href: 'https://www.twitter.com/', label: 'Twitter' },
+    { icon: FaSquareXTwitter , href: 'https://www.twitter.com/', label: 'Twitter' },
     { icon: FaYoutube, href: 'https://www.youtube.com/', label: 'YouTube' },
     { icon: FaInstagram, href: 'https://www.instagram.com/', label: 'Instagram' },
     { icon: FaLinkedin, href: 'https://www.linkedin.com/', label: 'LinkedIn' },
@@ -143,9 +143,9 @@ export default function Footer() {
                   href={social.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-9 h-9 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center hover:bg-orange-500 hover:text-white transition-all duration-300 group"
+                  className="w-9 h-9 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center hover:bg-orange-500 dark:hover:bg-orange-500 hover:text-white dark:hover:text-white hover:-translate-y-0.5 dark:hover:ring-2 dark:hover:ring-orange-400/40 transition-all duration-300 group"
                 >
-                  <social.icon size={16} className="text-gray-600 dark:text-gray-400 group-hover:text-white" />
+                  <social.icon size={16} className="text-gray-600 dark:text-gray-400 group-hover:text-white dark:group-hover:text-white transition-colors duration-300" />
                 </a>
               ))}
             </div>
