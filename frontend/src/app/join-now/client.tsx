@@ -312,8 +312,8 @@ export default function JoinNowClient() {
               Contact form owner
             </Link>{' '}
             —{' '}
-            <Link href="/privacy-policy" target="_blank" className="text-[#4285f4] hover:underline">
-              Terms of Service
+            <Link href="/terms-and-terminologies" target="_blank" className="text-[#4285f4] hover:underline">
+              Terms and Terminologies
             </Link>{' '}
             —{' '}
             <Link href="/privacy-policy" target="_blank" className="text-[#4285f4] hover:underline">

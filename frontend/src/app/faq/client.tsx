@@ -225,7 +225,7 @@ export default function FAQClient() {
                     <span>Upcoming Events</span>
                     <ChevronDown size={16} className="rotate-[-90deg]" />
                   </Link>
-                  <Link href="/join-now" className="flex items-center justify-between py-2 text-gray-600 dark:text-gray-400 hover:text-orange-500 transition-colors">
+                  <Link href="https://docs.google.com/forms/d/e/1FAIpQLSd5oi9ujlXHfxByvYI7iuAjbCWFtgRrCsN62PrwjFL2ABSPCg/viewform" className="flex items-center justify-between py-2 text-gray-600 dark:text-gray-400 hover:text-orange-500 transition-colors">
                     <span>Become a Volunteer</span>
                     <ChevronDown size={16} className="rotate-[-90deg]" />
                   </Link>

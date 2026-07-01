@@ -122,7 +122,7 @@ export default function UpcomingEvents() {
                     Donate Now
                   </Link>
                   <Link
-                    href="/events"
+                    href="/events/self-management-leadership"
                     className="px-5 py-2 border-2 border-white rounded-lg text-sm font-semibold hover:bg-white/10 transition-all"
                   >
                     View Details

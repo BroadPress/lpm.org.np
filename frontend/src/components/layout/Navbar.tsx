@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
@@ -11,7 +11,6 @@ import { useTheme } from 'next-themes';
 interface NavbarProps {
   onMenuClick: () => void;
   isTransparent: boolean;
-  isMobile?: boolean;
 }
 
 const navItems = [
@@ -24,35 +23,21 @@ const navItems = [
   { label: 'Contact', href: '/contact' },
 ];
 
-export default function Navbar({ onMenuClick, isTransparent, isMobile = false }: NavbarProps) {
-  const [mounted, setMounted] = useState(false);
+export default function Navbar({ onMenuClick, isTransparent }: NavbarProps) {
   const { theme, setTheme } = useTheme();
   const currentPathname = usePathname();
 
-  useEffect(() => setMounted(true), []);
-
-  // Resolve theme only after mount to avoid SSR/light flash mismatches.
-  const isDark = mounted && theme === 'dark';
-
   const navbarBg = isTransparent
     ? 'bg-transparent border-transparent'
-    : isDark
-      ? 'bg-gray-900/95 backdrop-blur-xl shadow-lg border-gray-700'
-      : 'bg-white/95 backdrop-blur-xl shadow-lg border-gray-200';
+    : 'bg-white/95 dark:bg-gray-900/95 backdrop-blur-xl shadow-lg border-gray-200 dark:border-gray-700';
 
-      const textColor = !mounted
-    ? 'text-transparent'
-    : isTransparent
-      ? 'text-white'
-      : isDark
-        ? 'text-white'
-        : 'text-gray-900';
+  const textColor = isTransparent
+    ? 'text-white'
+    : 'text-gray-900 dark:text-white';
 
   const iconHoverBg = isTransparent
     ? 'hover:bg-white/20'
-    : isDark
-      ? 'hover:bg-gray-800'
-      : 'hover:bg-gray-100';
+    : 'hover:bg-gray-100 dark:hover:bg-gray-800';
 
   return (
     <motion.header
@@ -69,9 +54,10 @@ export default function Navbar({ onMenuClick, isTransparent, isMobile = false }:
               <Image
                 src="/images/brand/lpm-logo.png"
                 alt="Life Positive Mission"
-                width={150}
-                height={40}
+                width={420}
+                height={110}
                 className="h-10 w-auto object-contain"
+                style={{ width: 'auto', height: 'auto' }}
                 priority
               />
             </div>
@@ -98,11 +84,12 @@ export default function Navbar({ onMenuClick, isTransparent, isMobile = false }:
           {/* Right Actions */}
           <div className="flex items-center gap-1">
             <button
-              onClick={() => setTheme(isDark ? 'light' : 'dark')}
+              onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
               className={`p-2 rounded-lg transition-colors duration-300 ${textColor} ${iconHoverBg}`}
               aria-label="Toggle theme"
             >
-              {mounted && (isDark ? <Sun size={18} /> : <Moon size={18} />)}
+              <Sun size={18} className="hidden dark:block" />
+              <Moon size={18} className="block dark:hidden" />
             </button>
 
             <Link

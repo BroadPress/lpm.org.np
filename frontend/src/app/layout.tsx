@@ -1,19 +1,8 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
 import { ThemeProvider } from "next-themes";
 import "./globals.css";
 import Layout from "@/components/layout/Layout";
 import Script from "next/script";
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
 
 // Root Metadata
 export const metadata: Metadata = {
@@ -76,11 +65,6 @@ export const metadata: Metadata = {
   alternates: {
     canonical: 'https://lpm.org.np',
   },
-  verification: {
-    google: 'your-google-verification-code',
-        yandex: 'your-yandex-verification-code',
-        
-  },
 };
 
 export default function RootLayout({
@@ -100,7 +84,7 @@ export default function RootLayout({
         <link rel="preconnect" href="https://www.google-analytics.com" />
       </head>
 
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+      <body className="antialiased" suppressHydrationWarning>
         <ThemeProvider attribute="class" defaultTheme="light" enableSystem>
           <Layout>
             {children}

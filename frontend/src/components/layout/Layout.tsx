@@ -4,7 +4,6 @@ import { useState, useEffect } from 'react';
 import { usePathname } from 'next/navigation';
 import { AnimatePresence, motion } from 'framer-motion';
 import dynamic from 'next/dynamic';
-import { useMediaQuery } from '@/hooks/useMediaQuery';
 import OptimizedImage from '@/components/ui/OptimizedImage';
 import Navbar from './Navbar';
 import TopBar from './TopBar';
@@ -26,7 +25,8 @@ const pageHeroConfig: Record<string, { title: string; bgImage: string }> = {
   '/contact': { title: 'Contact Us', bgImage: '/images/contact/hero.jpg' },
   '/join-now': { title: 'Join Now', bgImage: '/images/joinnow/1.jpg' },
   '/donate': { title: 'Donate Now', bgImage: '/images/donate/1.jpg' },
-  '/privacy-policy': { title: 'Privacy Policy', bgImage: '/images/privacy/hero.jpg' },
+  '/terms-and-terminologies': { title: 'Terms and Terminologies', bgImage: '/images/privacy/privacyhero.jpg' },
+  '/privacy-policy': { title: 'Privacy Policy', bgImage: '/images/privacy/privacyhero.jpg' },
 };
 
 const TOPBAR_H = 40; // px
@@ -36,8 +36,8 @@ export default function Layout({ children }: { children: React.ReactNode }) {
   const [isMobileOpen, setIsMobileOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
-  const isMobile = useMediaQuery('(max-width: 767px)');
   const pathname = usePathname();
+  const isEventDetailPage = pathname.startsWith('/events/') && pathname !== '/events';
 
   useEffect(() => {
     setIsMobileOpen(false);
@@ -53,13 +53,21 @@ export default function Layout({ children }: { children: React.ReactNode }) {
   const heroConfig = pageHeroConfig[pathname as keyof typeof pageHeroConfig] || pageHeroConfig['/'];
   const isHome = pathname === '/';
   const showPageHero = !isHome;
+  const showTopBar = !scrolled;
+  const heroPaddingClass = showPageHero ? 'pt-16 md:pt-[104px]' : '';
 
   // Every route in pageHeroConfig renders a full-bleed hero image behind
   // the fixed bars (home included), so the bars should ride transparent
   // over it until the user scrolls — not just on '/'.
   const barsAreTransparent = !scrolled;
-  const showTopBar = !isMobile && !scrolled;
-  const totalBarHeight = isMobile ? NAVBAR_H : showTopBar ? TOPBAR_H + NAVBAR_H : NAVBAR_H;
+
+  if (isEventDetailPage) {
+    return (
+      <div className="min-h-screen bg-gray-50 dark:bg-gray-950 overflow-x-hidden">
+        <main>{children}</main>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-gray-950 overflow-x-hidden">
@@ -81,7 +89,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
               animate={{ height: TOPBAR_H, opacity: 1 }}
               exit={{ height: 0, opacity: 0 }}
               transition={{ duration: 0.25 }}
-              className="overflow-hidden"
+              className="hidden overflow-hidden md:block"
             >
               <TopBar transparent={barsAreTransparent} />
             </motion.div>
@@ -90,19 +98,18 @@ export default function Layout({ children }: { children: React.ReactNode }) {
         <Navbar
           onMenuClick={() => setIsMobileOpen(true)}
           isTransparent={barsAreTransparent}
-          isMobile={isMobile}
         />
       </div>
 
-      <main className={isMobile ? 'pb-16' : ''}>
+      <main className="pb-16 md:pb-0">
         {showPageHero ? (
           // Inner-page hero: image starts at y=0, fixed bars float
           // transparently on top of it (same treatment as home), and
           // the section itself is tall enough to feel like a real hero
           // rather than a thin banner strip.
           <section
-            className="relative flex items-center overflow-hidden"
-            style={{ minHeight: '65vh', paddingTop: totalBarHeight }}
+            className={`relative flex items-center overflow-hidden ${heroPaddingClass}`}
+            style={{ minHeight: '65vh' }}
           >
             <div className="absolute inset-0">
               <OptimizedImage
@@ -167,7 +174,9 @@ export default function Layout({ children }: { children: React.ReactNode }) {
         <Footer />
       </main>
 
-      {isMobile && <BottomNav onMoreClick={() => setIsMobileOpen(true)} />}
+      <div className="md:hidden">
+        <BottomNav onMoreClick={() => setIsMobileOpen(true)} />
+      </div>
     </div>
   );
 }

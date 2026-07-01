@@ -27,6 +27,25 @@ const socialLinkConfig = [
   { key: 'instagram', Icon: FaInstagram },
 ] as const;
 
+function SocialLinksRow({ socialLinks }: { socialLinks: SocialLinks }) {
+  return (
+    <div className="flex items-center justify-center gap-3">
+      {socialLinkConfig.map(({ key, Icon }) => (
+        <a
+          key={key}
+          href={socialLinks[key]}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="w-10 h-10 rounded-full bg-gray-100 dark:bg-gray-700 flex items-center justify-center text-gray-700 dark:text-gray-200 hover:bg-orange-500 hover:text-white transition-colors"
+          aria-label={key}
+        >
+          <Icon size={18} />
+        </a>
+      ))}
+    </div>
+  );
+}
+
 const teamMembers: TeamMember[] = [
   {
     id: 1,
@@ -148,11 +167,13 @@ export default function TeamClient() {
                     />
                   </div>
                 </div>
-                <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-all flex items-center justify-center gap-3 rounded-2xl">
+                <div className="absolute inset-0 hidden rounded-2xl bg-black/60 transition-all md:flex md:opacity-0 md:group-hover:opacity-100 items-center justify-center gap-3">
                   {socialLinkConfig.map(({ key, Icon }) => (
                     <a
                       key={key}
                       href={member.socialLinks[key]}
+                      target="_blank"
+                      rel="noopener noreferrer"
                       className="w-10 h-10 bg-white text-gray-700 rounded-full flex items-center justify-center hover:bg-orange-500 hover:text-white transition"
                     >
                       <Icon size={18} />
@@ -173,6 +194,9 @@ export default function TeamClient() {
                 >
                   Bio
                 </button>
+                <div className="mt-4 md:hidden">
+                  <SocialLinksRow socialLinks={member.socialLinks} />
+                </div>
               </div>
             </motion.div>
           ))}
@@ -200,11 +224,13 @@ export default function TeamClient() {
                     />
                   </div>
                 </div>
-                <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-all flex items-center justify-center gap-3 rounded-2xl">
+                <div className="absolute inset-0 hidden rounded-2xl bg-black/60 transition-all md:flex md:opacity-0 md:group-hover:opacity-100 items-center justify-center gap-3">
                   {socialLinkConfig.map(({ key, Icon }) => (
                     <a
                       key={key}
                       href={member.socialLinks[key]}
+                      target="_blank"
+                      rel="noopener noreferrer"
                       className="w-10 h-10 bg-white text-gray-700 rounded-full flex items-center justify-center hover:bg-orange-500 hover:text-white transition"
                     >
                       <Icon size={18} />
@@ -225,6 +251,9 @@ export default function TeamClient() {
                 >
                   Bio
                 </button>
+                <div className="mt-4 md:hidden">
+                  <SocialLinksRow socialLinks={member.socialLinks} />
+                </div>
               </div>
             </motion.div>
           ))}
@@ -251,11 +280,13 @@ export default function TeamClient() {
                     />
                   </div>
                 </div>
-                <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-all flex items-center justify-center gap-3 rounded-2xl">
+                <div className="absolute inset-0 hidden rounded-2xl bg-black/60 transition-all md:flex md:opacity-0 md:group-hover:opacity-100 items-center justify-center gap-3">
                   {socialLinkConfig.map(({ key, Icon }) => (
                     <a
                       key={key}
                       href={member.socialLinks[key]}
+                      target="_blank"
+                      rel="noopener noreferrer"
                       className="w-10 h-10 bg-white text-gray-700 rounded-full flex items-center justify-center hover:bg-orange-500 hover:text-white transition"
                     >
                       <Icon size={18} />
@@ -276,6 +307,9 @@ export default function TeamClient() {
                 >
                   Bio
                 </button>
+                <div className="mt-4 md:hidden">
+                  <SocialLinksRow socialLinks={member.socialLinks} />
+                </div>
               </div>
             </motion.div>
           ))}

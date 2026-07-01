@@ -13,6 +13,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: '/contact', priority: 0.8, changefreq: 'monthly' },
     { path: '/join-now', priority: 0.6, changefreq: 'monthly' },
     { path: '/donate', priority: 0.6, changefreq: 'monthly' },
+    { path: '/terms-and-terminologies', priority: 0.6, changefreq: 'monthly' },
     { path: '/privacy-policy', priority: 0.6, changefreq: 'monthly' },
   ];
 
