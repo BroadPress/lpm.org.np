@@ -15,11 +15,7 @@ const staggerContainer = {
   }
 };
 
-interface HeroSectionProps {
-  setVideoModalOpen: (open: boolean) => void;
-}
-
-export default function HeroSection({ setVideoModalOpen }: HeroSectionProps) {
+export default function HeroSection() {
   const heroRef = useRef(null);
   const { scrollYProgress } = useScroll({ target: heroRef, offset: ['start start', 'end start'] });
 

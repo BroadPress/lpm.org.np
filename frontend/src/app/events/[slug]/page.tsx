@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { ArrowLeft, Clock, MapPin, CalendarDays, CheckCircle2 } from 'lucide-react';
@@ -43,7 +44,7 @@ export default async function EventDetailsPage({ params }: PageProps) {
     <main className="bg-white dark:bg-gray-950">
       <section className="relative overflow-hidden">
         <div className="absolute inset-0">
-          <img src={event.image} alt={event.title} className="h-full w-full object-cover" />
+          <Image src={event.image} alt={event.title} fill priority className="object-cover" />
           <div className="absolute inset-0 bg-black/70" />
         </div>
         <div className="relative mx-auto flex min-h-[70vh] max-w-7xl items-center px-4 py-20 sm:px-6 lg:px-8">

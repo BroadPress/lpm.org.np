@@ -30,7 +30,6 @@ const pageHeroConfig: Record<string, { title: string; bgImage: string }> = {
 };
 
 const TOPBAR_H = 40; // px
-const NAVBAR_H = 64; // px
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   const [isMobileOpen, setIsMobileOpen] = useState(false);
@@ -38,10 +37,6 @@ export default function Layout({ children }: { children: React.ReactNode }) {
 
   const pathname = usePathname();
   const isEventDetailPage = pathname.startsWith('/events/') && pathname !== '/events';
-
-  useEffect(() => {
-    setIsMobileOpen(false);
-  }, [pathname]);
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 80);

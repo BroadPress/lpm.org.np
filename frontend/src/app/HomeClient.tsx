@@ -25,7 +25,7 @@ export default function HomeClient() {
     <div className="min-h-screen overflow-x-hidden">
       {/* Hero Section - Critical, load immediately */}
       <Suspense fallback={<SectionSkeleton type="hero" />}>
-        <HeroSection setVideoModalOpen={setVideoModalOpen} />
+        <HeroSection />
       </Suspense>
 
       {/* Partners Section */}

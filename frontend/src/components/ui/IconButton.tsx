@@ -1,11 +1,11 @@
 // components/ui/IconButton.tsx
 'use client';
 
-import { forwardRef, ButtonHTMLAttributes } from 'react';
-import { motion } from 'framer-motion';
+import { forwardRef } from 'react';
+import { motion, type HTMLMotionProps } from 'framer-motion';
 import { cn } from '@/lib/utils';
 
-interface IconButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+interface IconButtonProps extends Omit<HTMLMotionProps<'button'>, 'ref'> {
   variant?: 'default' | 'primary' | 'ghost';
 }
 
@@ -28,7 +28,7 @@ export const IconButton = forwardRef<HTMLButtonElement, IconButtonProps>(
           variants[variant],
           className
         )}
-        {...(props as any)}
+        {...props}
       >
         {children}
       </motion.button>
