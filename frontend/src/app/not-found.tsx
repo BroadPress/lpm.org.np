@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { ArrowLeft, Home, Mail, Sparkles } from 'lucide-react';
+import { ArrowLeft, Home, Mail } from 'lucide-react';
 
 const quickLinks = [
   { label: 'Home', href: '/' },

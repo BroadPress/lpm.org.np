@@ -1,9 +1,15 @@
 import { MetadataRoute } from 'next';
 
+type SitemapChangeFrequency = NonNullable<MetadataRoute.Sitemap[number]['changeFrequency']>;
+
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://lpm.org.np';
   
-  const pages = [
+  const pages: Array<{
+    path: string;
+    priority: number;
+    changefreq: SitemapChangeFrequency;
+  }> = [
     { path: '', priority: 1.0, changefreq: 'daily' },
     { path: '/about', priority: 0.9, changefreq: 'weekly' },
     { path: '/team', priority: 0.8, changefreq: 'weekly' },
@@ -20,7 +26,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   return pages.map((page) => ({
     url: `${baseUrl}${page.path}`,
     lastModified: new Date(),
-    changeFrequency: page.changefreq as any,
+    changeFrequency: page.changefreq,
     priority: page.priority,
   }));
 }

@@ -3,7 +3,7 @@
 'use client';
 import { useState } from 'react';
 import { MapPin, Phone, Mail,  Send } from 'lucide-react';
-import { FaFacebook, FaSquareXTwitter , FaLinkedin, FaInstagram, FaYoutube, FaPinterest, FaGoogle } from 'react-icons/fa6';
+import { FaFacebook, FaSquareXTwitter , FaLinkedin, FaInstagram, FaPinterest, FaGoogle } from 'react-icons/fa6';
 import OptimizedImage from '@/components/ui/OptimizedImage';
 
 const contactInfo = [

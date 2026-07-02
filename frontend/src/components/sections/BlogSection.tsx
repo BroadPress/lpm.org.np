@@ -3,6 +3,15 @@
 import OptimizedImage from '@/components/ui/OptimizedImage';
 import { motion } from 'framer-motion';
 
+type BlogPost = {
+  title: string;
+  description: string;
+  image: string;
+  author: string;
+  date: string;
+  category: string;
+};
+
 const blogPosts = [
   {
     title: 'Leadership Training',
@@ -28,9 +37,9 @@ const blogPosts = [
     date: 'March 17, 2026',
     category: 'Award',
   },
-];
+] satisfies BlogPost[];
 
-const BlogPost = ({ post, index }: { post: any; index: number }) => (
+const BlogCard = ({ post, index }: { post: BlogPost; index: number }) => (
   <motion.article
     initial={{ opacity: 0, y: 30 }}
     whileInView={{ opacity: 1, y: 0 }}
@@ -67,7 +76,7 @@ export default function BlogSection() {
         </motion.div>
         <div className="grid md:grid-cols-3 gap-8">
           {blogPosts.map((post, idx) => (
-            <BlogPost key={idx} post={post} index={idx} />
+            <BlogCard key={idx} post={post} index={idx} />
           ))}
         </div>
       </div>
