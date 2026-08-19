@@ -78,7 +78,8 @@ export default function MissionSection() {
               <OptimizedImage 
                 src="/images/gallery/28.jpg" 
                 alt="Our Mission - Life Positive Mission" 
-                type="hero"
+                fill
+  priority
                 className="h-full"
               />
               

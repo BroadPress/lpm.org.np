@@ -145,12 +145,12 @@ export default function AboutClient() {
         {/* Call to Action Section */}
         <div className="relative inset-0 py-20 overflow-hidden">
           <div className="absolute inset-0">
-            <OptimizedImage
-              src="/images/hero/1.jpg"
-              alt="Get Involved"
-              type="hero"
-              className="object-cover"
-            />
+  <OptimizedImage
+    src="/images/hero/1.jpg"
+    alt="Hero"
+    fill={true}
+    className="object-cover"
+  />
             <div className="absolute inset-0 bg-gradient-to-r from-black/70 to-black/60" />
           </div>
           

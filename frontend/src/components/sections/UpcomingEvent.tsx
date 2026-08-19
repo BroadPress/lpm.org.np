@@ -84,7 +84,7 @@ export default function UpcomingEvents() {
                 <OptimizedImage
                   src={featuredEvent.image ?? '/images/events/1.jpg'}
                   alt={featuredEvent.title}
-                  type="hero"
+                  sizes='160px'
                   className="object-cover group-hover:scale-110 transition-transform duration-700"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-transparent" />

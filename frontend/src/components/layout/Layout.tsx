@@ -98,7 +98,6 @@ export default function Layout({ children }: { children: React.ReactNode }) {
               <OptimizedImage
                 src={heroConfig.bgImage}
                 alt={heroConfig.title}
-                type="hero"
                 priority
                 className="object-cover"
               />

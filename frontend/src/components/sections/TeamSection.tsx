@@ -39,7 +39,7 @@ export default function TeamSection() {
               className="flex gap-6 bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-lg"
             >
               <div className="relative w-32 h-32 rounded-full overflow-hidden shrink-0">
-                <OptimizedImage src={member.image} alt={member.name} className="object-cover" />
+                <OptimizedImage src={member.image} sizes="160px" priority={true}   alt={member.name} className="object-cover" />
               </div>
               <div>
                 <h3 className="text-xl font-bold text-gray-900 dark:text-white">{member.name}</h3>

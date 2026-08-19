@@ -29,12 +29,13 @@ export default function HeroSection({ setVideoModalOpen }: HeroSectionProps) {
       className="relative min-h-screen -mt-[104px] sm:-mt-[104px] flex items-center overflow-hidden"
     >
       <div className="absolute inset-0">
-        <OptimizedImage
-          src="/images/hero/1.jpg"
-          alt="Hero"
-          className="object-cover"
-          priority
-        />
+<OptimizedImage
+  src="/images/hero/1.jpg"
+  alt="Hero"
+  fill
+  priority
+  className="object-cover"
+/>
         <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/60 to-black/40" />
         <motion.div
           className="absolute inset-0 bg-black"

@@ -52,8 +52,8 @@ export default function TeamClient() {
                     <OptimizedImage
                       src={member.image}
                       alt={member.name}
-                      type="avatar"
                       fill={true}
+                      sizes="160px"
                       className="object-cover"
                     />
                   </div>
@@ -101,8 +101,8 @@ export default function TeamClient() {
                     <OptimizedImage
                       src={member.image}
                       alt={member.name}
-                      type="avatar"
                       fill={true}
+                      sizes="160px"
                       className="object-cover"
                     />
                   </div>
@@ -149,8 +149,8 @@ export default function TeamClient() {
                     <OptimizedImage
                       src={member.image}
                       alt={member.name}
-                      type="avatar"
                       fill={true}
+                      sizes="160px"
                       className="object-cover"
                     />
                   </div>
@@ -211,7 +211,6 @@ export default function TeamClient() {
                     <OptimizedImage
                       src={selected.image}
                       alt={selected.name}
-                      type="avatar"
                       fill={true}
                       className="object-cover"
                     />

@@ -1,7 +1,7 @@
 'use client';
 import { useState } from 'react';
 import { CreditCard, AlertCircle, DollarSign, User, Mail, MapPin, FileText, Calendar, Eye, EyeOff } from 'lucide-react';
-import Image from 'next/image';
+import OptimizedImage from '@/components/ui/OptimizedImage';
 
 
 export default function DonateClient() {
@@ -152,7 +152,8 @@ export default function DonateClient() {
                       : 'border-gray-200 dark:border-gray-700 hover:border-orange-300'
                   }`}
                 >
-                  <div className="relative w-12 h-8 mx-auto"><Image src={method.icon} alt={method.label} fill className="object-contain" /></div>
+                  <div className="relative w-12 h-8 mx-auto">
+                    <OptimizedImage src={method.icon} alt={method.label} fill={true} sizes="100px"   className="object-contain" /></div>
                   <span className="text-xs text-gray-600 dark:text-gray-400 block mt-1">{method.label}</span>
                 </button>
               ))}

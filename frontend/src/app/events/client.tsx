@@ -84,7 +84,7 @@ export default function EventsClient() {
               <OptimizedImage
                 src={featuredEvents[0].image}
                 alt={featuredEvents[0].title}
-                type="hero"
+sizes="160px"  
                 className="object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent" />
@@ -202,7 +202,7 @@ export default function EventsClient() {
               <OptimizedImage
                 src={featuredEvents[1].image}
                 alt={featuredEvents[1].title}
-                type="hero"
+sizes="160px"  
                 className="object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent" />
@@ -241,11 +241,11 @@ export default function EventsClient() {
         </div>
 
         {/* CTA */}
-        <div className="relative mt-16 py-20 rounded-2xl overflow-hidden">
+        <div className="relative mt-16 py-20 rounded-2xl overflow-hidden h-[500px]">
           <OptimizedImage
             src="/images/events/2.jpg"
             alt="CTA"
-            type="hero"
+sizes="160px"  
             className="object-cover"
           />
           <div className="absolute inset-0 bg-gray-800/70" />

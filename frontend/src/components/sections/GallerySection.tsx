@@ -23,7 +23,12 @@ const GalleryItem = ({ img, title, index }: { img: string; title: string; index:
     className="group relative overflow-hidden rounded-xl shadow-lg cursor-pointer"
   >
     <div className="relative h-64 w-full">
-      <OptimizedImage src={img} alt={title}         priority={index < 4}  className="object-cover transition-transform duration-500 group-hover:scale-110"  />
+      <OptimizedImage
+       src={img} 
+       alt={title} 
+       priority={index < 4} 
+       sizes='160px'
+        className="object-cover transition-transform duration-500 group-hover:scale-110 h-64 w-full"  />
       <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
       <div className="absolute bottom-0 left-0 right-0 p-4 translate-y-full group-hover:translate-y-0 transition-transform duration-300">
         <h4 className="text-white font-semibold text-lg">{title}</h4>

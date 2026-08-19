@@ -63,7 +63,6 @@ export default function SocialActivitiesSection() {
                 <OptimizedImage 
                   src={event.image} 
                   alt={event.title} 
-                  type="card"
                   priority={idx === 0} 
                   className="transition-transform duration-700 group-hover:scale-110" 
                 />

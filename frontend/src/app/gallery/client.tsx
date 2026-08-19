@@ -67,7 +67,6 @@ export default function GalleryClient() {
               <OptimizedImage
                 src={img.src}
                 alt={img.alt}
-                type="gallery"
                 fill={false}
                 width={600}
                 height={400}
@@ -142,7 +141,6 @@ export default function GalleryClient() {
                 <OptimizedImage
                   src={currentImage.src}
                   alt={currentImage.alt}
-                  type="hero"
                   fill={true}
                   className="object-contain rounded-lg shadow-2xl"
                 />

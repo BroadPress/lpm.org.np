@@ -1,15 +1,3 @@
-// import React from "react";
-// import { Metadata } from "next";
-// import PrivacyPolicyClient from "./page";
-
-// export const metadata: Metadata = {
-//   title: "Privacy Policy",
-//   description: "Learn about our privacy policy and how we protect your data.",
-// };
-
-// export default function PrivacyPolicyPage() {
-//   return <PrivacyPolicyClient />;
-// }
 
 
 "use client";

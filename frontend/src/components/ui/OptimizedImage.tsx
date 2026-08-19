@@ -1,73 +1,124 @@
 'use client';
 
 import Image from 'next/image';
-
-type OptimizedImageType = 'hero' | 'LPM' | 'card' | 'avatar' | 'gallery' | 'thumbnail' | 'footer';
+import { useState, useCallback } from 'react';
 
 interface OptimizedImageProps {
   src: string;
   alt: string;
-  type?: OptimizedImageType;
   className?: string;
   priority?: boolean;
-  fill?: boolean; 
+  fill?: boolean;
   width?: number;
   height?: number;
+  sizes?: string; // ← Make it customizable
+  quality?: number;
+  objectFit?: 'cover' | 'contain' | 'fill' | 'none' | 'scale-down';
+  onError?: () => void;
+  fallbackSrc?: string;
 }
 
-const sizeMap: Record<OptimizedImageType, { sizes: string; quality: number }> = {
-  hero: {
-    sizes: '100vw',
-    quality: 90,
-  },
-  LPM: {
-    sizes: '(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw',
-    quality: 85,
-  },
-  card: {
-    sizes: '(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw',
-    quality: 85,
-  },
-  avatar: {
-    sizes: '128px',
-    quality: 80,
-  },
-  gallery: {
-    sizes: '(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw',
-    quality: 85,
-  },
-  thumbnail: {
-    sizes: '150px',
-    quality: 75,
-  },
-  footer: {
-    sizes: '(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw',
-    quality: 80,
-  },
-};
-
-export default function OptimizedImage({ 
-  src, 
-  alt, 
-  type = 'card', 
+export default function OptimizedImage({
+  src,
+  alt,
   className = '',
   priority = false,
-  fill = true, // Default to true
+  fill = true,
+  width,
+  height,
+  sizes, // ← Allow passing custom sizes
+  quality = 85,
+  objectFit = 'cover',
+  onError,
+  fallbackSrc,
   ...restProps
 }: OptimizedImageProps) {
-  const config = sizeMap[type];
-  
+  const [imgSrc, setImgSrc] = useState(src);
+  const [isLoading, setIsLoading] = useState(true);
+
+  // Determine default sizes based on common use cases
+  const getDefaultSizes = () => {
+    if (sizes) return sizes; // Use custom if provided
+    
+    // Default based on className patterns
+    if (className?.includes('w-full') || className?.includes('w-screen')) {
+      return '100vw';
+    }
+    if (className?.includes('w-1/2') || className?.includes('w-2/4')) {
+      return '50vw';
+    }
+    if (className?.includes('w-1/3') || className?.includes('w-2/6')) {
+      return '33vw';
+    }
+    if (className?.includes('w-1/4') || className?.includes('w-2/8')) {
+      return '25vw';
+    }
+    // For gallery, hero, etc.
+    return '100vw';
+  };
+
+  const finalSizes = getDefaultSizes();
+
+  const handleError = useCallback(() => {
+    if (fallbackSrc) {
+      setImgSrc(fallbackSrc);
+    }
+    onError?.();
+  }, [fallbackSrc, onError]);
+
+  const handleLoad = useCallback(() => {
+    setIsLoading(false);
+  }, []);
+
+  if (fill) {
+    return (
+      <div className={`relative w-full h-full ${className}`}>
+        <Image
+          src={imgSrc}
+          alt={alt}
+          fill
+          sizes={finalSizes}
+          quality={quality}
+          priority={priority}
+          className={`object-${objectFit} transition-opacity duration-300 ${
+            isLoading ? 'opacity-0' : 'opacity-100'
+          }`}
+          onError={handleError}
+          onLoad={handleLoad}
+          {...restProps}
+        />
+        {isLoading && (
+          <div className="absolute inset-0 bg-gray-200 dark:bg-gray-700 animate-pulse rounded-lg" />
+        )}
+      </div>
+    );
+  }
+
+  if (!width || !height) {
+    console.warn('OptimizedImage: width and height are required when fill is false');
+    return null;
+  }
+
   return (
-    <Image
-      src={src}
-      alt={alt}
-      fill={fill}
-      sizes={config.sizes}
-      quality={config.quality}
-      priority={priority}
-      className={`object-cover ${className}`}
-      {...restProps}
-    />
+    <div className={`relative ${className}`}>
+      <Image
+        src={imgSrc}
+        alt={alt}
+        width={width}
+        height={height}
+        sizes={finalSizes}
+        quality={quality}
+        priority={priority}
+        className={`object-${objectFit} transition-opacity duration-300 ${
+          isLoading ? 'opacity-0' : 'opacity-100'
+        }`}
+        onError={handleError}
+        onLoad={handleLoad}
+        {...restProps}
+      />
+      {isLoading && (
+        <div className="absolute inset-0 bg-gray-200 dark:bg-gray-700 animate-pulse rounded-lg" />
+      )}
+    </div>
   );
 }
-

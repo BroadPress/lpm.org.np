@@ -39,7 +39,7 @@ const BlogPost = ({ post, index }: { post: any; index: number }) => (
     className="group bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300"
   >
     <div className="relative h-56 overflow-hidden">
-      <OptimizedImage src={post.image} alt={post.title}  className="object-cover group-hover:scale-110 transition-transform duration-500" />
+      <OptimizedImage src={post.image} alt={post.title} priority={true}  className="object-cover group-hover:scale-110 transition-transform duration-500" />
       <div className="absolute top-4 right-4 bg-orange-500 text-white px-3 py-1 rounded-full text-xs font-semibold">
         {post.category}
       </div>

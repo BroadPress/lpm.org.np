@@ -93,7 +93,7 @@ export default function Footer() {
               <OptimizedImage
                 alt="Office Location Map"
                 src="/images/brand/location.png"
-                type="footer"
+                sizes='100px'
                 className="grayscale-[0.2] hover:grayscale-0 transition-all duration-500"
               />
             </div>

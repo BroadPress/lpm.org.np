@@ -40,7 +40,7 @@ export default function TestimonialsSection() {
                   <motion.div key={idx} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} transition={{ delay: idx * 0.1 }} className="bg-white/10 backdrop-blur-md rounded-2xl p-6">
 <p className="text-white/90 italic">&quot;{t.text}&quot;</p>                    <div className="flex items-center gap-4 mt-4">
                       <div className="relative w-12 h-12 rounded-full overflow-hidden">
-                        <OptimizedImage src={t.image} alt={t.name}  className="object-cover" />
+                        <OptimizedImage src={t.image} alt={t.name}  className="object-cover" sizes='160px'/>
                       </div>
                       <div>
                         <h4 className="text-white font-semibold">{t.name}</h4>

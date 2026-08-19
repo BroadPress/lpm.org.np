@@ -14,7 +14,7 @@ interface PartnerLogoProps {
 const PartnerLogo = memo(({ logo, name }: PartnerLogoProps) => (
   <div className="flex items-center justify-center p-4 bg-white dark:bg-gray-800 rounded-xl shadow-md hover:shadow-xl hover:scale-105 transition-all duration-300 mx-3 flex-shrink-0">
     <div className="relative w-24 h-16">
-      <OptimizedImage src={logo} alt={name} className="object-contain" />
+      <OptimizedImage src={logo} fill={true} sizes="160px"   alt={name} className="object-contain h-16 w-24" />
     </div>
   </div>
 ));
