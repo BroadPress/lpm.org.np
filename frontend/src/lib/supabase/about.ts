@@ -28,6 +28,26 @@ export async function getAboutSection(): Promise<AboutSection | null> {
     return null;
   }
 }
+export async function getAllAboutSections(): Promise<AboutSection[]> {
+  try {
+    const { data, error } = await supabase
+      .from('about_content')
+      .select('*')
+      .order('updated_at', { ascending: false });
+
+
+    if (error) {
+      console.error('Error fetching about sections:', error);
+      return [];
+    }
+    return data as AboutSection[];
+  } catch (error) {
+    console.error('Error fetching about sections:', error);
+    return [];
+  }
+}
+
+
 
 // ----- UPDATE ABOUT SECTION -----
 export async function updateAboutSection(data: any): Promise<AboutSection | null> {

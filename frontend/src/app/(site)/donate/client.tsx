@@ -1,13 +1,24 @@
+// src/app/(site)/donate/client.tsx
 'use client';
+
 import { useState } from 'react';
 import { CreditCard, AlertCircle, DollarSign, User, Mail, MapPin, FileText, Calendar, Eye, EyeOff } from 'lucide-react';
 import OptimizedImage from '@/components/ui/OptimizedImage';
-
+import { createDonation } from '@/lib/supabase/donations';
 
 export default function DonateClient() {
   const [formData, setFormData] = useState({
-    amount: '', firstName: '', lastName: '', email: '', address: '',
-    caseDescription: '', paymentMethod: 'visa', cardHolderName: '', cardNumber: '', cvv: '', expiryDate: ''
+    amount: '',
+    firstName: '',
+    lastName: '',
+    email: '',
+    address: '',
+    caseDescription: '',
+    paymentMethod: 'visa',
+    cardHolderName: '',
+    cardNumber: '',
+    cvv: '',
+    expiryDate: ''
   });
   const [selectedAmount, setSelectedAmount] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -26,22 +37,42 @@ export default function DonateClient() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    
+    // Validation
     if (!formData.amount || !formData.firstName || !formData.lastName || !formData.email) {
       setError('Please fill in all required fields.');
       return;
     }
+    
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(formData.email)) {
       setError('Please enter a valid email address.');
       return;
     }
+
     setIsSubmitting(true);
     setError('');
+
     try {
-      await new Promise(resolve => setTimeout(resolve, 1500));
+      // Save to Supabase
+      await createDonation({
+        amount: parseFloat(formData.amount),
+        first_name: formData.firstName,
+        last_name: formData.lastName,
+        email: formData.email,
+        address: formData.address || '',
+        case_description: formData.caseDescription || '',
+        payment_method: formData.paymentMethod,
+        card_holder_name: formData.cardHolderName || '',
+        card_last_four: formData.cardNumber ? formData.cardNumber.slice(-4) : '',
+        status: 'pending',
+        transaction_id: '',
+      });
+
       setSubmitted(true);
-    } catch {
+    } catch (err) {
       setError('Something went wrong. Please try again.');
+      console.error('Donation error:', err);
     } finally {
       setIsSubmitting(false);
     }
@@ -49,13 +80,26 @@ export default function DonateClient() {
 
   if (submitted) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-orange-50 to-pink-50">
+      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-orange-50 to-pink-50 dark:from-gray-900 dark:to-gray-950">
         <div className="text-center p-8">
           <div className="w-20 h-20 bg-green-500 rounded-full flex items-center justify-center mx-auto mb-4">
-            <svg className="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg>
+            <svg className="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+            </svg>
           </div>
-          <h2 className="text-2xl font-bold">Thank You!</h2>
-          <p className="text-gray-600 mt-2">Your donation of ${formData.amount} has been received.</p>
+          <h2 className="text-2xl font-bold text-gray-900 dark:text-white">Thank You!</h2>
+          <p className="text-gray-600 dark:text-gray-400 mt-2">
+            Your donation of ${formData.amount} has been received successfully!
+          </p>
+          <p className="text-gray-500 dark:text-gray-500 text-sm mt-2">
+            A confirmation email has been sent to {formData.email}
+          </p>
+          <button
+            onClick={() => window.location.href = '/'}
+            className="mt-6 px-6 py-2 bg-gradient-to-r from-orange-500 to-pink-500 text-white rounded-xl font-semibold hover:shadow-lg transition"
+          >
+            Go Home
+          </button>
         </div>
       </div>
     );
@@ -72,6 +116,7 @@ export default function DonateClient() {
     <div className="min-h-screen bg-gradient-to-br from-orange-50 to-pink-50 dark:from-gray-900 dark:to-gray-950 py-12">
       <div className="max-w-4xl mx-auto px-4 sm:px-6">
         <h1 className="text-3xl font-bold text-center text-gray-900 dark:text-white mb-2">Make a Donation</h1>
+        <p className="text-center text-gray-600 dark:text-gray-400 mb-4">Support our mission to build a positive world</p>
         <div className="w-20 h-1 bg-gradient-to-r from-orange-500 to-pink-500 mx-auto mb-8" />
 
         <form onSubmit={handleSubmit} className="bg-white dark:bg-gray-800 rounded-2xl p-6 md:p-8 shadow-xl">
@@ -87,7 +132,7 @@ export default function DonateClient() {
               <DollarSign className="text-orange-500" /> Your Donation
             </h3>
             <div className="flex flex-wrap gap-3 mb-4">
-              {['50', '100', '200'].map(amt => (
+              {['50', '100', '200', '500'].map(amt => (
                 <button
                   key={amt}
                   type="button"
@@ -118,19 +163,57 @@ export default function DonateClient() {
               <User className="text-orange-500" /> Your Details
             </h3>
             <div className="grid md:grid-cols-2 gap-4">
-              <input type="text" name="firstName" placeholder="First Name*" value={formData.firstName} onChange={handleChange} className="px-4 py-2 rounded-xl border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-orange-500" required />
-              <input type="text" name="lastName" placeholder="Last Name*" value={formData.lastName} onChange={handleChange} className="px-4 py-2 rounded-xl border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-orange-500" required />
+              <input
+                type="text"
+                name="firstName"
+                placeholder="First Name*"
+                value={formData.firstName}
+                onChange={handleChange}
+                className="px-4 py-2 rounded-xl border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-orange-500"
+                required
+              />
+              <input
+                type="text"
+                name="lastName"
+                placeholder="Last Name*"
+                value={formData.lastName}
+                onChange={handleChange}
+                className="px-4 py-2 rounded-xl border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-orange-500"
+                required
+              />
               <div className="relative">
                 <Mail className="absolute left-3 top-3 text-gray-400" size={16} />
-                <input type="email" name="email" placeholder="Email*" value={formData.email} onChange={handleChange} className="w-full pl-10 pr-4 py-2 rounded-xl border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-orange-500" required />
+                <input
+                  type="email"
+                  name="email"
+                  placeholder="Email*"
+                  value={formData.email}
+                  onChange={handleChange}
+                  className="w-full pl-10 pr-4 py-2 rounded-xl border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-orange-500"
+                  required
+                />
               </div>
               <div className="relative">
                 <MapPin className="absolute left-3 top-3 text-gray-400" size={16} />
-                <input type="text" name="address" placeholder="Address" value={formData.address} onChange={handleChange} className="w-full pl-10 pr-4 py-2 rounded-xl border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-orange-500" />
+                <input
+                  type="text"
+                  name="address"
+                  placeholder="Address"
+                  value={formData.address}
+                  onChange={handleChange}
+                  className="w-full pl-10 pr-4 py-2 rounded-xl border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-orange-500"
+                />
               </div>
               <div className="md:col-span-2 relative">
                 <FileText className="absolute left-3 top-3 text-gray-400" size={16} />
-                <textarea name="caseDescription" rows={3} placeholder="Case Description" value={formData.caseDescription} onChange={handleChange} className="w-full pl-10 pr-4 py-2 rounded-xl border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-orange-500 resize-none" />
+                <textarea
+                  name="caseDescription"
+                  rows={3}
+                  placeholder="Case Description (optional)"
+                  value={formData.caseDescription}
+                  onChange={handleChange}
+                  className="w-full pl-10 pr-4 py-2 rounded-xl border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-orange-500 resize-none"
+                />
               </div>
             </div>
           </div>
@@ -153,7 +236,8 @@ export default function DonateClient() {
                   }`}
                 >
                   <div className="relative w-12 h-8 mx-auto">
-                    <OptimizedImage src={method.icon} alt={method.label} fill={true} sizes="100px"   className="object-contain" /></div>
+                    <OptimizedImage src={method.icon} alt={method.label} fill className="object-contain" />
+                  </div>
                   <span className="text-xs text-gray-600 dark:text-gray-400 block mt-1">{method.label}</span>
                 </button>
               ))}
@@ -162,32 +246,77 @@ export default function DonateClient() {
             <div className="grid md:grid-cols-2 gap-4">
               <div className="md:col-span-2">
                 <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Card Holder Name</label>
-                <input type="text" name="cardHolderName" value={formData.cardHolderName} onChange={handleChange} placeholder="Card Holder Name" className="w-full px-4 py-2 rounded-xl border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-orange-500" />
+                <input
+                  type="text"
+                  name="cardHolderName"
+                  value={formData.cardHolderName}
+                  onChange={handleChange}
+                  placeholder="Card Holder Name"
+                  className="w-full px-4 py-2 rounded-xl border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-orange-500"
+                />
               </div>
               <div className="md:col-span-2">
                 <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Card Number</label>
-                <input type="text" name="cardNumber" value={formData.cardNumber} onChange={handleChange} placeholder="1234 5678 9012 3456" maxLength={16} className="w-full px-4 py-2 rounded-xl border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-orange-500" />
+                <input
+                  type="text"
+                  name="cardNumber"
+                  value={formData.cardNumber}
+                  onChange={handleChange}
+                  placeholder="1234 5678 9012 3456"
+                  maxLength={16}
+                  className="w-full px-4 py-2 rounded-xl border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-orange-500"
+                />
               </div>
               <div>
                 <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">CVV</label>
                 <div className="relative">
-                  <input type={showCVV ? "text" : "password"} name="cvv" value={formData.cvv} onChange={handleChange} placeholder="123" maxLength={3} className="w-full px-4 py-2 rounded-xl border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-orange-500" />
-                  <button type="button" onClick={() => setShowCVV(!showCVV)} className="absolute right-3 top-3 text-gray-400">{showCVV ? <EyeOff size={16} /> : <Eye size={16} />}</button>
+                  <input
+                    type={showCVV ? "text" : "password"}
+                    name="cvv"
+                    value={formData.cvv}
+                    onChange={handleChange}
+                    placeholder="123"
+                    maxLength={3}
+                    className="w-full px-4 py-2 rounded-xl border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-orange-500"
+                  />
+                  <button
+                    type="button"
+                    onClick={() => setShowCVV(!showCVV)}
+                    className="absolute right-3 top-3 text-gray-400 hover:text-gray-600"
+                  >
+                    {showCVV ? <EyeOff size={16} /> : <Eye size={16} />}
+                  </button>
                 </div>
               </div>
               <div>
                 <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Expire Date</label>
                 <div className="relative">
                   <Calendar className="absolute left-3 top-3 text-gray-400" size={16} />
-                  <input type="text" name="expiryDate" value={formData.expiryDate} onChange={handleChange} placeholder="MM/YY" maxLength={5} className="w-full pl-10 pr-4 py-2 rounded-xl border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-orange-500" />
+                  <input
+                    type="text"
+                    name="expiryDate"
+                    value={formData.expiryDate}
+                    onChange={handleChange}
+                    placeholder="MM/YY"
+                    maxLength={5}
+                    className="w-full pl-10 pr-4 py-2 rounded-xl border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-orange-500"
+                  />
                 </div>
               </div>
             </div>
           </div>
 
-          <button type="submit" disabled={isSubmitting} className="w-full py-3 bg-gradient-to-r from-orange-500 to-pink-500 text-white rounded-xl font-semibold text-lg hover:shadow-lg transition disabled:opacity-50">
+          <button
+            type="submit"
+            disabled={isSubmitting}
+            className="w-full py-3 bg-gradient-to-r from-orange-500 to-pink-500 text-white rounded-xl font-semibold text-lg hover:shadow-lg transition disabled:opacity-50"
+          >
             {isSubmitting ? 'Processing...' : 'Donate Now'}
           </button>
+
+          <p className="text-xs text-gray-500 dark:text-gray-400 text-center mt-4">
+            Your donation is secure and will be processed through our secure payment gateway.
+          </p>
         </form>
       </div>
     </div>

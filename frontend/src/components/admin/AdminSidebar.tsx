@@ -16,8 +16,9 @@ import {
   Menu,
   X,
   ChevronRight,
+  DollarSign,
 } from 'lucide-react';
-import { memo, useMemo, useState, useCallback, useEffect } from 'react';
+import { memo, useState, useCallback, useEffect } from 'react';
 import {useMediaQuery} from '@/hooks/useMediaQuery';
 
 const menuItems = [
@@ -27,9 +28,9 @@ const menuItems = [
   { label: 'Team', href: '/admin/team', icon: Users },
   { label: 'Events', href: '/admin/events', icon: Calendar },
   { label: 'Gallery', href: '/admin/gallery', icon: Image },
-  { label: 'Blog', href: '/admin/blog', icon: FileText },
   { label: 'FAQs', href: '/admin/faqs', icon: HelpCircle },
   { label: 'Contact', href: '/admin/contact', icon: Phone },
+  { label: 'Donations', href: '/admin/donations', icon: DollarSign },
 ];
 
 const bottomNavItems = menuItems.slice(0, 4);

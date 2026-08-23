@@ -1,11 +1,12 @@
+// src/components/WelcomePopup.tsx
 'use client';
 
 import { useEffect, useState, useCallback } from 'react';
 import Link from 'next/link';
-import { X, GraduationCap } from 'lucide-react';
+import { X, Sparkles } from 'lucide-react';
 import OptimizedImage from '@/components/ui/OptimizedImage';
 
-const SESSION_KEY = 'ssrvm_welcome_popup_shown';
+const SESSION_KEY = 'lpm_welcome_popup_shown';
 
 export default function WelcomePopup() {
   const [isVisible, setIsVisible] = useState(false);
@@ -81,40 +82,41 @@ export default function WelcomePopup() {
           {canClose ? <X size={18} /> : <span className="text-xs font-semibold w-[18px] h-[18px] flex items-center justify-center">{countdown}</span>}
         </button>
 
-        <div className="bg-gradient-to-br from-[#183a6e] via-[#2c7ac2] to-[#01519c] px-6 pt-8 pb-6 text-center">
-          <div className="relative w-16 h-16 mx-auto  rounded-full ">
-            <OptimizedImage
-              src="/images/brand/logo.jpg"
-              alt="Sri Sri Ravishankar Vidya Mandir"
-              fill
-              className="p-1 w-14 h-14"
-              objectFit="contain"
-            />
+        {/* Header - Orange/Pink Gradient */}
+        <div className="bg-gradient-to-br from-orange-500 via-pink-500 to-purple-600 px-6 pt-8 pb-6 text-center">
+          <div className="relative w-16 h-16 mx-auto rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center">
+            <Sparkles className="w-8 h-8 text-white" />
           </div>
-          <h2 className="text-white font-bold text-xl md:text-2xl">
-            Welcome to Sri Sri Ravishankar Vidya Mandir
+          <h2 className="text-white font-bold text-xl md:text-2xl mt-3">
+            Welcome to Life Positive Mission
           </h2>
-          <span className="inline-block mt-2 bg-[#feb505] text-[#002749] text-[10px] px-3 py-1 rounded-full font-semibold uppercase tracking-wider">
-            Biratnagar
+          <span className="inline-block mt-2 bg-white/20 backdrop-blur-sm text-white text-[10px] px-3 py-1 rounded-full font-semibold uppercase tracking-wider">
+            Transform Yourself, Transform the World
           </span>
         </div>
 
+        {/* Content */}
         <div className="px-6 py-6">
           <p className="text-gray-600 text-sm leading-relaxed">
-            A revered temple of knowledge where every child&apos;s potential is nurtured.
-            At our institution, we embrace the profound principle of{' '}
-            <span className="font-semibold text-[#183a6e]">&apos;Vidya Dadati Poornatvam&apos;</span>{' '}
-            (Education Brings Completeness), guiding our dedication to holistic development.
+            <span className="font-semibold text-orange-500">Life Positive Mission (LPM)</span>{' '}
+            is a volunteer-driven international public charitable non-profit organization 
+            committed to building a positive, conscious, and spiritually awakened world 
+            through the power of positive energy, leadership, and human transformation.
+          </p>
+          <p className="text-gray-600 text-sm leading-relaxed mt-3">
+            Guided by the belief that every individual possesses infinite inner potential, 
+            LPM works to inspire people to transform their lives through positive thinking, 
+            discipline, self-management, spirituality, and purposeful action.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-3 mt-6">
             <Link
-              href="/admission"
+              href="/join-now"
               onClick={() => canClose && setIsVisible(false)}
-              className="flex-1 flex items-center justify-center gap-2 bg-gradient-to-r from-[#8d27d6] via-[#2c7ac2] to-[#01519c] text-white px-5 py-2.5 rounded-lg font-medium text-sm hover:opacity-90 transition-opacity"
+              className="flex-1 flex items-center justify-center gap-2 bg-gradient-to-r from-orange-500 to-pink-500 text-white px-5 py-2.5 rounded-lg font-medium text-sm hover:opacity-90 transition-opacity"
             >
-              <GraduationCap size={18} />
-              Apply for Admission
+              <Sparkles size={18} />
+              Join Our Mission
             </Link>
             <button
               onClick={handleClose}
