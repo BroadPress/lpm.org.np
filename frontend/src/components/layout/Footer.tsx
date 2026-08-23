@@ -175,7 +175,8 @@ export default function Footer() {
           className="text-center mt-6 pt-4 border-t border-gray-200 dark:border-gray-800"
         >
           <p className="text-gray-500 dark:text-gray-400 text-xs">
-            Copyright &copy; {currentYear} Life Positive Mission. All Rights Reserved.
+            Copyright &copy; {currentYear} Life Positive Mission. All Rights Reserved. |
+              <Link href="/admin/login" className="hover:text-gray-300 ml-1">Admin Login</Link>
           </p>
         </motion.div>
       </div>
