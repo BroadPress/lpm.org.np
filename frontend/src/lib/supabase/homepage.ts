@@ -1,4 +1,3 @@
-// src/lib/supabase/homepage.ts
 import { supabase } from './client';
 
 export interface HomeSection {

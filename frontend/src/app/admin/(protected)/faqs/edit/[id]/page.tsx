@@ -1,4 +1,3 @@
-// src/app/admin/faqs/edit/[id]/page.tsx
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { getFaqById } from '@/lib/supabase/faqs';

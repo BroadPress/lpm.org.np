@@ -1,4 +1,3 @@
-// src/app/(site)/donate/client.tsx
 'use client';
 
 import { useState } from 'react';

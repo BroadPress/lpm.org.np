@@ -1,4 +1,3 @@
-// src/lib/supabase/gallery.ts
 import { supabase } from './client';
 
 export interface GalleryImage {

@@ -1,4 +1,3 @@
-// src/components/admin/faqs/FaqForm.tsx
 'use client';
 
 import { memo, useState, useCallback } from 'react';

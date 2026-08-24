@@ -1,4 +1,3 @@
-// src/app/admin/gallery/edit/[id]/page.tsx
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { getGalleryImageById } from '@/lib/supabase/gallery';

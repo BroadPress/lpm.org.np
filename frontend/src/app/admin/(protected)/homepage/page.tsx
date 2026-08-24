@@ -1,4 +1,3 @@
-// src/app/admin/(protected)/homepage/page.tsx
 import { Metadata } from 'next';
 import Link from 'next/link';
 import { getAllHomeSections } from '@/lib/supabase/homepage';
@@ -11,17 +10,17 @@ export const metadata: Metadata = {
 };
 
 const homeSections = [
-  { key: 'home_hero', label: 'Hero Section', icon: '🎯' },
-  { key: 'home_mission', label: 'Mission Section', icon: '🚀' },
-  { key: 'home_partners', label: 'Partners Section', icon: '🤝' },
-  { key: 'home_get_involved', label: 'Get Involved Section', icon: '🙌' },
-  { key: 'home_social_activities', label: 'Social Activities', icon: '📅' },
-  { key: 'home_cta', label: 'Call to Action', icon: '📢' },
-  { key: 'home_upcoming_events', label: 'Upcoming Events', icon: '📆' },
-  { key: 'home_team', label: 'Team Section', icon: '👥' },
-  { key: 'home_testimonials', label: 'Testimonials', icon: '💬' },
-  { key: 'home_gallery', label: 'Gallery Section', icon: '🖼️' },
-  { key: 'home_blog', label: 'Blog Section', icon: '📝' },
+  { key: 'home_hero', label: 'Hero Section' },
+  { key: 'home_mission', label: 'Mission Section' },
+  { key: 'home_partners', label: 'Partners Section' },
+  { key: 'home_get_involved', label: 'Get Involved Section' },
+  { key: 'home_social_activities', label: 'Social Activities' },
+  { key: 'home_cta', label: 'Call to Action' },
+  { key: 'home_upcoming_events', label: 'Upcoming Events' },
+  { key: 'home_team', label: 'Team Section' },
+  { key: 'home_testimonials', label: 'Testimonials' },
+  { key: 'home_gallery', label: 'Gallery Section' },
+  { key: 'home_blog', label: 'Blog Section' },
 ];
 
 const getSections = cache(async () => {
@@ -42,7 +41,7 @@ export default async function HomepageAdminPage() {
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-4">
-        {homeSections.map(({ key, label, icon }) => {
+        {homeSections.map(({ key, label }) => {
           const section = sectionMap.get(key);
           return (
             <div
@@ -52,7 +51,6 @@ export default async function HomepageAdminPage() {
               <div className="flex items-start justify-between">
                 <div className="min-w-0 flex-1">
                   <div className="flex items-center gap-2">
-                    <span className="text-xl md:text-2xl">{icon}</span>
                     <h3 className="font-semibold text-sm md:text-base text-gray-800 truncate">{label}</h3>
                   </div>
                   <p className="text-[10px] md:text-xs text-gray-500 mt-2">
@@ -71,7 +69,7 @@ export default async function HomepageAdminPage() {
                   className="p-1.5 md:p-2 text-gray-400 hover:text-orange-600 hover:bg-orange-50 rounded-lg transition-colors flex-shrink-0"
                   title="Edit"
                 >
-                  <Pencil size={16} className="md:size-18" />
+                  <Pencil size={6} className="md:size-8" />
                 </Link>
               </div>
             </div>

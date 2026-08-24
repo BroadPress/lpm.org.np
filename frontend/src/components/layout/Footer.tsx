@@ -156,10 +156,7 @@ export default function Footer() {
             <Link href="/privacy-policy" className="text-gray-500 dark:text-gray-400 hover:text-orange-500 transition-colors">
               Privacy Policy
             </Link>
-            <span className="text-gray-300 dark:text-gray-700">|</span>
-            <Link href="/privacy-policy" className="text-gray-500 dark:text-gray-400 hover:text-orange-500 transition-colors">
-              Term & Condition
-            </Link>
+          
             <span className="text-gray-300 dark:text-gray-700">|</span>
             <Link href="/faq" className="text-gray-500 dark:text-gray-400 hover:text-orange-500 transition-colors">
               FAQ

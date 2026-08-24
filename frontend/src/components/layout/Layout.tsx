@@ -10,7 +10,7 @@ import Navbar from './Navbar';
 import TopBar from './TopBar';
 import BottomNav from './BottomNav';
 import Footer from './Footer';
-import Breadcrumbs from '@/components/seo/Breadcrumbs';
+// import Breadcrumbs from '@/components/seo/Breadcrumbs';
 
 const MobileSidebar = dynamic(() => import('./Sidebar').then((mod) => mod.MobileSidebar), {
   loading: () => <div className="w-[280px] h-screen bg-gray-100 dark:bg-gray-800 animate-pulse" />

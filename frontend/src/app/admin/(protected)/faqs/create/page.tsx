@@ -1,4 +1,3 @@
-// src/app/admin/faqs/create/page.tsx
 import { Metadata } from 'next';
 import { FaqForm } from '@/components/admin/faqs/FaqForm';
 

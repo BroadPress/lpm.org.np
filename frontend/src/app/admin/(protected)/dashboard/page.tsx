@@ -1,4 +1,3 @@
-// src/app/admin/dashboard/page.tsx
 import { getAllHomeSections } from '@/lib/supabase/homepage';
 import { getAllAboutSections } from '@/lib/supabase/about';
 import { getAllTeamMembers } from '@/lib/supabase/team';
@@ -15,22 +14,26 @@ import {
   LayoutDashboard 
 } from 'lucide-react';
 import { cache } from 'react';
+import { getAllContactSubmissions } from '@/lib/supabase/contact';
+import { getAllDonationsAdmin } from '@/lib/supabase/donations';
 
 const getDashboardData = cache(async () => {
-  const [home, about, team, events, gallery, faqs] = await Promise.all([
+  const [home, about, team, events, gallery, faqs, contactSubmissions, donations] = await Promise.all([
     getAllHomeSections(),
     getAllAboutSections(),
     getAllTeamMembers(),
     getAllEvents(),
     getAllGalleryImages(),
     getAllFaqs(),
+    getAllContactSubmissions(),
+    getAllDonationsAdmin()
   ]);
 
-  return { home, about, team, events, gallery, faqs };
+  return { home, about, team, events, gallery, faqs, contactSubmissions, donations };
 });
 
 export default async function AdminDashboardPage() {
-  const { home, about, team, events, gallery, faqs } = await getDashboardData();
+  const { home, about, team, events, gallery, faqs, contactSubmissions, donations } = await getDashboardData();
 
   const stats = [
     { 
@@ -75,6 +78,20 @@ export default async function AdminDashboardPage() {
       color: 'border-yellow-500', 
       textColor: 'text-yellow-600' 
     },
+    { 
+      label: 'Contact Submissions', 
+      value: contactSubmissions.length,
+      icon: HelpCircle,
+      color: 'border-gray-500',
+      textColor: 'text-gray-600'
+    },
+    { 
+      label: 'Donations', 
+      value: donations.length, 
+      icon: HelpCircle, 
+      color: 'border-green-500', 
+      textColor: 'text-green-500' 
+    }
   ];
 
   return (

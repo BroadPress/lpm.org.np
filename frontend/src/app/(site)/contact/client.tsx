@@ -1,16 +1,10 @@
-
-
 'use client';
-import { useState } from 'react';
-import { MapPin, Phone, Mail,  Send } from 'lucide-react';
+
+import { useState, useEffect } from 'react';
+import { MapPin, Phone, Mail, Send } from 'lucide-react';
 import { FaFacebook, FaTwitter, FaLinkedin, FaInstagram, FaYoutube, FaPinterest, FaGoogle } from 'react-icons/fa6';
 import OptimizedImage from '@/components/ui/OptimizedImage';
-
-const contactInfo = [
-  { icon: MapPin, title: 'Head Office Address', details: 'Near Pashupati School, Bajrang Tola, Birganj' },
-  { icon: Phone, title: 'Phone Number', details: '+977 9841441374', link: 'tel:+9779841441374' },
-  { icon: Mail, title: 'Email Address', details: 'info@lpm.org.np', link: 'mailto:info@lpm.org.np' },
-];
+import { getContactContent, submitContactForm } from '@/lib/supabase/contact';
 
 const socialLinks = [
   { icon: FaFacebook, name: 'Facebook', color: 'bg-[#1877f2]' },
@@ -18,15 +12,29 @@ const socialLinks = [
   { icon: FaLinkedin, name: 'LinkedIn', color: 'bg-[#0a66c2]' },
   { icon: FaInstagram, name: 'Instagram', color: 'bg-gradient-to-tr from-[#f09433] to-[#bc1888]' },
   { icon: FaPinterest, name: 'Pinterest', color: 'bg-[#ff0000]' },
-    { icon: FaGoogle, name: 'Google', color: 'bg-[#4285F4]' },
+  { icon: FaGoogle, name: 'Google', color: 'bg-[#4285F4]' },
 ];
 
-
-
 export default function ContactClient() {
+  const [contactInfo, setContactInfo] = useState<any>(null);
   const [formData, setFormData] = useState({ name: '', email: '', subject: '', phone: '', message: '' });
   const [status, setStatus] = useState<{ type: 'success' | 'error' | null; message: string }>({ type: null, message: '' });
   const [submitting, setSubmitting] = useState(false);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        const data = await getContactContent();
+        setContactInfo(data?.data || null);
+      } catch (error) {
+        console.error('Error fetching contact data:', error);
+      } finally {
+        setLoading(false);
+      }
+    }
+    fetchData();
+  }, []);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -34,12 +42,40 @@ export default function ContactClient() {
       setStatus({ type: 'error', message: 'Please fill all required fields.' });
       return;
     }
+
     setSubmitting(true);
-    await new Promise(r => setTimeout(r, 1000));
-    setStatus({ type: 'success', message: 'Message sent! We will get back to you soon.' });
-    setFormData({ name: '', email: '', subject: '', phone: '', message: '' });
-    setSubmitting(false);
+    try {
+      await submitContactForm(formData);
+      setStatus({ type: 'success', message: 'Message sent! We will get back to you soon.' });
+      setFormData({ name: '', email: '', subject: '', phone: '', message: '' });
+    } catch (error) {
+      setStatus({ type: 'error', message: 'Failed to send message. Please try again.' });
+    } finally {
+      setSubmitting(false);
+    }
   };
+
+  if (loading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="w-12 h-12 border-4 border-orange-500 border-t-transparent rounded-full animate-spin" />
+      </div>
+    );
+  }
+
+  const info = contactInfo || {
+    address: 'Near Pashupati School, Bajrang Tola, Birganj',
+    phone: '+977 9841441374',
+    email: 'info@lpm.org.np',
+    map_embed_url: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d113710.36495423553!2d84.7906101189676!3d27.04757484692372!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39935446b21c98cb%3A0x42938e30ff4f6cb5!2sBirgunj!5e0!3m2!1sen!2snp!4v1779797183705!5m2!1sen!2snp',
+    bg_image: '/images/contact/19.jpg',
+  };
+
+  const contactInfoItems = [
+    { icon: MapPin, title: 'Head Office Address', details: info.address },
+    { icon: Phone, title: 'Phone Number', details: info.phone, link: `tel:${info.phone}` },
+    { icon: Mail, title: 'Email Address', details: info.email, link: `mailto:${info.email}` },
+  ];
 
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-gray-900 py-16">
@@ -53,43 +89,89 @@ export default function ContactClient() {
             <p className="text-gray-600 mb-8">We are here to assist you on your journey of transformation.</p>
             
             <div className="space-y-4">
-              {contactInfo.map((info, idx) => (
+              {contactInfoItems.map((item, idx) => (
                 <div key={idx} className="flex items-start gap-4 p-4 bg-white dark:bg-gray-800 rounded-xl shadow">
                   <div className="w-12 h-12 rounded-xl bg-gradient-to-r from-orange-500 to-pink-500 flex items-center justify-center">
-                    <info.icon size={20} className="text-white" />
+                    <item.icon size={20} className="text-white" />
                   </div>
                   <div>
-                    <h3 className="font-semibold">{info.title}</h3>
-                    {info.link ? <a href={info.link} className="text-gray-600 hover:text-orange-500">{info.details}</a> : <span className="text-gray-600">{info.details}</span>}
+                    <h3 className="font-semibold">{item.title}</h3>
+                    {item.link ? (
+                      <a href={item.link} className="text-gray-600 hover:text-orange-500">{item.details}</a>
+                    ) : (
+                      <span className="text-gray-600">{item.details}</span>
+                    )}
                   </div>
                 </div>
               ))}
             </div>
-
-        
           </div>
 
           {/* Right Column - Form */}
           <div>
             <div className="relative rounded-2xl overflow-hidden shadow-xl">
               <div className="absolute inset-0">
-                <OptimizedImage src="/images/contact/19.jpg" alt="Background" sizes='160px' className="object-cover" />
-                <div className="absolute inset-0  " />
+                <OptimizedImage src={info.bg_image} alt="Background" className="object-cover" />
               </div>
-              <div className="relative z-10 p-8">
+              <div className="relative z-10 p-6 md:p-8 bg-black/40 backdrop-blur-sm">
                 <h3 className="text-2xl font-bold text-white mb-6">Send Us a Message</h3>
                 <form onSubmit={handleSubmit} className="space-y-4">
                   <div className="grid sm:grid-cols-2 gap-4">
-                    <input type="text" name="name" placeholder="Enter Name*" value={formData.name} onChange={(e) => setFormData({...formData, name: e.target.value})} className="w-full px-4 py-3 rounded-xl bg-white/80 text-gray-900  placeholder-gray-700  border border-white/30 focus:outline-none focus:ring-2 focus:ring-orange-500" />
-                    <input type="email" name="email" placeholder="Enter Email*" value={formData.email} onChange={(e) => setFormData({...formData, email: e.target.value})} className="w-full px-4 py-3 rounded-xl bg-white/80 text-gray-900 placeholder-gray-700 border border-white/30 focus:outline-none focus:ring-2 focus:ring-orange-500" />
+                    <input
+                      type="text"
+                      name="name"
+                      placeholder="Enter Name*"
+                      value={formData.name}
+                      onChange={(e) => setFormData({...formData, name: e.target.value})}
+                      className="w-full px-4 py-3 rounded-xl bg-white/80 text-gray-900 placeholder-gray-700 border border-white/30 focus:outline-none focus:ring-2 focus:ring-orange-500"
+                    />
+                    <input
+                      type="email"
+                      name="email"
+                      placeholder="Enter Email*"
+                      value={formData.email}
+                      onChange={(e) => setFormData({...formData, email: e.target.value})}
+                      className="w-full px-4 py-3 rounded-xl bg-white/80 text-gray-900 placeholder-gray-700 border border-white/30 focus:outline-none focus:ring-2 focus:ring-orange-500"
+                    />
                   </div>
                   <div className="grid sm:grid-cols-2 gap-4">
-                    <input type="text" name="subject" placeholder="Enter Subject*" value={formData.subject} onChange={(e) => setFormData({...formData, subject: e.target.value})} className="w-full px-4 py-3 rounded-xl bg-white/80 text-gray-900 placeholder-gray-700 border border-white/30 focus:outline-none focus:ring-2 focus:ring-orange-500" />
-                    <input type="tel" name="phone" placeholder="Enter Number" value={formData.phone} onChange={(e) => setFormData({...formData, phone: e.target.value})} className="w-full px-4 py-3 rounded-xl bg-white/80 text-gray-900 placeholder-gray-700 border border-white/30 focus:outline-none focus:ring-2 focus:ring-orange-500" />
+                    <input
+                      type="text"
+                      name="subject"
+                      placeholder="Enter Subject*"
+                      value={formData.subject}
+                      onChange={(e) => setFormData({...formData, subject: e.target.value})}
+                      className="w-full px-4 py-3 rounded-xl bg-white/80 text-gray-900 placeholder-gray-700 border border-white/30 focus:outline-none focus:ring-2 focus:ring-orange-500"
+                    />
+                    <input
+                      type="tel"
+                      name="phone"
+                      placeholder="Enter Number"
+                      value={formData.phone}
+                      onChange={(e) => setFormData({...formData, phone: e.target.value})}
+                      className="w-full px-4 py-3 rounded-xl bg-white/80 text-gray-900 placeholder-gray-700 border border-white/30 focus:outline-none focus:ring-2 focus:ring-orange-500"
+                    />
                   </div>
-                  <textarea name="message" rows={5} placeholder="Enter Message*" value={formData.message} onChange={(e) => setFormData({...formData, message: e.target.value})} className="w-full px-4 py-3 rounded-xl bg-white/80 text-gray-900 placeholder-gray-700 border border-white/30 focus:outline-none focus:ring-2 focus:ring-orange-500 resize-none" />
-                  {status.type && <div className={`flex items-center gap-2 p-3 rounded-xl ${status.type === 'success' ? 'bg-green-500/20 text-green-300' : 'bg-red-500/20 text-red-300'}`}><span>{status.message}</span></div>}
-                  <button type="submit" disabled={submitting} className="w-full py-3 bg-white text-orange-500 rounded-xl font-semibold flex items-center justify-center gap-2">{submitting ? 'Sending...' : <>Submit Now <Send size={18} /></>}</button>
+                  <textarea
+                    name="message"
+                    rows={5}
+                    placeholder="Enter Message*"
+                    value={formData.message}
+                    onChange={(e) => setFormData({...formData, message: e.target.value})}
+                    className="w-full px-4 py-3 rounded-xl bg-white/80 text-gray-900 placeholder-gray-700 border border-white/30 focus:outline-none focus:ring-2 focus:ring-orange-500 resize-none"
+                  />
+                  {status.type && (
+                    <div className={`flex items-center gap-2 p-3 rounded-xl ${status.type === 'success' ? 'bg-green-500/20 text-green-300' : 'bg-red-500/20 text-red-300'}`}>
+                      <span>{status.message}</span>
+                    </div>
+                  )}
+                  <button
+                    type="submit"
+                    disabled={submitting}
+                    className="w-full py-3 bg-white text-orange-500 rounded-xl font-semibold flex items-center justify-center gap-2"
+                  >
+                    {submitting ? 'Sending...' : <>Submit Now <Send size={18} /></>}
+                  </button>
                 </form>
               </div>
             </div>
@@ -98,15 +180,31 @@ export default function ContactClient() {
               <h3 className="font-semibold mb-4">Follow us on social media..</h3>
               <div className="flex flex-wrap gap-3">
                 {socialLinks.map((social, idx) => (
-                  <a key={idx} href="#" target="_blank" className={`${social.color} text-white rounded-xl px-4 py-2 flex items-center gap-2 hover:scale-105 transition`}><social.icon size={16} /><span>{social.name}</span></a>
+                  <a
+                    key={idx}
+                    href="#"
+                    target="_blank"
+                    className={`${social.color} text-white rounded-xl px-4 py-2 flex items-center gap-2 hover:scale-105 transition`}
+                  >
+                    <social.icon size={16} /><span>{social.name}</span>
+                  </a>
                 ))}
               </div>
             </div>
           </div>
         </div>
       </div>
+
       <div className="mt-8 w-full h-[350px]">
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d113710.36495423553!2d84.7906101189676!3d27.04757484692372!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39935446b21c98cb%3A0x42938e30ff4f6cb5!2sBirgunj!5e0!3m2!1sen!2snp!4v1779797183705!5m2!1sen!2snp" width="100%" height="100%" style={{ border: 0 }} allowFullScreen loading="lazy" title="Location" />
+        <iframe
+          src={info.map_embed_url}
+          width="100%"
+          height="100%"
+          style={{ border: 0 }}
+          allowFullScreen
+          loading="lazy"
+          title="Location"
+        />
       </div>
     </div>
   );

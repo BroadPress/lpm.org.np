@@ -1,4 +1,3 @@
-// src/app/admin/events/create/page.tsx
 import { Metadata } from 'next';
 import { EventForm } from '@/components/admin/events/EventForm';
 

@@ -1,4 +1,3 @@
-// src/app/(site)/gallery/client.tsx
 'use client';
 
 import { useState, useEffect, useCallback } from 'react';

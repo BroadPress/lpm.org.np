@@ -1,10 +1,9 @@
-// src/components/admin/team/TeamForm.tsx
 'use client';
 
-import { memo, useState, useCallback, useRef, useEffect } from 'react';
+import { memo, useState, useCallback, useRef } from 'react';
 import { useRouter } from 'next/navigation';
 import { createTeamMember, updateTeamMember, uploadTeamImage, deleteTeamImage, TeamMember } from '@/lib/supabase/team';
-import { Loader2, Save, X, Upload, Image as ImageIcon } from 'lucide-react';
+import { Loader2, Save, X, Image as ImageIcon } from 'lucide-react';
 import OptimizedImage from '@/components/ui/OptimizedImage';
 
 interface TeamFormProps {

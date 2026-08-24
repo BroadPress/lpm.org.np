@@ -1,4 +1,3 @@
-// src/components/admin/homepage/GalleryForm.tsx
 'use client';
 
 import { memo, useState, useCallback } from 'react';

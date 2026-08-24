@@ -1,4 +1,3 @@
-// src/lib/supabase/team.ts
 import { supabase } from './client';
 
 export interface TeamMember {

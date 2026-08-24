@@ -1,4 +1,3 @@
-// src/app/admin/about/edit/page.tsx
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { getAboutSection } from '@/lib/supabase/about';

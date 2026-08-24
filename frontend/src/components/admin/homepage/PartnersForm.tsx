@@ -1,4 +1,3 @@
-// src/components/admin/homepage/PartnersForm.tsx
 'use client';
 
 import { memo, useState, useCallback } from 'react';

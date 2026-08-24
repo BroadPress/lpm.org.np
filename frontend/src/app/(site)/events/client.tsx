@@ -1,4 +1,3 @@
-// src/app/(site)/events/client.tsx
 'use client';
 
 import { useEffect, useState } from 'react';

@@ -1,79 +1,78 @@
 'use client';
 
 import { useEffect, useState, useCallback } from 'react';
-import { getAllDonationsAdmin, updateDonationStatus, deleteDonation, Donation } from '@/lib/supabase/donations';
-import { Loader2, Trash2, CheckCircle, XCircle, Clock } from 'lucide-react';
+import { getAllContactSubmissions, updateSubmissionStatus, deleteContactSubmission, ContactSubmission } from '@/lib/supabase/contact';
+import { Loader2, Trash2, CheckCircle, XCircle, Clock, Mail, Phone, User } from 'lucide-react';
 
 const statusColors = {
   pending: 'bg-yellow-100 text-yellow-800',
-  completed: 'bg-green-100 text-green-800',
-  failed: 'bg-red-100 text-red-800',
+  read: 'bg-blue-100 text-blue-800',
+  replied: 'bg-green-100 text-green-800',
+  spam: 'bg-red-100 text-red-800',
 };
 
 const statusIcons = {
   pending: Clock,
-  completed: CheckCircle,
-  failed: XCircle,
+  read: Mail,
+  replied: CheckCircle,
+  spam: XCircle,
 };
 
-export default function AdminDonationsPage() {
-  const [donations, setDonations] = useState<Donation[]>([]);
+export default function AdminContactSubmissionsPage() {
+  const [submissions, setSubmissions] = useState<ContactSubmission[]>([]);
   const [loading, setLoading] = useState(true);
   const [updating, setUpdating] = useState<string | null>(null);
 
-  const loadDonations = useCallback(async () => {
+  const loadSubmissions = useCallback(async () => {
     setLoading(true);
     try {
-      const data = await getAllDonationsAdmin();
-      setDonations(data);
+      const data = await getAllContactSubmissions();
+      setSubmissions(data);
     } catch (error) {
-      console.error('Error loading donations:', error);
+      console.error('Error loading submissions:', error);
     } finally {
       setLoading(false);
     }
   }, []);
 
   useEffect(() => {
-    loadDonations();
-  }, [loadDonations]);
+    loadSubmissions();
+  }, [loadSubmissions]);
 
   const handleStatusUpdate = useCallback(async (id: string, status: string) => {
     setUpdating(id);
     try {
-      await updateDonationStatus(id, status);
-      await loadDonations();
+      await updateSubmissionStatus(id, status);
+      await loadSubmissions();
     } catch (error) {
-      console.error('Error updating donation:', error);
+      console.error('Error updating submission:', error);
       alert('Failed to update status. Please try again.');
     } finally {
       setUpdating(null);
     }
-  }, [loadDonations]);
+  }, [loadSubmissions]);
 
   const handleDelete = useCallback(async (id: string) => {
-    if (!confirm('Delete this donation record? This action cannot be undone.')) return;
+    if (!confirm('Delete this submission? This action cannot be undone.')) return;
     try {
-      await deleteDonation(id);
-      await loadDonations();
+      await deleteContactSubmission(id);
+      await loadSubmissions();
     } catch (error) {
-      console.error('Error deleting donation:', error);
+      console.error('Error deleting submission:', error);
       alert('Failed to delete. Please try again.');
     }
-  }, [loadDonations]);
-
-  const totalAmount = donations.reduce((sum, d) => sum + d.amount, 0);
+  }, [loadSubmissions]);
 
   return (
     <div>
-      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 mb-4 md:mb-6">
+      <div className="flex justify-between items-center mb-4 md:mb-6">
         <div>
-          <h2 className="text-lg md:text-xl font-semibold">Donations</h2>
-          <p className="text-xs md:text-sm text-gray-500 mt-1">Manage all donations</p>
+          <h2 className="text-lg md:text-xl font-semibold">Contact Submissions</h2>
+          <p className="text-xs md:text-sm text-gray-500 mt-1">All messages from contact form</p>
         </div>
         <div className="bg-white px-4 py-2 rounded-lg shadow-sm">
-          <span className="text-sm text-gray-500">Total Donations: </span>
-          <span className="font-bold text-orange-600">${totalAmount.toFixed(2)}</span>
-          <span className="text-xs text-gray-400 ml-2">({donations.length} donations)</span>
+          <span className="text-sm text-gray-500">Total: </span>
+          <span className="font-bold text-orange-600">{submissions.length}</span>
         </div>
       </div>
 
@@ -81,9 +80,9 @@ export default function AdminDonationsPage() {
         <div className="flex justify-center py-12">
           <Loader2 className="w-8 h-8 animate-spin text-orange-500" />
         </div>
-      ) : donations.length === 0 ? (
+      ) : submissions.length === 0 ? (
         <div className="text-center py-12 bg-white rounded-xl shadow-sm">
-          <p className="text-gray-500">No donations yet.</p>
+          <p className="text-gray-500">No contact submissions yet.</p>
         </div>
       ) : (
         <div className="bg-white rounded-xl shadow-sm overflow-hidden">
@@ -91,64 +90,60 @@ export default function AdminDonationsPage() {
             <table className="w-full text-sm">
               <thead className="bg-gray-50 text-left text-gray-500">
                 <tr>
-                  <th className="px-4 py-3">Donor</th>
+                  <th className="px-4 py-3">Name</th>
                   <th className="px-4 py-3 hidden md:table-cell">Email</th>
-                  <th className="px-4 py-3">Amount</th>
-                  <th className="px-4 py-3 hidden lg:table-cell">Method</th>
+                  <th className="px-4 py-3 hidden lg:table-cell">Subject</th>
                   <th className="px-4 py-3">Status</th>
                   <th className="px-4 py-3 hidden lg:table-cell">Date</th>
                   <th className="px-4 py-3 text-right">Actions</th>
                 </tr>
               </thead>
               <tbody>
-                {donations.map((donation) => {
-                  const StatusIcon = statusIcons[donation.status as keyof typeof statusIcons] || Clock;
+                {submissions.map((sub) => {
+                  const StatusIcon = statusIcons[sub.status as keyof typeof statusIcons] || Clock;
                   return (
-                    <tr key={donation.id} className="border-t hover:bg-gray-50 transition-colors">
+                    <tr key={sub.id} className="border-t hover:bg-gray-50 transition-colors">
                       <td className="px-4 py-3">
-                        <div>
-                          <span className="font-medium">{donation.first_name} {donation.last_name}</span>
+                        <div className="flex items-center gap-2">
+                          <User size={14} className="text-gray-400" />
+                          <span className="font-medium">{sub.name}</span>
                         </div>
                       </td>
                       <td className="px-4 py-3 hidden md:table-cell text-gray-600">
-                        {donation.email}
+                        {sub.email}
                       </td>
-                      <td className="px-4 py-3 font-bold text-orange-600">
-                        ${donation.amount.toFixed(2)}
-                      </td>
-                      <td className="px-4 py-3 hidden lg:table-cell text-gray-500 capitalize">
-                        {donation.payment_method}
+                      <td className="px-4 py-3 hidden lg:table-cell text-gray-500 truncate max-w-[120px]">
+                        {sub.subject || 'No subject'}
                       </td>
                       <td className="px-4 py-3">
                         <div className="flex items-center gap-2">
                           <select
-                            value={donation.status}
-                            onChange={(e) => handleStatusUpdate(donation.id, e.target.value)}
-                            disabled={updating === donation.id}
+                            value={sub.status}
+                            onChange={(e) => handleStatusUpdate(sub.id, e.target.value)}
+                            disabled={updating === sub.id}
                             className={`px-2 py-1 rounded-full text-xs font-medium border-0 focus:ring-2 focus:ring-orange-500 ${
-                              statusColors[donation.status as keyof typeof statusColors] || 'bg-gray-100 text-gray-800'
+                              statusColors[sub.status as keyof typeof statusColors] || 'bg-gray-100 text-gray-800'
                             }`}
                           >
                             <option value="pending">Pending</option>
-                            <option value="completed">Completed</option>
-                            <option value="failed">Failed</option>
+                            <option value="read">Read</option>
+                            <option value="replied">Replied</option>
+                            <option value="spam">Spam</option>
                           </select>
-                          {updating === donation.id && <Loader2 size={12} className="animate-spin text-orange-500" />}
+                          {updating === sub.id && <Loader2 size={12} className="animate-spin text-orange-500" />}
                         </div>
                       </td>
                       <td className="px-4 py-3 hidden lg:table-cell text-gray-500">
-                        {new Date(donation.created_at).toLocaleDateString('en-GB', {
+                        {new Date(sub.created_at).toLocaleDateString('en-GB', {
                           day: 'numeric',
                           month: 'short',
                           year: 'numeric',
-                          hour: '2-digit',
-                          minute: '2-digit',
                         })}
                       </td>
                       <td className="px-4 py-3 text-right">
                         <div className="flex items-center justify-end gap-2">
                           <button
-                            onClick={() => handleDelete(donation.id)}
+                            onClick={() => handleDelete(sub.id)}
                             className="p-1.5 text-gray-400 hover:text-red-600 transition-colors"
                             title="Delete"
                           >

@@ -1,4 +1,3 @@
-// src/app/admin/gallery/create/page.tsx
 import { Metadata } from 'next';
 import { GalleryForm } from '@/components/admin/gallery/GalleryForm';
 

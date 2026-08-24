@@ -1,4 +1,3 @@
-// src/components/admin/AdminSidebar.tsx
 'use client';
 
 import Link from 'next/link';
@@ -10,7 +9,6 @@ import {
   Users,
   Calendar,
   Image,
-  FileText,
   Phone,
   HelpCircle,
   Menu,
@@ -20,6 +18,7 @@ import {
 } from 'lucide-react';
 import { memo, useState, useCallback, useEffect } from 'react';
 import {useMediaQuery} from '@/hooks/useMediaQuery';
+import OptimizedImage from '../ui/OptimizedImage';
 
 const menuItems = [
   { label: 'Dashboard', href: '/admin/dashboard', icon: LayoutDashboard },
@@ -72,9 +71,29 @@ export const AdminSidebar = memo(function AdminSidebar() {
   if (!isMobile) {
     return (
       <aside className="w-60 bg-gradient-to-b from-orange-500 to-pink-600 min-h-screen flex-shrink-0 sticky top-0 overflow-y-auto">
-        <div className="px-5 py-5 border-b border-white/10 sticky top-0 bg-orange-500/95 z-10">
-          <h2 className="text-white font-bold text-sm">LPM CMS</h2>
-        </div>
+                {/* Logo Section */}
+        <Link
+          href="/"
+          className="flex items-center gap-3 px-5 py-5 border-b border-white/10 sticky top-0 bg-orange-500/95 z-10 group hover:opacity-80 transition-opacity"
+          title="Go to Website Homepage"
+        >
+          <div className="relative w-8 h-8 flex-shrink-0">
+            <OptimizedImage
+              src="/images/brand/logo.jpg"
+              alt="LPM Logo"
+              fill
+              className="object-contain"
+              priority
+            />
+          </div>
+          <div className="flex flex-col">
+            <span className="text-white font-bold text-sm">Life Positive Mission </span>
+            <span className="text-white/60 text-[10px] hidden group-hover:block transition-all">
+              View Website →
+            </span>
+          </div>
+        </Link>
+
         <nav className="p-3 space-y-0.5">
           {menuItems.map((item) => {
             const Icon = item.icon;

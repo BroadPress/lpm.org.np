@@ -1,4 +1,3 @@
-// src/lib/supabase/about.ts
 import { supabase } from './client';
 
 export interface AboutSection {

@@ -1,4 +1,3 @@
-// src/app/admin/team/create/page.tsx
 import { Metadata } from 'next';
 import { TeamForm } from '@/components/admin/team/TeamForm';
 

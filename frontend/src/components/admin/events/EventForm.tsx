@@ -1,4 +1,3 @@
-// src/components/admin/events/EventForm.tsx
 'use client';
 
 import { memo, useState, useCallback, useRef } from 'react';

@@ -1,4 +1,3 @@
-// src/app/admin/events/edit/[id]/page.tsx
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { getEventById } from '@/lib/supabase/events';

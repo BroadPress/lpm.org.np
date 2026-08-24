@@ -1,5 +1,3 @@
-
-// src/lib/supabase/events.ts
 import { supabase } from './client';
 
 export interface Event {

@@ -1,10 +1,8 @@
-// src/components/WelcomePopup.tsx
 'use client';
 
 import { useEffect, useState, useCallback } from 'react';
 import Link from 'next/link';
 import { X, Sparkles } from 'lucide-react';
-import OptimizedImage from '@/components/ui/OptimizedImage';
 
 const SESSION_KEY = 'lpm_welcome_popup_shown';
 

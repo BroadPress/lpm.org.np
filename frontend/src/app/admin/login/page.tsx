@@ -1,4 +1,3 @@
-// src/app/admin/login/page.tsx
 'use client';
 
 import { useState, useCallback } from 'react';
@@ -14,16 +13,6 @@ export default function AdminLoginPage() {
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
 
-  // // Check if already logged in
-  // useEffect(() => {
-  //   const checkAuth = async () => {
-  //     const { data: { user } } = await supabase.auth.getUser();
-  //     if (user) {
-  //       router.push('/admin/dashboard');
-  //     }
-  //   };
-  //   checkAuth();
-  // }, [router]);
 
   const handleLogin = useCallback(async (e: React.FormEvent) => {
     e.preventDefault();
