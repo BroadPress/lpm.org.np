@@ -3,6 +3,7 @@
 import { useEffect, useState, useCallback } from 'react';
 import Link from 'next/link';
 import { X, Sparkles } from 'lucide-react';
+import OptimizedImage from '../ui/OptimizedImage';
 
 const SESSION_KEY = 'lpm_welcome_popup_shown';
 
@@ -66,7 +67,7 @@ export default function WelcomePopup() {
         onClick={(e) => e.stopPropagation()}
         className="relative bg-white rounded-2xl shadow-2xl max-w-lg w-full overflow-hidden animate-scaleIn"
       >
-        {/* Close button - countdown सहित */}
+        {/* Close button - countdown  */}
         <button
           onClick={handleClose}
           disabled={!canClose}
@@ -82,8 +83,14 @@ export default function WelcomePopup() {
 
         {/* Header - Orange/Pink Gradient */}
         <div className="bg-gradient-to-br from-orange-500 via-pink-500 to-purple-600 px-6 pt-8 pb-6 text-center">
-          <div className="relative w-16 h-16 mx-auto rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center">
-            <Sparkles className="w-8 h-8 text-white" />
+           <div className="relative w-16 h-16 mx-auto  rounded-full ">
+            <OptimizedImage
+              src="/images/brand/logo.jpg"
+              alt="Sri Sri Ravishankar Vidya Mandir"
+              fill
+              className="p-1 w-14 h-14"
+              objectFit="contain"
+            />
           </div>
           <h2 className="text-white font-bold text-xl md:text-2xl mt-3">
             Welcome to Life Positive Mission

@@ -98,13 +98,13 @@ export default function Navbar({ onMenuClick, isTransparent, isMobile = false }:
 
           {/* Right Actions */}
           <div className="flex items-center gap-1">
-            <button
+            {/* <button
               onClick={() => setTheme(isDark ? 'light' : 'dark')}
               className={`p-2 rounded-lg transition-colors duration-300 ${textColor} ${iconHoverBg}`}
               aria-label="Toggle theme"
             >
               {mounted && (isDark ? <Sun size={18} /> : <Moon size={18} />)}
-            </button>
+            </button> */}
 
             <Link
               href="https://docs.google.com/forms/d/e/1FAIpQLSd5oi9ujlXHfxByvYI7iuAjbCWFtgRrCsN62PrwjFL2ABSPCg/viewform"
